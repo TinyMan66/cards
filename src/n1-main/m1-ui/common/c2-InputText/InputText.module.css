@@ -1,0 +1,45 @@
+
+.superInput {
+    display: block;
+    /*width: ;*/
+    /*height: ;*/
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 2px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.superInput:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: rgba(128, 188, 255);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(128, 188, 255, 0.45);
+}
+
+.errorInput {
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: 0.25rem;
+    /*transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;*/
+    border: 3px solid red;
+}
+
+.error {
+    color: red;
+}
+
+
