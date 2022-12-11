@@ -1,13 +1,13 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunkMiddleware, {ThunkAction} from 'redux-thunk'
-import {MainActionsType, mainReducer} from "./reducers/main-reducer";
-import {AuthActionsType, authReducer} from "./reducers/auth-reducer";
-import {RegistrationActionsType, registrationReducer} from "./reducers/registration-reducer";
-import {PasswordActionsType, passwordReducer} from "./reducers/password-reducer";
-import {ProfileActionsType, profileReducer} from "./reducers/profile-reducer";
+import {MainActionsType, appReducer} from "./app-reducer";
+import {AuthActionsType, authReducer} from "../features/auth/auth-reducer";
+import {RegistrationActionsType, registrationReducer} from "../features/auth/registration/registration-reducer";
+import {PasswordActionsType, passwordReducer} from "../features/auth/password/password-reducer";
+import {ProfileActionsType, profileReducer} from "../features/auth/profile/profile-reducer";
 
 const rootReducer = combineReducers({
-    main: mainReducer,
+    main: appReducer,
     auth: authReducer,
     registration: registrationReducer,
     profile: profileReducer,

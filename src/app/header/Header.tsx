@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {login, newPassword, page404, profile, recoverPassword, registration, testPage} from "../routes/pathRoutesList";
+import {login, newPassword, page404, profile, recoverPassword, registration, testPage} from "../../common/routes/pathRoutesList";
 
 const styles = {marginRight: 10}
 

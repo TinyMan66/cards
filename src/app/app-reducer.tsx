@@ -1,6 +1,6 @@
 const initialState: InitialStateType = {}
 
-export const mainReducer = (state: InitialStateType = initialState, action: MainActionsType): InitialStateType => {
+export const appReducer = (state: InitialStateType = initialState, action: MainActionsType): InitialStateType => {
     switch (action.type) {
         default:
             return {...state}

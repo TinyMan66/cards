@@ -1,9 +1,9 @@
 import React from 'react';
-import {Header} from "./header/Header";
+import {Header} from "../../../app/header/Header";
 import {Route, Routes} from "react-router-dom";
-import {routes,} from "./routes/pathRoutesList";
+import {routes} from "../../../common/routes/pathRoutesList";
 
-export const Main = () => {
+export const Pages = () => {
     return (
         <div>
             <Header/>

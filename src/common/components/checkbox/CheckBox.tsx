@@ -1,7 +1,7 @@
 import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes} from 'react'
-import s from './Navlink.module.css'
+import s from './CheckBox.module.css'
 
-export const Navlink: React.FC<SuperCheckboxPropsType> = (
+export const CheckBox: React.FC<SuperCheckboxPropsType> = (
     {
         type, onChange, onChangeChecked, className, spanClassName,
         children, ...restProps

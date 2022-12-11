@@ -1,12 +1,12 @@
 import React from 'react';
 import {NewPassword} from "./NewPassword";
-import {RecoverPassword} from "./RecoverPassword";
+import {ForgotPassword} from "./ForgotPassword";
 
 export const Password = () => {
     return (
         <div>
             <NewPassword/>
-            <RecoverPassword/>
+            <ForgotPassword/>
         </div>
     );
 };
