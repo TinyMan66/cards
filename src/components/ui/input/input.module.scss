@@ -1,0 +1,141 @@
+.inputContainer {
+  display: inline-block;
+  flex-direction: column;
+  padding-right: 12px;
+  padding-left: 12px;
+
+  .inputBlock {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .iconSearch {
+      cursor: pointer;
+
+      position: absolute;
+      top: 60%;
+      left: 14px;
+      transform: translateY(-50%);
+
+      color: var(--color-dark-100);
+    }
+
+    .input {
+      all: unset;
+
+      position: relative;
+
+      //top: 24px;
+
+      width: 284px;
+      height: 36px;
+      padding-left: 40px;
+
+      //styleName: Body 1;
+      //font-family: Roboto;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      color: var(--color-dark-100);
+      text-align: left;
+      letter-spacing: 0;
+
+      border: 1px solid #4c4c4c;
+      border-radius: 2px;
+      outline: none;
+
+      &:focus-visible + .iconSearch {
+        outline: 2px solid var(--color-info-700);
+      }
+
+      &:active {
+        color: var(--color-light-100);
+        border: 1px solid #fff;
+      }
+
+      &:hover {
+        background-color: var(--color-dark-700);
+        border: 1px solid #808080;
+      }
+
+      &:disabled {
+        color: var(--color-dark-300);
+        border: 1px solid #4c4c4c;
+      }
+
+      .error {
+        color: var(--color-danger-300);
+        border: 1px solid #f23d61;
+      }
+    }
+
+    .iconPassword {
+      cursor: pointer;
+
+      position: absolute;
+      top: 60%;
+      right: 10px;
+      transform: translateY(-50%);
+    }
+
+    .iconClose {
+      cursor: pointer;
+
+      position: absolute;
+      top: 60%;
+      right: 10px;
+      transform: translateY(-50%);
+
+      //display: none;
+    }
+  }
+
+  .placeholder {
+    top: -1px;
+    transform: translateY(-50%);
+
+    overflow: hidden;
+
+    width: 284px;
+    height: 24px;
+
+    //width: calc(100% - (var(--field-padding) * 2));
+    //styleName: Body 2;
+    //font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--color-dark-100);
+    text-align: left;
+
+    //text-overflow: ellipsis;
+    //letter-spacing: 0;
+    //white-space: nowrap;
+    //
+    //transition:
+    //  top 0.3s ease,
+    //  color 0.3s ease,
+    //  font-size 0.3s ease;
+  }
+
+  .errorMessage {
+    width: 100%;
+    height: 24px;
+    padding: 0 8px;
+
+    font-size: 12px;
+    color: red;
+
+    &:empty {
+      opacity: 0;
+    }
+  }
+}
+
+.inputContainer input.dirty + .placeholder,
+.inputContainer input:focus + .placeholder,
+.inputContainer input:not(:placeholder-shown) + .placeholder {
+  top: -10px;
+  font-size: 10px;
+  color: #222;
+}
