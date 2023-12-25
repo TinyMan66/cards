@@ -4,13 +4,13 @@ import { Input } from '@/components/ui/input/input'
 
 const meta = {
   argTypes: {
-    variant: {
+    type: {
       control: { type: 'radio' },
       options: ['password', 'search', 'text'],
     },
   },
   component: Input,
-  tags: ['autodocs'],
+  tags: ['auto docs'],
   title: 'Components/Input',
 } satisfies Meta<typeof Input>
 
@@ -19,15 +19,34 @@ type Story = StoryObj<typeof meta>
 
 export const TextInput: Story = {
   args: {
-    placeholder: 'Enter text',
+    disabled: false,
+    placeholder: 'Input',
+    type: 'text',
     value: '',
-    variant: 'text',
   },
 }
 export const PasswordInput: Story = {
   args: {
-    placeholder: 'Enter password',
+    disabled: false,
+    placeholder: 'Input',
+    type: 'password',
     value: '',
-    variant: 'password',
+  },
+}
+export const SearchInput: Story = {
+  args: {
+    disabled: false,
+    placeholder: 'Input search',
+    type: 'search',
+    value: '',
+  },
+}
+export const ErrorInput: Story = {
+  args: {
+    disabled: false,
+    error: 'Error!',
+    placeholder: 'Input',
+    type: 'text',
+    value: '',
   },
 }
