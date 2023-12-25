@@ -1,77 +1,76 @@
-import { ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, ReactNode } from 'react'
-
 import {
-  FaEye,
-  FaSearch,
-  // FaEyeSlash,
-  FaTimes,
-} from 'react-icons/fa'
+  ChangeEvent,
+  DetailedHTMLProps,
+  InputHTMLAttributes,
+  KeyboardEvent,
+  ReactNode,
+  useState,
+} from 'react'
+
+import { FaEye, FaEyeSlash, FaSearch, FaTimes } from 'react-icons/fa'
 
 import s from './input.module.scss'
 
 export type InputProps = {
-  children?: ReactNode
   className?: string
   error?: ReactNode
   onChange: (value: string) => void
   onEnter?: () => void
-  onSearch?: () => void
-  onTogglePasswordVisibility?: () => void
-  placeholder: string
-  value: string
   variant?: 'password' | 'search' | 'text'
 } & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 export const Input = ({
-  children,
   className,
-  disabled,
   error,
   onChange,
   onEnter,
-  onSearch,
-  onTogglePasswordVisibility,
-  placeholder,
   variant,
   ...restProps
 }: InputProps) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false)
+  const passwordVisibilityHandler = () => {
+    setIsPasswordVisible(prev => !prev)
+  }
+  const searchCloseHandler = () => {}
   const changeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value)
   }
-  const iconHandler = () => {
-    if (variant === 'password' && onTogglePasswordVisibility) {
-      onTogglePasswordVisibility()
-    } else if (variant === 'search' && onSearch) {
-      onSearch()
+  const enterPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    // onKeyDown?.(e)
+    onEnter && e.key === 'Enter' && onEnter()
+  }
+  const inputIcons = () => {
+    if (variant === 'password') {
+      return (
+        <button className={s.iconPassword} onClick={passwordVisibilityHandler}>
+          {isPasswordVisible ? <FaEyeSlash /> : <FaEye />}
+        </button>
+      )
+    } else if (variant === 'search') {
+      return (
+        <>
+          <span className={s.iconSearch}>
+            <FaSearch />
+          </span>
+          <button className={s.iconClose} onClick={searchCloseHandler}>
+            <FaTimes />
+          </button>
+        </>
+      )
     }
   }
 
   return (
-    <div className={s.inputContainer}>
-      <span className={s.placeholder}>{placeholder}</span>
+    <div className={s.inputWrapper}>
+      <span className={s.placeholder}>{restProps.placeholder}</span>
 
       <div className={s.inputBlock}>
-        {variant === 'search' && (
-          <>
-            <span className={s.iconSearch} onClick={iconHandler}>
-              <FaSearch />
-            </span>
-            <span className={s.iconClose} onClick={iconHandler}>
-              <FaTimes />
-            </span>
-          </>
-        )}
-        {variant === 'password' && (
-          <span className={s.iconPassword} onClick={iconHandler}>
-            <FaEye />
-          </span>
-        )}
+        {variant && inputIcons()}
         <input
-          className={`${error ? s.error : ''} ${s.input}`}
-          disabled={disabled}
+          className={`${error ? s.error : ''} ${s.input} ${className}`}
           onChange={changeInputHandler}
-          placeholder={placeholder}
-          type={variant}
+          onKeyDown={enterPressHandler}
+          type={restProps.type ? restProps.type : variant}
           {...restProps}
         />
       </div>
