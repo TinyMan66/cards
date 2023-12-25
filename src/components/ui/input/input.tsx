@@ -16,17 +16,9 @@ export type InputProps = {
   error?: ReactNode
   onChange: (value: string) => void
   onEnter?: () => void
-  variant?: 'password' | 'search' | 'text'
 } & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
-export const Input = ({
-  className,
-  error,
-  onChange,
-  onEnter,
-  variant,
-  ...restProps
-}: InputProps) => {
+export const Input = ({ className, error, onChange, onEnter, type, ...restProps }: InputProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false)
   const passwordVisibilityHandler = () => {
     setIsPasswordVisible(prev => !prev)
@@ -40,13 +32,13 @@ export const Input = ({
     onEnter && e.key === 'Enter' && onEnter()
   }
   const inputIcons = () => {
-    if (variant === 'password') {
+    if (type === 'password') {
       return (
         <button className={s.iconPassword} onClick={passwordVisibilityHandler}>
           {isPasswordVisible ? <FaEyeSlash /> : <FaEye />}
         </button>
       )
-    } else if (variant === 'search') {
+    } else if (type === 'search') {
       return (
         <>
           <span className={s.iconSearch}>
@@ -65,12 +57,11 @@ export const Input = ({
       <span className={s.placeholder}>{restProps.placeholder}</span>
 
       <div className={s.inputBlock}>
-        {variant && inputIcons()}
+        {type && inputIcons()}
         <input
           className={`${error ? s.error : ''} ${s.input} ${className}`}
           onChange={changeInputHandler}
           onKeyDown={enterPressHandler}
-          type={restProps.type ? restProps.type : variant}
           {...restProps}
         />
       </div>
