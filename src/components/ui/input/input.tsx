@@ -54,7 +54,7 @@ export const Input = ({ className, error, onChange, onEnter, type, ...restProps 
 
   return (
     <div className={s.inputWrapper}>
-      <span className={s.placeholder}>{restProps.placeholder}</span>
+      <label className={s.label}>{restProps.placeholder}</label>
 
       <div className={s.inputBlock}>
         {type && inputIcons()}
