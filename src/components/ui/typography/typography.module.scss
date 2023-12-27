@@ -1,2 +1,111 @@
 .typography {
+  font-family: var(--font-family-primary);
+}
+
+.large {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 36px;
+  color: var(--color-dark-900);
+  text-align: right;
+  letter-spacing: 0;
+}
+
+.h1 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 36px;
+  color: var(--color-dark-900);
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.h2 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--color-dark-900);
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.h3 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--color-dark-900);
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.body1 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--color-dark-900);
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.body2 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--color-dark-900);
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.caption {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--color-dark-900);
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.link1 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--color-accent-500);
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.link2 {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--color-accent-500);
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.overline {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  color: var(--color-dark-900);
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.subtitle1 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--color-dark-900);
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.subtitle2 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--color-dark-900);
+  text-align: left;
+  letter-spacing: 0;
 }
