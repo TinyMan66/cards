@@ -61,17 +61,29 @@
 .link1 {
   @extend %common-styles;
 
+  cursor: pointer;
   font-size: 14px;
   color: var(--color-info-500);
   text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
 }
 
 .link2 {
   @extend %common-styles;
 
+  cursor: pointer;
   font-size: 12px;
   color: var(--color-info-500);
   text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
 }
 
 .overline {
