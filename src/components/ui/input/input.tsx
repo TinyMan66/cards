@@ -14,6 +14,7 @@ import s from './input.module.scss'
 type InputProps = {
   endIcon?: ReactNode
   error?: ReactNode
+  label?: ReactNode
   onChange: (value: string) => void
   onEndIconClick?: () => void
   onEnter?: () => void
@@ -24,11 +25,11 @@ export const Input = ({
   className,
   endIcon,
   error,
+  label,
   onChange,
   onEndIconClick,
   onEnter,
   onKeyDown,
-  placeholder,
   startIcon,
   type,
   ...restProps
@@ -71,7 +72,7 @@ export const Input = ({
 
   return (
     <div className={s.inputWrapper}>
-      {type === 'search' ? null : <label className={s.label}>{placeholder}</label>}
+      {label && <label className={s.label}>{label}</label>}
 
       <div className={s.inputBlock}>
         {inputIcons()}
