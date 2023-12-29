@@ -25,6 +25,8 @@ const components: Record<string, ElementType> = {
   h1: 'h1',
   h2: 'h2',
   h3: 'h3',
+  link1: 'a',
+  link2: 'a',
 }
 
 export const Typography = <T extends ElementType = 'h1'>(
