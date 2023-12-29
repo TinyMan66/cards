@@ -16,9 +16,10 @@ type InputProps = {
   error?: ReactNode
   label?: ReactNode
   onChange: (value: string) => void
-  onEndIconClick?: () => void
+  onClearClick?: () => void
   onEnter?: () => void
   startIcon?: ReactNode
+  value?: string
 } & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 export const Input = ({
@@ -27,7 +28,7 @@ export const Input = ({
   error,
   label,
   onChange,
-  onEndIconClick,
+  onClearClick,
   onEnter,
   onKeyDown,
   startIcon,
@@ -49,6 +50,7 @@ export const Input = ({
     onEnter && e.key === 'Enter' && onEnter()
   }
 
+  const isShowClearButton = onClearClick && restProps?.value?.length! > 0
   const inputIcons = () => {
     if (type === 'password') {
       return (
@@ -60,13 +62,15 @@ export const Input = ({
       return (
         <>
           <span className={s.iconSearch}>{startIcon}</span>
-          <button className={s.iconClose} onClick={onEndIconClick}>
-            {endIcon}
-          </button>
+          {isShowClearButton && (
+            <button className={s.iconClose} onClick={onClearClick}>
+              {endIcon}
+            </button>
+          )}
         </>
       )
     } else if (endIcon) {
-      return <button onClick={onEndIconClick}>{endIcon}</button>
+      return <button onClick={onClearClick}>{endIcon}</button>
     }
   }
 
