@@ -7,30 +7,47 @@ import {
   useState,
 } from 'react'
 
-import { FaEye, FaEyeSlash, FaSearch, FaTimes } from 'react-icons/fa'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 import s from './input.module.scss'
 
-export type InputProps = {
-  className?: string
+type InputProps = {
+  endIcon?: ReactNode
   error?: ReactNode
   onChange: (value: string) => void
+  onEndIconClick?: () => void
   onEnter?: () => void
+  startIcon?: ReactNode
 } & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
-export const Input = ({ className, error, onChange, onEnter, type, ...restProps }: InputProps) => {
+export const Input = ({
+  className,
+  endIcon,
+  error,
+  onChange,
+  onEndIconClick,
+  onEnter,
+  onKeyDown,
+  placeholder,
+  startIcon,
+  type,
+  ...restProps
+}: InputProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false)
+
   const passwordVisibilityHandler = () => {
     setIsPasswordVisible(prev => !prev)
   }
-  const searchCloseHandler = () => {}
+
   const changeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value)
   }
-  const enterPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    // onKeyDown?.(e)
+
+  const keyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    onKeyDown?.(e)
     onEnter && e.key === 'Enter' && onEnter()
   }
+
   const inputIcons = () => {
     if (type === 'password') {
       return (
@@ -41,27 +58,27 @@ export const Input = ({ className, error, onChange, onEnter, type, ...restProps 
     } else if (type === 'search') {
       return (
         <>
-          <span className={s.iconSearch}>
-            <FaSearch />
-          </span>
-          <button className={s.iconClose} onClick={searchCloseHandler}>
-            <FaTimes />
+          <span className={s.iconSearch}>{startIcon}</span>
+          <button className={s.iconClose} onClick={onEndIconClick}>
+            {endIcon}
           </button>
         </>
       )
+    } else if (endIcon) {
+      return <button onClick={onEndIconClick}>{endIcon}</button>
     }
   }
 
   return (
     <div className={s.inputWrapper}>
-      <label className={s.label}>{restProps.placeholder}</label>
+      {type === 'search' ? null : <label className={s.label}>{placeholder}</label>}
 
       <div className={s.inputBlock}>
-        {type && inputIcons()}
+        {inputIcons()}
         <input
           className={`${error ? s.error : ''} ${s.input} ${className}`}
           onChange={changeInputHandler}
-          onKeyDown={enterPressHandler}
+          onKeyDown={keyDownHandler}
           {...restProps}
         />
       </div>
