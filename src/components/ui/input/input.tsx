@@ -7,9 +7,7 @@ import {
   useState,
 } from 'react'
 
-import Close from '@/assets/components/Close'
-import Visibility from '@/assets/components/Visibility'
-import VisibilityOff from '@/assets/components/VisibilityOff'
+import { Close, Search, Visibility, VisibilityOff } from '@/assets'
 
 import s from './input.module.scss'
 
@@ -63,7 +61,9 @@ export const Input = ({
     } else if (type === 'search') {
       return (
         <>
-          <span className={s.iconSearch}>{startIcon}</span>
+          <span className={s.iconSearch}>
+            <Search />
+          </span>
           {isShowClearButton && (
             <button className={s.iconClose} onClick={onClearClick}>
               <Close />
