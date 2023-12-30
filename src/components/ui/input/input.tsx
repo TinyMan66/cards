@@ -51,6 +51,10 @@ export const Input = ({
   }
 
   const isShowClearButton = onClearClick && restProps?.value?.length! > 0
+
+  const dataStartIcon = startIcon ? 'start' : ''
+  const dataEndIcon = endIcon || isShowClearButton ? 'end' : ''
+  const dataIcon = dataStartIcon + dataEndIcon
   const inputIcons = () => {
     if (type === 'password') {
       return (
@@ -65,14 +69,12 @@ export const Input = ({
             <Search />
           </span>
           {isShowClearButton && (
-            <button className={s.iconClose} onClick={onClearClick}>
+            <button className={s.clearButton} onClick={onClearClick}>
               <Close />
             </button>
           )}
         </>
       )
-    } else if (endIcon) {
-      return <button onClick={onClearClick}>{endIcon}</button>
     }
   }
 
@@ -82,12 +84,15 @@ export const Input = ({
 
       <div className={s.inputBlock}>
         {inputIcons()}
+        {startIcon && <span className={s.startIcon}>{startIcon}</span>}
         <input
           className={`${error ? s.error : ''} ${s.input} ${className}`}
+          data-icon={dataIcon}
           onChange={changeInputHandler}
           onKeyDown={keyDownHandler}
           {...restProps}
         />
+        {endIcon && <span className={s.endIcon}>{endIcon}</span>}
       </div>
       <span aria-live={'polite'} className={s.errorMessage}>
         {error}
