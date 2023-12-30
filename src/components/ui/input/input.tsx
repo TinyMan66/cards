@@ -14,7 +14,7 @@ import s from './input.module.scss'
 
 type InputProps = {
   endIcon?: ReactNode
-  error?: ReactNode
+  errorMessage?: string
   label?: ReactNode
   onChange: (value: string) => void
   onClearClick?: () => void
@@ -26,7 +26,7 @@ type InputProps = {
 export const Input = ({
   className,
   endIcon,
-  error,
+  errorMessage,
   label,
   onChange,
   onClearClick,
@@ -78,7 +78,7 @@ export const Input = ({
       <div className={s.inputBlock}>
         {startIcon && <span className={s.startIcon}>{startIcon}</span>}
         <input
-          className={`${error ? s.error : ''} ${s.input} ${className}`}
+          className={`${errorMessage ? s.error : ''} ${s.input} ${className}`}
           data-icon={dataIcon}
           id={inputId}
           onChange={changeInputHandler}
@@ -92,9 +92,11 @@ export const Input = ({
         )}
         {endIcon && <span className={s.endIcon}>{endIcon}</span>}
       </div>
-      <span aria-live={'polite'} className={s.errorMessage}>
-        {error}
-      </span>
+      {errorMessage && (
+        <span aria-live={'polite'} className={s.errorMessage}>
+          {errorMessage}
+        </span>
+      )}
     </div>
   )
 }
