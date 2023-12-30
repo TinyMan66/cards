@@ -39,9 +39,7 @@ export const Input = ({
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false)
   const isShowClearButton = onClearClick && restProps?.value?.length! > 0
   const inputId = useId()
-  const dataStartIcon = startIcon ? 'start' : ''
-  const dataEndIcon = endIcon || isShowClearButton ? 'end' : ''
-  const dataIcon = dataStartIcon + dataEndIcon
+
   const passwordVisibilityHandler = () => {
     setIsPasswordVisible(prev => !prev)
   }
@@ -54,28 +52,19 @@ export const Input = ({
     onKeyDown?.(e)
     onEnter && e.key === 'Enter' && onEnter()
   }
+  const dataStartIcon = startIcon ? 'start' : ''
+  const dataEndIcon = endIcon || isShowClearButton ? 'end' : ''
+  const dataIcon = dataStartIcon + dataEndIcon
 
-  const inputIcons = () => {
-    if (type === 'password') {
-      return (
-        <button className={s.iconPassword} onClick={passwordVisibilityHandler}>
-          {isPasswordVisible ? <Visibility /> : <VisibilityOff />}
-        </button>
-      )
-    } else if (type === 'search') {
-      return (
-        <>
-          <span className={s.iconSearch}>
-            <Search />
-          </span>
-          {isShowClearButton && (
-            <button className={s.clearButton} onClick={onClearClick}>
-              <Close />
-            </button>
-          )}
-        </>
-      )
-    }
+  if (type === 'search') {
+    startIcon = <Search />
+  }
+  if (type === 'password') {
+    startIcon = (
+      <button className={s.iconPassword} onClick={passwordVisibilityHandler}>
+        {isPasswordVisible ? <Visibility /> : <VisibilityOff />}
+      </button>
+    )
   }
 
   return (
@@ -87,7 +76,6 @@ export const Input = ({
       )}
 
       <div className={s.inputBlock}>
-        {inputIcons()}
         {startIcon && <span className={s.startIcon}>{startIcon}</span>}
         <input
           className={`${error ? s.error : ''} ${s.input} ${className}`}
@@ -97,6 +85,11 @@ export const Input = ({
           onKeyDown={keyDownHandler}
           {...restProps}
         />
+        {isShowClearButton && (
+          <button className={s.clearButton} onClick={onClearClick}>
+            <Close />
+          </button>
+        )}
         {endIcon && <span className={s.endIcon}>{endIcon}</span>}
       </div>
       <span aria-live={'polite'} className={s.errorMessage}>
