@@ -7,7 +7,9 @@ import {
   useState,
 } from 'react'
 
-import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import Close from '@/assets/components/Close'
+import Visibility from '@/assets/components/Visibility'
+import VisibilityOff from '@/assets/components/VisibilityOff'
 
 import s from './input.module.scss'
 
@@ -55,7 +57,7 @@ export const Input = ({
     if (type === 'password') {
       return (
         <button className={s.iconPassword} onClick={passwordVisibilityHandler}>
-          {isPasswordVisible ? <FaEyeSlash /> : <FaEye />}
+          {isPasswordVisible ? <Visibility /> : <VisibilityOff />}
         </button>
       )
     } else if (type === 'search') {
@@ -64,7 +66,7 @@ export const Input = ({
           <span className={s.iconSearch}>{startIcon}</span>
           {isShowClearButton && (
             <button className={s.iconClose} onClick={onClearClick}>
-              {endIcon}
+              <Close />
             </button>
           )}
         </>
