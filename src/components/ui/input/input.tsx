@@ -4,6 +4,7 @@ import {
   InputHTMLAttributes,
   KeyboardEvent,
   ReactNode,
+  useId,
   useState,
 } from 'react'
 
@@ -36,7 +37,11 @@ export const Input = ({
   ...restProps
 }: InputProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false)
-
+  const isShowClearButton = onClearClick && restProps?.value?.length! > 0
+  const inputId = useId()
+  const dataStartIcon = startIcon ? 'start' : ''
+  const dataEndIcon = endIcon || isShowClearButton ? 'end' : ''
+  const dataIcon = dataStartIcon + dataEndIcon
   const passwordVisibilityHandler = () => {
     setIsPasswordVisible(prev => !prev)
   }
@@ -50,11 +55,6 @@ export const Input = ({
     onEnter && e.key === 'Enter' && onEnter()
   }
 
-  const isShowClearButton = onClearClick && restProps?.value?.length! > 0
-
-  const dataStartIcon = startIcon ? 'start' : ''
-  const dataEndIcon = endIcon || isShowClearButton ? 'end' : ''
-  const dataIcon = dataStartIcon + dataEndIcon
   const inputIcons = () => {
     if (type === 'password') {
       return (
@@ -80,7 +80,11 @@ export const Input = ({
 
   return (
     <div className={s.inputWrapper}>
-      {label && <label className={s.label}>{label}</label>}
+      {label && (
+        <label className={s.label} htmlFor={inputId}>
+          {label}
+        </label>
+      )}
 
       <div className={s.inputBlock}>
         {inputIcons()}
@@ -88,6 +92,7 @@ export const Input = ({
         <input
           className={`${error ? s.error : ''} ${s.input} ${className}`}
           data-icon={dataIcon}
+          id={inputId}
           onChange={changeInputHandler}
           onKeyDown={keyDownHandler}
           {...restProps}
