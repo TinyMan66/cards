@@ -56,13 +56,6 @@ export const Input = ({
   if (type === 'search') {
     startIcon = <Search />
   }
-  if (type === 'password') {
-    endIcon = (
-      <button className={s.passwordButton} onClick={passwordVisibilityHandler}>
-        {isPasswordVisible ? <Visibility /> : <VisibilityOff />}
-      </button>
-    )
-  }
 
   const dataStartIcon = startIcon ? 'start' : ''
   const dataEndIcon = endIcon || isShowClearButton || type === 'password' ? 'end' : ''
@@ -87,8 +80,13 @@ export const Input = ({
           {...restProps}
         />
         {isShowClearButton && (
-          <button className={s.clearButton} onClick={onClearClick}>
+          <button className={s.inputButton} onClick={onClearClick}>
             <Close />
+          </button>
+        )}
+        {type === 'password' && (
+          <button className={s.inputButton} onClick={passwordVisibilityHandler}>
+            {isPasswordVisible ? <Visibility /> : <VisibilityOff />}
           </button>
         )}
         {endIcon && <span className={s.endIcon}>{endIcon}</span>}
