@@ -52,20 +52,21 @@ export const Input = ({
     onKeyDown?.(e)
     onEnter && e.key === 'Enter' && onEnter()
   }
-  const dataStartIcon = startIcon ? 'start' : ''
-  const dataEndIcon = endIcon || isShowClearButton ? 'end' : ''
-  const dataIcon = dataStartIcon + dataEndIcon
 
   if (type === 'search') {
     startIcon = <Search />
   }
   if (type === 'password') {
-    startIcon = (
-      <button className={s.iconPassword} onClick={passwordVisibilityHandler}>
+    endIcon = (
+      <button className={s.passwordButton} onClick={passwordVisibilityHandler}>
         {isPasswordVisible ? <Visibility /> : <VisibilityOff />}
       </button>
     )
   }
+
+  const dataStartIcon = startIcon ? 'start' : ''
+  const dataEndIcon = endIcon || isShowClearButton || type === 'password' ? 'end' : ''
+  const dataIcon = dataStartIcon + dataEndIcon
 
   return (
     <div className={s.inputWrapper}>
@@ -75,7 +76,7 @@ export const Input = ({
         </label>
       )}
 
-      <div className={s.inputBlock}>
+      <div className={s.inputContainer}>
         {startIcon && <span className={s.startIcon}>{startIcon}</span>}
         <input
           className={`${errorMessage ? s.error : ''} ${s.input} ${className}`}
