@@ -1,136 +1,159 @@
 .inputWrapper {
-  display: inline-block;
+  display: flex;
   flex-direction: column;
-  padding-right: 12px;
+  width: 100%;
+}
+
+.label {
+  display: inline-block;
+
+  height: 24px;
+  margin-bottom: 1px;
   padding-left: 12px;
 
-  .inputBlock {
-    position: relative;
-    display: flex;
-    align-items: center;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
+  color: var(--color-dark-100);
+  text-align: left;
+}
 
-    .input {
-      all: unset;
+.inputContainer {
+  position: relative;
 
-      position: relative;
+  display: flex;
+  align-items: center;
 
-      // top: 24px;
-      width: 284px;
-      height: 36px;
-      padding-left: 12px;
+  width: 284px;
+  padding-left: 12px;
+}
 
-      // padding-left: 40px;
+.input {
+  all: unset;
 
-      // styleName: Body 1;
-      // font-family: Roboto;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      color: var(--color-dark-100);
-      text-align: left;
-      letter-spacing: 0;
+  position: relative;
 
-      border: 1px solid #4c4c4c;
-      border-radius: 2px;
-      outline: none;
+  width: 284px;
+  height: 36px;
+  padding-left: 12px;
 
-      &:focus-visible {
-        outline: 2px solid var(--color-info-700);
-      }
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
+  color: var(--color-dark-100);
+  text-align: left;
+  letter-spacing: 0;
 
-      &:active {
-        color: var(--color-light-100);
-        border: 1px solid #fff;
-      }
+  border: 1px solid #4c4c4c;
+  border-radius: 2px;
+  outline: none;
 
-      &:disabled {
-        color: var(--color-dark-300);
-        border: 1px solid #4c4c4c;
-      }
-
-      &:not([disabled]):hover {
-        background-color: var(--color-dark-700);
-        border: 1px solid #808080;
-      }
-    }
-
-    .error {
-      color: var(--color-danger-300);
-      border: 1px solid #f23d61;
-
-      &::placeholder {
-        color: var(--color-danger-300);
-      }
-    }
-
-    .iconPassword,
-    .iconSearch,
-    .iconClose {
-      all: unset;
-
-      cursor: pointer;
-
-      position: absolute;
-      top: 60%;
-      transform: translateY(-50%);
-    }
-
-    .iconPassword {
-      right: 10px;
-    }
-
-    .iconSearch {
-      left: 14px;
-      color: var(--color-dark-100);
-    }
-
-    .iconClose {
-      right: 10px;
-
-      // display: none;
-      color: var(--color-light-100);
-    }
-
-    .input:active + .iconClose {
-      display: block;
-    }
-
-    .input:active + .iconSearch {
-      color: var(--color-light-100);
-    }
-
-    .input:hover + .iconPassword {
-      color: white;
-    }
-  }
-
-  .label {
-    top: -1px;
-    transform: translateY(-50%);
-
-    overflow: hidden;
-
-    width: 284px;
-    height: 24px;
-
-    // width: calc(100% - (var(--field-padding) * 2));
-    // styleName: Body 2;
-    // font-family: Roboto;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 24px;
+  &::placeholder {
     color: var(--color-dark-100);
-    text-align: left;
   }
 
-  .errorMessage {
-    width: 100%;
-    height: 24px;
-    font-size: 12px;
-    color: var(--color-danger-300);
+  &:disabled {
+    color: var(--color-dark-300);
+    border: 1px solid var(--color-dark-300);
+  }
 
-    &:empty {
-      opacity: 0;
+  &:focus {
+    color: var(--color-dark-100);
+    border: 2px solid var(--color-info-700);
+  }
+
+  &:active:enabled {
+    color: var(--color-light-100);
+    border: 1px solid var(--color-light-100);
+  }
+
+  &.error {
+    color: var(--color-danger-300);
+    border: 1px solid var(--color-danger-300);
+
+    &::placeholder {
+      color: var(--color-danger-300);
     }
+  }
+
+  &:hover:not(&:disabled) {
+    color: var(--color-dark-100);
+    background-color: var(--color-dark-700);
+  }
+
+  &[data-icon*='start'] {
+    padding-left: 36px;
+  }
+
+  &[data-icon*='end'] {
+    padding-right: 36px;
+  }
+}
+
+.inputButton {
+  all: unset;
+
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  &:disabled {
+    color: var(--color-dark-100);
+  }
+}
+
+.startIcon {
+  position: absolute;
+  top: 50%;
+  left: 22px;
+  transform: translateY(-50%);
+
+  display: grid;
+  place-items: center;
+
+  width: 20px;
+  height: 20px;
+
+  color: var(--color-dark-100);
+
+  &:active {
+    color: var(--color-light-100);
+  }
+}
+
+.endIcon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+
+  display: grid;
+  place-items: center;
+
+  width: 20px;
+  height: 20px;
+}
+
+.errorMessage {
+  width: 100%;
+  height: 24px;
+  padding-left: 12px;
+
+  font-size: var(--font-size-xs);
+  color: var(--color-danger-300);
+
+  &:empty {
+    opacity: 0;
   }
 }
