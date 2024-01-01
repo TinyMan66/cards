@@ -44,7 +44,7 @@ export const SearchInput: Story = {
 export const ErrorInput: Story = {
   args: {
     disabled: false,
-    error: 'Error!',
+    errorMessage: 'Error!',
     placeholder: 'Input',
     type: 'text',
     value: '',
