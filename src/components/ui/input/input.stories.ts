@@ -20,6 +20,7 @@ type Story = StoryObj<typeof meta>
 export const TextInput: Story = {
   args: {
     disabled: false,
+    label: 'Input',
     placeholder: 'Input',
     type: 'text',
     value: '',
@@ -28,6 +29,7 @@ export const TextInput: Story = {
 export const PasswordInput: Story = {
   args: {
     disabled: false,
+    label: 'Input',
     placeholder: 'Input',
     type: 'password',
     value: '',
@@ -45,6 +47,7 @@ export const ErrorInput: Story = {
   args: {
     disabled: false,
     errorMessage: 'Error!',
+    label: 'Input',
     placeholder: 'Input',
     type: 'text',
     value: '',
