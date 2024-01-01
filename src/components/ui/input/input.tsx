@@ -80,12 +80,16 @@ export const Input = ({
           {...restProps}
         />
         {isShowClearButton && (
-          <button className={s.inputButton} onClick={onClearClick}>
+          <button className={s.inputButton} disabled={restProps?.disabled} onClick={onClearClick}>
             <Close />
           </button>
         )}
         {type === 'password' && (
-          <button className={s.inputButton} onClick={passwordVisibilityHandler}>
+          <button
+            className={s.inputButton}
+            disabled={restProps?.disabled}
+            onClick={passwordVisibilityHandler}
+          >
             {isPasswordVisible ? <Visibility /> : <VisibilityOff />}
           </button>
         )}
