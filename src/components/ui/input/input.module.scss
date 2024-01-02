@@ -11,12 +11,7 @@
   margin-bottom: 1px;
   padding-left: 12px;
 
-  font-family: var(--font-family-primary);
-  font-size: var(--font-size-s);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-m);
   color: var(--color-dark-100);
-  text-align: left;
 }
 
 .inputContainer {
@@ -27,6 +22,60 @@
 
   width: 284px;
   padding-left: 12px;
+}
+
+.startIcon {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 22px;
+  transform: translateY(-50%);
+
+  display: grid;
+  place-items: center;
+
+  width: 20px;
+  height: 20px;
+
+  color: var(--color-dark-100);
+
+  &:active {
+    color: var(--color-light-100);
+  }
+}
+
+.endIcon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+
+  display: grid;
+  place-items: center;
+
+  width: 20px;
+  height: 20px;
+}
+
+.inputButton {
+  all: unset;
+
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  &:disabled {
+    color: var(--color-dark-100);
+  }
 }
 
 .input {
@@ -57,6 +106,13 @@
   &:disabled {
     color: var(--color-dark-300);
     border: 1px solid var(--color-dark-300);
+
+    & ~ .inputButton,
+    & ~ .endIcon,
+    & ~ .startIcon {
+      pointer-events: none;
+      color: var(--color-dark-300);
+    }
   }
 
   &:focus {
@@ -94,59 +150,6 @@
   &[data-icon*='end'] {
     padding-right: 36px;
   }
-}
-
-.inputButton {
-  all: unset;
-
-  cursor: pointer;
-
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  transform: translateY(-50%);
-
-  align-items: center;
-  justify-content: center;
-
-  width: 20px;
-  height: 20px;
-
-  &:disabled {
-    color: var(--color-dark-100);
-  }
-}
-
-.startIcon {
-  position: absolute;
-  top: 50%;
-  left: 22px;
-  transform: translateY(-50%);
-
-  display: grid;
-  place-items: center;
-
-  width: 20px;
-  height: 20px;
-
-  color: var(--color-dark-100);
-
-  &:active {
-    color: var(--color-light-100);
-  }
-}
-
-.endIcon {
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  transform: translateY(-50%);
-
-  display: grid;
-  place-items: center;
-
-  width: 20px;
-  height: 20px;
 }
 
 .errorMessage {
