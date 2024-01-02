@@ -9,6 +9,7 @@ import {
 } from 'react'
 
 import { Close, Search, Visibility, VisibilityOff } from '@/assets'
+import { Typography } from '@/components/ui/typography'
 
 import s from './input.module.scss'
 
@@ -64,9 +65,9 @@ export const Input = ({
   return (
     <div className={s.inputWrapper}>
       {label && (
-        <label className={s.label} htmlFor={inputId}>
+        <Typography as={'label'} className={s.label} htmlFor={inputId} variant={'body2'}>
           {label}
-        </label>
+        </Typography>
       )}
 
       <div className={s.inputContainer}>
