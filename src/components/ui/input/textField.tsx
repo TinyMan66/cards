@@ -11,9 +11,9 @@ import {
 import { Close, Search, Visibility, VisibilityOff } from '@/assets'
 import { Typography } from '@/components/ui/typography'
 
-import s from './input.module.scss'
+import s from '@/components/ui/input/text-field.module.scss'
 
-type InputProps = {
+type TextFieldProps = {
   endIcon?: ReactNode
   errorMessage?: string
   label?: ReactNode
@@ -24,7 +24,7 @@ type InputProps = {
   value?: string
 } & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
-export const Input = ({
+export const TextField = ({
   className,
   endIcon,
   errorMessage,
@@ -36,7 +36,7 @@ export const Input = ({
   startIcon,
   type,
   ...restProps
-}: InputProps) => {
+}: TextFieldProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false)
   const isShowClearButton = onClearClick && restProps?.value?.length! > 0
   const inputId = useId()
