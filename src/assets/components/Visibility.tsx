@@ -30,7 +30,7 @@ const Visibility = (allProps: IconProps) => {
           </g>
           <defs>
             <clipPath id={'clip0_5661_1730'}>
-              <rect fill={'white'} height={'24'} width={'24'} />
+              <rect fill={'currentColor'} height={'24'} width={'24'} />
             </clipPath>
           </defs>
         </svg>
