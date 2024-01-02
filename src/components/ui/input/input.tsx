@@ -69,7 +69,6 @@ export const Input = ({
           {label}
         </Typography>
       )}
-
       <div className={s.inputContainer}>
         {startIcon && <span className={s.startIcon}>{startIcon}</span>}
         <input
@@ -81,16 +80,12 @@ export const Input = ({
           {...restProps}
         />
         {isShowClearButton && (
-          <button className={s.inputButton} disabled={restProps?.disabled} onClick={onClearClick}>
+          <button className={s.inputButton} onClick={onClearClick}>
             <Close />
           </button>
         )}
         {type === 'password' && (
-          <button
-            className={s.inputButton}
-            disabled={restProps?.disabled}
-            onClick={passwordVisibilityHandler}
-          >
+          <button className={s.inputButton} onClick={passwordVisibilityHandler}>
             {isPasswordVisible ? <Visibility /> : <VisibilityOff />}
           </button>
         )}
