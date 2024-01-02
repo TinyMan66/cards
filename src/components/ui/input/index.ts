@@ -1,1 +1,1 @@
-export * from 'src/components/ui/input/textField'
+export * from '@/components/ui/input/textField'
