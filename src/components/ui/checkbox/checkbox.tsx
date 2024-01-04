@@ -5,11 +5,32 @@ import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import s from './checkbox.module.scss'
 
 export type CheckboxProps = {
+  checked?: boolean
+  className?: string
+  disabled?: boolean
+  id?: string
   label?: string
+  onCheckedChange: (checked: boolean) => void
+  required?: boolean
 }
-export const Checkbox = ({ label }: CheckboxProps) => (
-  <div className={s.checkboxContainer}>
-    <CheckboxRadix.Root>
+export const Checkbox = ({
+  checked,
+  className,
+  disabled,
+  id,
+  label,
+  onCheckedChange,
+  required,
+}: CheckboxProps) => (
+  <div className={`${className} ${s.checkboxContainer}`}>
+    <CheckboxRadix.Root
+      checked={checked}
+      className={s.root}
+      disabled={disabled}
+      id={id}
+      onCheckedChange={onCheckedChange}
+      required={required}
+    >
       <CheckboxRadix.Indicator className={s.indicator}>
         <Check />
       </CheckboxRadix.Indicator>
