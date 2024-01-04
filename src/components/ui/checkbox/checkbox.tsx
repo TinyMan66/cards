@@ -31,9 +31,11 @@ export const Checkbox = ({
       onCheckedChange={onCheckedChange}
       required={required}
     >
-      <CheckboxRadix.Indicator className={s.indicator}>
-        <Check />
-      </CheckboxRadix.Indicator>
+      {checked && (
+        <CheckboxRadix.Indicator className={s.indicator}>
+          <Check />
+        </CheckboxRadix.Indicator>
+      )}
     </CheckboxRadix.Root>
     <Typography as={'label'} className={s.label} variant={'body2'}>
       {label}
