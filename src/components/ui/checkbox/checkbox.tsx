@@ -37,7 +37,7 @@ export const Checkbox = ({
         </CheckboxRadix.Indicator>
       )}
     </CheckboxRadix.Root>
-    <Typography as={'label'} className={s.label} variant={'body2'}>
+    <Typography as={'label'} className={s.label} id={id} variant={'body2'}>
       {label}
     </Typography>
   </div>
