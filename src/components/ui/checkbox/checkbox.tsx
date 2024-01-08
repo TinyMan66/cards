@@ -23,23 +23,29 @@ export const Checkbox = ({
   required,
 }: CheckboxProps) => (
   <div className={`${className} ${s.checkboxContainer}`}>
-    <div className={s.checkboxWrapper}>
-      <CheckboxRadix.Root
-        checked={checked}
-        className={s.root}
-        disabled={disabled}
-        id={id}
-        onCheckedChange={onCheckedChange}
-        required={required}
-      >
-        {checked && (
-          <CheckboxRadix.Indicator className={s.indicator}>
-            <Check />
-          </CheckboxRadix.Indicator>
-        )}
-      </CheckboxRadix.Root>
-    </div>
-    <Typography as={'label'} className={s.label} id={id} variant={'body2'}>
+    <Typography
+      as={'label'}
+      className={s.label}
+      style={{ color: disabled ? 'var(--color-dark-100)' : '' }}
+      variant={'body2'}
+    >
+      <div className={s.checkboxWrapper}>
+        <CheckboxRadix.Root
+          checked={checked}
+          className={s.root}
+          disabled={disabled}
+          id={id}
+          onCheckedChange={onCheckedChange}
+          required={required}
+        >
+          {checked && (
+            <CheckboxRadix.Indicator className={s.indicator}>
+              {/*<Check className={s.icon} size={18} />*/}
+              <Check />
+            </CheckboxRadix.Indicator>
+          )}
+        </CheckboxRadix.Root>
+      </div>
       {label}
     </Typography>
   </div>
