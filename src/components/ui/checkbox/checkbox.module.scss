@@ -13,7 +13,6 @@ button {
   color: var(--color-light-100);
 
   &:disabled {
-    //pointer-events: none;
     color: var(--color-dark-100);
   }
 }
@@ -31,22 +30,11 @@ button {
   border-radius: 50%;
 
   &:not(.disabled):hover {
-    //&:not(:disabled):hover {
-    //&:not([disabled]):hover {
-    //&:hover:not([disabled]) {
-    //&:hover:not(:disabled) {
-    //&:hover :enabled {
-    //&:hover {
     background-color: var(--color-dark-500);
   }
 
   &:focus,
-  //&:not(:disabled):active {
   &:not(.disabled):active {
-    //&:not([disabled]):active {
-    //&:active :enabled {
-    //      &:active:not(:disabled) {
-    //      &:active:not([disabled]) {
     background-color: var(--color-dark-100);
   }
 
@@ -75,10 +63,6 @@ button {
   &:disabled {
     cursor: initial;
     border-color: var(--color-dark-100);
-
-    //svg {
-    //  color: var(--color-dark-100);
-    //}
   }
 
   &[data-state='checked']:disabled {
@@ -90,7 +74,3 @@ button {
   width: 18px;
   height: 18px;
 }
-
-//.icon {
-//  color: var(--color-dark-100);
-//}
