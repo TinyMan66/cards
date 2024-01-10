@@ -29,7 +29,10 @@ export const Checkbox = ({
       style={{ color: disabled ? 'var(--color-dark-100)' : '' }}
       variant={'body2'}
     >
-      <div className={s.checkboxWrapper}>
+      <div
+        className={s.checkboxWrapper}
+        style={{ backgroundColor: disabled ? 'var(--color-dark-900)' : '' }}
+      >
         <CheckboxRadix.Root
           checked={checked}
           className={s.root}
@@ -40,7 +43,6 @@ export const Checkbox = ({
         >
           {checked && (
             <CheckboxRadix.Indicator className={s.indicator}>
-              {/*<Check className={s.icon} size={18} />*/}
               <Check />
             </CheckboxRadix.Indicator>
           )}
