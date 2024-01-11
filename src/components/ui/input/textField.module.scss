@@ -6,29 +6,23 @@
 
 .label {
   display: inline-block;
-
   height: 24px;
   margin-bottom: 1px;
-  padding-left: 12px;
-
   color: var(--color-dark-100);
 }
 
 .inputContainer {
   position: relative;
-
   display: flex;
   align-items: center;
-
   width: 284px;
-  padding-left: 12px;
 }
 
 .startIcon {
   position: absolute;
   z-index: 10;
   top: 50%;
-  left: 22px;
+  left: 12px;
   transform: translateY(-50%);
 
   display: grid;
@@ -155,8 +149,6 @@
 .errorMessage {
   width: 100%;
   height: 24px;
-  padding-left: 12px;
-
   font-size: var(--font-size-xs);
   color: var(--color-danger-300);
 
