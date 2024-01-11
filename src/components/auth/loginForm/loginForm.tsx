@@ -6,16 +6,13 @@ import { TextField } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-type FormValues = {
-  email: string
-  password: string
-  rememberMe: boolean
-}
-
 const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(3),
+  rememberMe: z.boolean().default(false),
 })
+
+type FormValues = z.infer<typeof loginSchema>
 
 export const LoginForm = () => {
   const {
