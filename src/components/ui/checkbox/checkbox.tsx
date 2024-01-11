@@ -12,7 +12,7 @@ export type CheckboxProps = {
   disabled?: boolean
   id?: string
   label?: string
-  onCheckedChange: (checked: boolean) => void
+  onCheckedChange?: (checked: boolean) => void
   required?: boolean
 }
 export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, CheckboxProps>(
