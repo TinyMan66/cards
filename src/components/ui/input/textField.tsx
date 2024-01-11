@@ -11,7 +11,7 @@ import {
 import { Close, Search, Visibility, VisibilityOff } from '@/assets'
 import { Typography } from '@/components/ui/typography'
 
-import s from '@/components/ui/input/text-field.module.scss'
+import s from '@/components/ui/input/textField.module.scss'
 
 type TextFieldProps = {
   endIcon?: ReactNode
