@@ -1,7 +1,7 @@
 import { ElementRef, forwardRef } from 'react'
 
 import { Check } from '@/assets'
-import { Typography } from '@/components/ui/typography'
+import { Typography } from '@/components'
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 
 import s from './checkbox.module.scss'

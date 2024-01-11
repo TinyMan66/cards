@@ -9,7 +9,7 @@ import {
 } from 'react'
 
 import { Close, Search, Visibility, VisibilityOff } from '@/assets'
-import { Typography } from '@/components/ui/typography'
+import { Typography } from '@/components'
 
 import s from '@/components/ui/input/textField.module.scss'
 

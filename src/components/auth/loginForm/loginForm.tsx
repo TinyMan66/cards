@@ -1,8 +1,6 @@
 import { useController, useForm } from 'react-hook-form'
 
-import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox/checkbox'
-import { TextField } from '@/components/ui/input'
+import { Button, Checkbox, TextField } from '@/components'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 

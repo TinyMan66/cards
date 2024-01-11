@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ReactNode, forwardRef } from 'react'
 
-import { Typography } from '@/components/ui/typography'
+import { Typography } from '@/components'
 
 import s from '@/components/ui/card/card.module.scss'
 
