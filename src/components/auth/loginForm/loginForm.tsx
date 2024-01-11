@@ -1,6 +1,6 @@
-import { useController, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
-import { Button, Checkbox, TextField } from '@/components'
+import { Button, ControlledCheckbox, TextField } from '@/components'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -26,16 +26,6 @@ export const LoginForm = () => {
     console.log(data)
   }
 
-  const {
-    field: { onChange, value },
-  } = useController({
-    control,
-    defaultValue: false,
-    name: 'rememberMe',
-  })
-
-  console.log('errors: ', errors)
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <TextField {...register('email')} errorMessage={errors.email?.message} label={'email'} />
@@ -44,7 +34,7 @@ export const LoginForm = () => {
         errorMessage={errors.password?.message}
         label={'password'}
       />
-      <Checkbox checked={value} label={'remember me'} onCheckedChange={onChange} />
+      <ControlledCheckbox control={control} label={'remember me'} name={'rememberMe'} />
       <Button type={'submit'}>Submit</Button>
     </form>
   )
