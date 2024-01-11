@@ -17,9 +17,9 @@ type TextFieldProps = {
   endIcon?: ReactNode
   errorMessage?: string
   label?: ReactNode
-  onChange: (value: string) => void
   onClearClick?: () => void
   onEnter?: () => void
+  onValueChange?: (value: string) => void
   startIcon?: ReactNode
   value?: string
 } & ComponentPropsWithoutRef<'input'>
@@ -35,6 +35,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onClearClick,
       onEnter,
       onKeyDown,
+      onValueChange,
       startIcon,
       type,
       ...restProps
@@ -50,7 +51,8 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     }
 
     const changeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-      onChange(e.target.value)
+      onChange?.(e)
+      onValueChange?.(e.target.value)
     }
 
     const keyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
