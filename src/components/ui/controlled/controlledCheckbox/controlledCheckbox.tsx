@@ -28,7 +28,7 @@ export const ControlledCheckbox = ({
       {...{
         checked: value,
         id: name,
-        onChange,
+        onCheckedChange: onChange,
         ...checkboxProps,
       }}
     />
