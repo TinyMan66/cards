@@ -8,11 +8,13 @@ button {
 }
 
 .label {
+  cursor: pointer;
   display: flex;
   align-items: center;
   color: var(--color-light-100);
 
   &:disabled {
+    cursor: initial;
     color: var(--color-dark-100);
   }
 }
@@ -33,7 +35,7 @@ button {
     background-color: var(--color-dark-500);
   }
 
-  &:focus,
+  &:focus-within,
   &:not(.disabled):active {
     background-color: var(--color-dark-100);
   }
