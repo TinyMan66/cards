@@ -13,7 +13,7 @@ import { Typography } from '@/components'
 
 import s from '@/components/ui/input/textField.module.scss'
 
-type TextFieldProps = {
+export type TextFieldProps = {
   endIcon?: ReactNode
   errorMessage?: string
   label?: ReactNode
