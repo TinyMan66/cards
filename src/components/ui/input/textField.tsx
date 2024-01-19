@@ -4,7 +4,6 @@ import {
   KeyboardEvent,
   ReactNode,
   forwardRef,
-  useId,
   useState,
 } from 'react'
 
@@ -13,7 +12,7 @@ import { Typography } from '@/components'
 
 import s from '@/components/ui/input/textField.module.scss'
 
-type TextFieldProps = {
+export type TextFieldProps = {
   endIcon?: ReactNode
   errorMessage?: string
   label?: ReactNode
@@ -44,7 +43,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   ) => {
     const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false)
     const isShowClearButton = onClearClick && restProps?.value?.length! > 0
-    const inputId = useId()
 
     const passwordVisibilityHandler = () => {
       setIsPasswordVisible(prev => !prev)
@@ -71,7 +69,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     return (
       <div className={s.inputWrapper}>
         {label && (
-          <Typography as={'label'} className={s.label} htmlFor={inputId} variant={'body2'}>
+          <Typography as={'label'} className={s.label} variant={'body2'}>
             {label}
           </Typography>
         )}
@@ -80,7 +78,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           <input
             className={`${errorMessage ? s.error : ''} ${s.input} ${className}`}
             data-icon={dataIcon}
-            id={inputId}
             onChange={changeInputHandler}
             onKeyDown={keyDownHandler}
             ref={ref}
