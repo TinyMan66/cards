@@ -14,14 +14,13 @@ export const ControlledTextField = <T extends FieldValues>({
   ...restProps
 }: ControlledTextFieldProps<T>) => {
   const {
-    field: { onChange, ref, value, ...field },
+    field: { onChange, value, ...field },
     fieldState: { error },
   } = useController({ control, defaultValue, disabled, name, rules, shouldUnregister })
 
   return (
     <TextField
       {...{
-        ref: ref,
         ...restProps,
         ...field,
         disabled: disabled,
