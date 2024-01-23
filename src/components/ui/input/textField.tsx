@@ -45,7 +45,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     const isShowClearButton = onClearClick && restProps?.value?.length! > 0
 
     const passwordVisibilityHandler = () => {
-      setIsPasswordVisible(prev => !prev)
+      setIsPasswordVisible(show => !show)
     }
 
     const changeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -81,6 +81,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             onChange={changeInputHandler}
             onKeyDown={keyDownHandler}
             ref={ref}
+            type={type}
             {...restProps}
           />
           {isShowClearButton && (
