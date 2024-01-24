@@ -23,7 +23,6 @@ export const TextInput: Story = {
     label: 'Input',
     placeholder: 'Input',
     type: 'text',
-    value: '',
   },
 }
 export const PasswordInput: Story = {
@@ -32,24 +31,20 @@ export const PasswordInput: Story = {
     label: 'Input',
     placeholder: 'Input',
     type: 'password',
-    value: '',
   },
 }
 export const SearchInput: Story = {
   args: {
     disabled: false,
     placeholder: 'Input search',
-    type: 'search',
-    value: '',
+    search: true,
   },
 }
 export const ErrorInput: Story = {
   args: {
     disabled: false,
     errorMessage: 'Error!',
-    label: 'Input',
     placeholder: 'Input',
     type: 'text',
-    value: '',
   },
 }

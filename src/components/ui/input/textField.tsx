@@ -9,6 +9,7 @@ import {
 
 import { Close, Search, Visibility, VisibilityOff } from '@/assets'
 import { Typography } from '@/components'
+import clsx from 'clsx'
 
 import s from '@/components/ui/input/textField.module.scss'
 
@@ -19,6 +20,7 @@ export type TextFieldProps = {
   onClearClick?: () => void
   onEnter?: () => void
   onValueChange?: (value: string) => void
+  search?: boolean
   startIcon?: ReactNode
   value?: string
 } & ComponentPropsWithoutRef<'input'>
@@ -35,6 +37,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onEnter,
       onKeyDown,
       onValueChange,
+      search,
       startIcon,
       type,
       ...restProps
@@ -57,7 +60,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onEnter && e.key === 'Enter' && onEnter()
     }
 
-    if (type === 'search') {
+    if (search) {
       startIcon = <Search />
     }
 
@@ -65,17 +68,28 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     const dataEndIcon = endIcon || isShowClearButton || type === 'password' ? 'end' : ''
     const dataIcon = dataStartIcon + dataEndIcon
 
+    const classNames = {
+      endIcon: s.endIcon,
+      errorMessage: s.errorMessage,
+      input: clsx(s.input, errorMessage && s.error, className),
+      inputButton: s.inputButton,
+      inputContainer: s.inputContainer,
+      inputWrapper: s.inputWrapper,
+      label: s.label,
+      startIcon: s.startIcon,
+    }
+
     return (
-      <div className={s.inputWrapper}>
+      <div className={classNames.inputWrapper}>
         {label && (
-          <Typography as={'label'} className={s.label} variant={'body2'}>
+          <Typography as={'label'} className={classNames.label} variant={'body2'}>
             {label}
           </Typography>
         )}
-        <div className={s.inputContainer}>
-          {startIcon && <span className={s.startIcon}>{startIcon}</span>}
+        <div className={classNames.inputContainer}>
+          {startIcon && <span className={classNames.startIcon}>{startIcon}</span>}
           <input
-            className={`${errorMessage ? s.error : ''} ${s.input} ${className}`}
+            className={classNames.input}
             data-icon={dataIcon}
             onChange={changeInputHandler}
             onKeyDown={keyDownHandler}
@@ -84,19 +98,19 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             ref={ref}
           />
           {isShowClearButton && (
-            <button className={s.inputButton} onClick={onClearClick}>
+            <button className={classNames.inputButton} onClick={onClearClick}>
               <Close />
             </button>
           )}
           {type === 'password' && (
-            <button className={s.inputButton} onClick={passwordVisibilityHandler}>
+            <button className={classNames.inputButton} onClick={passwordVisibilityHandler}>
               {isPasswordVisible ? <Visibility /> : <VisibilityOff />}
             </button>
           )}
-          {endIcon && <span className={s.endIcon}>{endIcon}</span>}
+          {endIcon && <span className={classNames.endIcon}>{endIcon}</span>}
         </div>
         {errorMessage && (
-          <span aria-live={'polite'} className={s.errorMessage}>
+          <span aria-live={'polite'} className={classNames.errorMessage}>
             {errorMessage}
           </span>
         )}
