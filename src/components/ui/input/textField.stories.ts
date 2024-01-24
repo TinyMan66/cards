@@ -46,6 +46,5 @@ export const ErrorInput: Story = {
     errorMessage: 'Error!',
     placeholder: 'Input',
     type: 'text',
-    value: '',
   },
 }
