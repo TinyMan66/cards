@@ -13,8 +13,8 @@ button {
   align-items: center;
   color: var(--color-light-100);
 
-  &:disabled {
-    cursor: initial;
+  &.disabled {
+    cursor: default;
     color: var(--color-dark-100);
   }
 }
@@ -40,7 +40,7 @@ button {
     background-color: var(--color-dark-100);
   }
 
-  &:disabled {
+  &.disabled {
     cursor: initial;
   }
 }
