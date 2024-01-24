@@ -35,7 +35,7 @@ button {
     background-color: var(--color-dark-500);
   }
 
-  &:focus-within,
+  &:focus,
   &:not(.disabled):active {
     background-color: var(--color-dark-100);
   }
