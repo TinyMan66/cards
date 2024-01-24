@@ -19,6 +19,7 @@ export type TextFieldProps = {
   onClearClick?: () => void
   onEnter?: () => void
   onValueChange?: (value: string) => void
+  search?: boolean
   startIcon?: ReactNode
   value?: string
 } & ComponentPropsWithoutRef<'input'>
@@ -35,6 +36,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onEnter,
       onKeyDown,
       onValueChange,
+      search,
       startIcon,
       type,
       ...restProps
@@ -57,7 +59,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onEnter && e.key === 'Enter' && onEnter()
     }
 
-    if (type === 'search') {
+    if (search) {
       startIcon = <Search />
     }
 
