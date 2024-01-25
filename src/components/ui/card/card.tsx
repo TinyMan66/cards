@@ -8,7 +8,7 @@ import s from '@/components/ui/card/card.module.scss'
 export type CardProps = {
   children: ReactNode
   className?: string
-  title: string
+  title?: string
 } & ComponentPropsWithoutRef<'div'>
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ children, className, title, ...restProps }, ref) => {
