@@ -31,16 +31,22 @@ export const SignIn = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) =
       <DevTool control={control} />
       <Card title={'Sign In'}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <ControlledTextField control={control} label={'e-mail'} name={'email'} type={'email'} />
           <ControlledTextField
             control={control}
-            label={'password'}
+            label={'Email'}
+            name={'email'}
+            placeholder={'Email'}
+          />
+          <ControlledTextField
+            control={control}
+            label={'Password'}
             name={'password'}
+            placeholder={'Password'}
             type={'password'}
           />
           <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />
           <Typography variant={'body2'}>Forgot password?</Typography>
-          <Button type={'submit'} variant={'primary'}>
+          <Button fullWidth type={'submit'}>
             Sign In
           </Button>
           <Typography variant={'body2'}>Don&apos;t have an account?</Typography>
