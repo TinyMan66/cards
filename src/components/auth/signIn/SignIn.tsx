@@ -5,6 +5,8 @@ import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
+import s from './SignIn.module.scss'
+
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
   password: z
@@ -29,7 +31,7 @@ export const SignIn = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) =
   return (
     <>
       <DevTool control={control} />
-      <Card title={'Sign In'}>
+      <Card className={s.card} title={'Sign In'}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <ControlledTextField
             control={control}
