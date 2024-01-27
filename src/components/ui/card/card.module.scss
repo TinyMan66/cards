@@ -8,16 +8,13 @@
   background-color: var(--color-dark-700);
   border: 1px solid #313131;
   border-radius: 2px;
-  box-shadow: -1px -1px 2px 0 #0000001a;
+  box-shadow:
+    1px 1px 2px rgb(0 0 0 / 10%),
+    -1px -1px 2px rgb(0 0 0 / 10%);
 }
 
 .title {
-  gap: 13px;
-  margin: 0;
-  padding: 20px 24px 5px;
+  margin-bottom: 27px;
   color: var(--color-light-100);
-}
-
-.content {
-  padding: 18px 24px;
+  text-align: center;
 }
