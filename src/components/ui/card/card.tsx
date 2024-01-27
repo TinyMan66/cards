@@ -8,13 +8,12 @@ import s from '@/components/ui/card/card.module.scss'
 export type CardProps = {
   children: ReactNode
   className?: string
-  title: string
+  title?: string
 } & ComponentPropsWithoutRef<'div'>
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ children, className, title, ...restProps }, ref) => {
     const classNames = {
       cardContainer: clsx(s.cardContainer, className),
-      content: s.content,
       title: s.title,
     }
 
@@ -25,7 +24,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
             {title}
           </Typography>
         )}
-        <div className={classNames.content}>{children}</div>
+        {children}
       </div>
     )
   }
