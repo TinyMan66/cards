@@ -1,9 +1,54 @@
 .card {
-  top: 96px;
-  left: 430px;
-
   width: 100%;
   max-width: 420px;
-  height: 528px;
+  max-height: 528px;
   padding: 33px 36px 29px;
+
+  text-align: center;
+}
+
+.textFields {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.checkbox {
+  margin-bottom: 6px;
+}
+
+.recoverPassword,
+.recoverPassword:visited {
+  display: flex;
+  justify-content: flex-end;
+
+  width: 100%;
+  margin-bottom: 66px;
+
+  color: inherit;
+  text-align: right;
+  text-decoration: none;
+}
+
+.button {
+  max-width: 348px;
+  margin-bottom: 10px;
+}
+
+.inscription {
+  margin-bottom: 2px;
+  color: var(--color-light-900);
+  text-align: center;
+}
+
+.signUp {
+  display: flex;
+  justify-content: center;
+
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-500);
 }
