@@ -33,27 +33,35 @@ export const SignIn = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) =
       <DevTool control={control} />
       <Card className={s.card} title={'Sign In'}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <ControlledTextField
-            control={control}
-            label={'Email'}
-            name={'email'}
-            placeholder={'Email'}
-          />
-          <ControlledTextField
-            control={control}
-            label={'Password'}
-            name={'password'}
-            placeholder={'Password'}
-            type={'password'}
-          />
+          <div className={s.textFields}>
+            <ControlledTextField
+              control={control}
+              label={'Email'}
+              name={'email'}
+              placeholder={'Email'}
+            />
+            <ControlledTextField
+              control={control}
+              label={'Password'}
+              name={'password'}
+              placeholder={'Password'}
+              type={'password'}
+            />
+          </div>
           <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />
-          <Typography variant={'body2'}>Forgot password?</Typography>
-          <Button fullWidth type={'submit'}>
+          <Typography className={s.recoverPassword} variant={'body2'}>
+            Forgot password?
+          </Typography>
+          <Button className={s.button} fullWidth type={'submit'}>
             Sign In
           </Button>
-          <Typography variant={'body2'}>Don&apos;t have an account?</Typography>
-          <Typography variant={'link1'}>Sign Up</Typography>
         </form>
+        <Typography className={s.inscription} variant={'body2'}>
+          Don&apos;t have an account?
+        </Typography>
+        <Typography className={s.signUp} variant={'link1'}>
+          Sign Up
+        </Typography>
       </Card>
     </>
   )
