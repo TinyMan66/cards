@@ -55,13 +55,13 @@ export const SignIn = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) =
           <Button className={s.button} fullWidth type={'submit'}>
             Sign In
           </Button>
-          <Typography className={s.inscription} variant={'body2'}>
-            Don&apos;t have an account?
-          </Typography>
-          <Typography className={s.signUp} variant={'link1'}>
-            Sign Up
-          </Typography>
         </form>
+        <Typography className={s.inscription} variant={'body2'}>
+          Don&apos;t have an account?
+        </Typography>
+        <Typography className={s.signUp} variant={'link1'}>
+          Sign Up
+        </Typography>
       </Card>
     </>
   )
