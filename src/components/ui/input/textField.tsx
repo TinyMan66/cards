@@ -104,7 +104,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           )}
           {type === 'password' && (
             <button className={classNames.inputButton} onClick={passwordVisibilityHandler}>
-              {isPasswordVisible ? <Visibility /> : <VisibilityOff />}
+              {isPasswordVisible ? <VisibilityOff /> : <Visibility />}
             </button>
           )}
           {endIcon && <span className={classNames.endIcon}>{endIcon}</span>}
