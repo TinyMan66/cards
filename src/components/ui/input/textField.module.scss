@@ -129,7 +129,7 @@
 
   &:focus {
     color: var(--color-dark-100);
-    border: 2px solid var(--color-info-700);
+    border: 1px solid var(--color-info-700);
   }
 
   &:hover:not(&:disabled) {
@@ -149,8 +149,10 @@
 .errorMessage {
   width: 100%;
   height: 24px;
+
   font-size: var(--font-size-xs);
   color: var(--color-danger-300);
+  text-align: left;
 
   &:empty {
     opacity: 0;
