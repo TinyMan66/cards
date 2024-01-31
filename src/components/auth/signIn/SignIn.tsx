@@ -48,7 +48,12 @@ export const SignIn = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) =
               type={'password'}
             />
           </div>
-          <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />
+          <ControlledCheckbox
+            className={s.checkbox}
+            control={control}
+            label={'Remember me'}
+            name={'rememberMe'}
+          />
           <Typography className={s.recoverPassword} variant={'body2'}>
             Forgot password?
           </Typography>
