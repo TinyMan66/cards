@@ -17,6 +17,7 @@ const loginSchema = z
     path: ['passwordConfirmation'],
   })
 
+type FormValues = z.infer<typeof loginSchema>
 export const SignUp = () => {
   return (
     <>
