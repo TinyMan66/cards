@@ -1,4 +1,7 @@
+import { useForm } from 'react-hook-form'
+
 import { Button, Card, ControlledTextField, Typography } from '@/components'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './SignUp.module.scss'
@@ -19,19 +22,35 @@ const loginSchema = z
 
 type FormValues = z.infer<typeof loginSchema>
 export const SignUp = () => {
+  const { control } = useForm<FormValues>({
+    defaultValues: {
+      email: '',
+      password: '',
+      passwordConfirmation: '',
+    },
+    resolver: zodResolver(loginSchema),
+  })
+
   return (
     <>
       <Card className={s.card} title={'Sign Up'}>
         <form>
           <div className={s.textFields}>
-            <ControlledTextField label={'Email'} name={'email'} placeholder={'Email'} />
             <ControlledTextField
+              control={control}
+              label={'Email'}
+              name={'email'}
+              placeholder={'Email'}
+            />
+            <ControlledTextField
+              control={control}
               label={'Password'}
               name={'password'}
               placeholder={'Password'}
               type={'password'}
             />
             <ControlledTextField
+              control={control}
               label={'Confirm password'}
               name={'passwordConfirmation'}
               placeholder={'Confirm password'}
