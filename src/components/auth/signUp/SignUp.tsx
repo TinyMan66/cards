@@ -3,14 +3,19 @@ import { z } from 'zod'
 
 import s from './SignUp.module.scss'
 
-const loginSchema = z.object({
-  email: z.string().email('Invalid email address'),
-  password: z
-    .string()
-    .min(3, 'Password must contain at least 3 character(s)')
-    .max(30, 'Password must be no longer than 30 characters'),
-  passwordConfirmation: z.string(),
-})
+const loginSchema = z
+  .object({
+    email: z.string().email('Invalid email address'),
+    password: z
+      .string()
+      .min(3, 'Password must contain at least 3 character(s)')
+      .max(30, 'Password must be no longer than 30 characters'),
+    passwordConfirmation: z.string(),
+  })
+  .refine(data => data.password === data.passwordConfirmation, {
+    message: "Passwords don't match",
+    path: ['passwordConfirmation'],
+  })
 
 export const SignUp = () => {
   return (
