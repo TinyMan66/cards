@@ -21,8 +21,8 @@ const loginSchema = z
   })
 
 type FormValues = z.infer<typeof loginSchema>
-export const SignUp = () => {
-  const { control } = useForm<FormValues>({
+export const SignUp = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) => {
+  const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       email: '',
       password: '',
@@ -34,7 +34,7 @@ export const SignUp = () => {
   return (
     <>
       <Card className={s.card} title={'Sign Up'}>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.textFields}>
             <ControlledTextField
               control={control}
