@@ -1,6 +1,16 @@
 import { Button, Card, ControlledTextField, Typography } from '@/components'
+import { z } from 'zod'
 
 import s from './SignUp.module.scss'
+
+const loginSchema = z.object({
+  email: z.string().email('Invalid email address'),
+  password: z
+    .string()
+    .min(3, 'Password must contain at least 3 character(s)')
+    .max(30, 'Password must be no longer than 30 characters'),
+  passwordConfirmation: z.string(),
+})
 
 export const SignUp = () => {
   return (
