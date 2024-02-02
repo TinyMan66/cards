@@ -187,6 +187,7 @@ const Email = (allProps: IconProps) => {
           />
         </svg>
       }
+      size={96}
       {...restProps}
     />
   )
