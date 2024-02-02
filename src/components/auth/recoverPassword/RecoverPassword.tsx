@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 
 import { Button, Card, ControlledTextField, Typography } from '@/components'
+import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -21,6 +22,7 @@ export const RecoverPassword = ({ onSubmit }: { onSubmit: (data: FormValues) => 
 
   return (
     <>
+      <DevTool control={control} />
       <Card className={s.card}>
         <Typography className={s.title} variant={'large'}>
           Forgot your password?
