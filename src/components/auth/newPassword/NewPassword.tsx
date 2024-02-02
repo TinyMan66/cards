@@ -15,8 +15,8 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>
 
-export const NewPassword = () => {
-  const { control } = useForm<FormValues>({
+export const NewPassword = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) => {
+  const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       password: '',
     },
@@ -29,7 +29,7 @@ export const NewPassword = () => {
         <Typography className={s.title} variant={'large'}>
           Create new password
         </Typography>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.textField}>
             <ControlledTextField
               control={control}
