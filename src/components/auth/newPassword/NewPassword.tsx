@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 
 import { Button, Card, ControlledTextField, Typography } from '@/components'
+import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -25,6 +26,7 @@ export const NewPassword = ({ onSubmit }: { onSubmit: (data: FormValues) => void
 
   return (
     <>
+      <DevTool control={control} />
       <Card>
         <Typography className={s.title} variant={'large'}>
           Create new password
