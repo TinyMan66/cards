@@ -1,4 +1,7 @@
+import { useForm } from 'react-hook-form'
+
 import { Button, Card, ControlledTextField, Typography } from '@/components'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './NewPassword.module.scss'
@@ -13,6 +16,13 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>
 
 export const NewPassword = () => {
+  const { control } = useForm<FormValues>({
+    defaultValues: {
+      password: '',
+    },
+    resolver: zodResolver(schema),
+  })
+
   return (
     <>
       <Card>
@@ -22,6 +32,7 @@ export const NewPassword = () => {
         <form>
           <div className={s.textField}>
             <ControlledTextField
+              control={control}
               label={'Password'}
               name={'password'}
               placeholder={'Password'}
