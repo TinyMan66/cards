@@ -10,6 +10,8 @@ const schema = z.object({
     .max(30, 'Password must be no longer than 30 characters'),
 })
 
+type FormValues = z.infer<typeof schema>
+
 export const NewPassword = () => {
   return (
     <>
