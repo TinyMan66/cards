@@ -37,7 +37,9 @@ export const RecoverPassword = ({ onSubmit }: { onSubmit: (data: FormValues) => 
           <Typography className={s.instruction} variant={'body2'}>
             Enter your email address and we will send you further instructions
           </Typography>
-          <Button className={s.button}>Send instructions</Button>
+          <Button className={s.button} fullWidth type={'submit'}>
+            Send instructions
+          </Button>
         </form>
         <Typography className={s.inscription} variant={'body2'}>
           Did you remember your password?
