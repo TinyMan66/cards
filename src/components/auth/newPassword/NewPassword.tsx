@@ -27,7 +27,7 @@ export const NewPassword = ({ onSubmit }: { onSubmit: (data: FormValues) => void
   return (
     <>
       <DevTool control={control} />
-      <Card>
+      <Card className={s.card}>
         <Typography className={s.title} variant={'large'}>
           Create new password
         </Typography>
