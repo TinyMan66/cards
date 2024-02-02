@@ -1,4 +1,7 @@
+import { useForm } from 'react-hook-form'
+
 import { Button, Card, ControlledTextField, Typography } from '@/components'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './RecoverPassword.module.scss'
@@ -9,6 +12,13 @@ const recoveryPasswordSchema = z.object({
 
 type FormValues = z.infer<typeof recoveryPasswordSchema>
 export const RecoverPassword = () => {
+  const { control } = useForm<FormValues>({
+    defaultValues: {
+      email: '',
+    },
+    resolver: zodResolver(recoveryPasswordSchema),
+  })
+
   return (
     <>
       <Card className={s.card}>
@@ -17,7 +27,12 @@ export const RecoverPassword = () => {
         </Typography>
         <form>
           <div className={s.textField}>
-            <ControlledTextField label={'Email'} name={'email'} placeholder={'Email'} />
+            <ControlledTextField
+              control={control}
+              label={'Email'}
+              name={'email'}
+              placeholder={'Email'}
+            />
             <Typography className={s.discription} variant={'body2'}>
               Enter your email address and we will send you further instructions
             </Typography>
