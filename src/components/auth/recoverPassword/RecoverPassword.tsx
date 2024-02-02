@@ -11,8 +11,8 @@ const recoveryPasswordSchema = z.object({
 })
 
 type FormValues = z.infer<typeof recoveryPasswordSchema>
-export const RecoverPassword = () => {
-  const { control } = useForm<FormValues>({
+export const RecoverPassword = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) => {
+  const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       email: '',
     },
@@ -25,7 +25,7 @@ export const RecoverPassword = () => {
         <Typography className={s.title} variant={'large'}>
           Forgot your password?
         </Typography>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.textField}>
             <ControlledTextField
               control={control}
