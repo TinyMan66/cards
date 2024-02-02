@@ -6,17 +6,17 @@ import { z } from 'zod'
 
 import s from './RecoverPassword.module.scss'
 
-const recoveryPasswordSchema = z.object({
+const schema = z.object({
   email: z.string().email('Invalid email address'),
 })
 
-type FormValues = z.infer<typeof recoveryPasswordSchema>
+type FormValues = z.infer<typeof schema>
 export const RecoverPassword = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) => {
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       email: '',
     },
-    resolver: zodResolver(recoveryPasswordSchema),
+    resolver: zodResolver(schema),
   })
 
   return (
