@@ -1,6 +1,14 @@
 import { Button, Card, ControlledTextField, Typography } from '@/components'
+import { z } from 'zod'
 
 import s from './NewPassword.module.scss'
+
+const schema = z.object({
+  password: z
+    .string()
+    .min(3, 'Password must contain at least 3 character(s)')
+    .max(30, 'Password must be no longer than 30 characters'),
+})
 
 export const NewPassword = () => {
   return (
@@ -13,7 +21,7 @@ export const NewPassword = () => {
           <div className={s.textField}>
             <ControlledTextField
               label={'Password'}
-              name={'newPassword'}
+              name={'password'}
               placeholder={'Password'}
               type={'password'}
             />
