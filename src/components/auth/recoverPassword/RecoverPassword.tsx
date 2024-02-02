@@ -1,6 +1,11 @@
 import { Button, Card, ControlledTextField, Typography } from '@/components'
+import { z } from 'zod'
 
 import s from './RecoverPassword.module.scss'
+
+const recoveryPasswordSchema = z.object({
+  email: z.string().email('Invalid email address'),
+})
 
 export const RecoverPassword = () => {
   return (
