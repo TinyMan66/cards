@@ -7,7 +7,7 @@ import { z } from 'zod'
 
 import s from './SignUp.module.scss'
 
-const loginSchema = z
+const signUpSchema = z
   .object({
     email: z.string().email('Invalid email address'),
     password: z
@@ -21,7 +21,7 @@ const loginSchema = z
     path: ['passwordConfirmation'],
   })
 
-type FormValues = z.infer<typeof loginSchema>
+type FormValues = z.infer<typeof signUpSchema>
 export const SignUp = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) => {
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
@@ -29,7 +29,7 @@ export const SignUp = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) =
       password: '',
       passwordConfirmation: '',
     },
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(signUpSchema),
   })
 
   return (

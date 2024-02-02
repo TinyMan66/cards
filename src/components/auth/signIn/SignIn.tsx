@@ -7,7 +7,7 @@ import { z } from 'zod'
 
 import s from './SignIn.module.scss'
 
-const loginSchema = z.object({
+const signInSchema = z.object({
   email: z.string().email('Invalid email address'),
   password: z
     .string()
@@ -16,7 +16,7 @@ const loginSchema = z.object({
   rememberMe: z.boolean().default(false),
 })
 
-type FormValues = z.infer<typeof loginSchema>
+type FormValues = z.infer<typeof signInSchema>
 
 export const SignIn = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) => {
   const { control, handleSubmit } = useForm<FormValues>({
@@ -25,7 +25,7 @@ export const SignIn = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) =
       password: '',
       rememberMe: true,
     },
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(signInSchema),
   })
 
   return (
