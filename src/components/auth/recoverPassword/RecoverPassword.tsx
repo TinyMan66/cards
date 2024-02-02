@@ -7,6 +7,7 @@ const recoveryPasswordSchema = z.object({
   email: z.string().email('Invalid email address'),
 })
 
+type FormValues = z.infer<typeof recoveryPasswordSchema>
 export const RecoverPassword = () => {
   return (
     <>
