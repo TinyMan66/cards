@@ -1,1 +1,1 @@
-export * from './profileInfo'
+export * from './personalInfo'

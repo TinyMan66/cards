@@ -5,7 +5,7 @@ type Props = {
   email: string
   name: string
 }
-export const ProfileInfo = ({ avatar, email, name }: Props) => {
+export const PersonalInfo = ({ avatar, email, name }: Props) => {
   return (
     <>
       <Card>
