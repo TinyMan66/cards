@@ -1,19 +1,24 @@
 import { Button, Card, Typography } from '@/components'
 
-export const ProfileInfo = () => {
+type Props = {
+  avatar: string
+  email: string
+  name: string
+}
+export const ProfileInfo = ({ avatar, email, name }: Props) => {
   return (
     <>
       <Card>
         <Typography variant={'large'}>Personal information</Typography>
         <div>
-          <img />
+          <img alt={'avatar'} src={avatar} />
           <button>edit</button>
         </div>
         <div>
-          <Typography variant={'h2'}>Name</Typography>
+          <Typography variant={'h2'}>Name {name}</Typography>
           <button>edit</button>
         </div>
-        <Typography variant={'body2'}>example@mail.com</Typography>
+        <Typography variant={'body2'}>example@mail.com {email}</Typography>
         <Button>Logout</Button>
       </Card>
     </>
