@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { Edit, LogOut } from '@/assets'
 import { Button, Card, Typography } from '@/components'
+import { PersonalInfoForm } from '@/components/profile/personalInfo/PersonalInfoForm'
 
 type Props = {
   avatar: string
@@ -28,12 +29,17 @@ export const PersonalInfo = ({ avatar, email, name, onAvatarChange }: Props) => 
             <Edit />
           </button>
         </div>
-        <div>
-          <Typography variant={'h2'}>{name}</Typography>
-          <button onClick={editNameHandler}>
-            <Edit />
-          </button>
-        </div>
+        {isFormVisible ? (
+          <PersonalInfoForm />
+        ) : (
+          <div>
+            <Typography variant={'h2'}>{name}</Typography>
+            <button onClick={editNameHandler}>
+              <Edit />
+            </button>
+          </div>
+        )}
+
         <Typography variant={'body2'}>example@mail.com {email}</Typography>
         <Button>
           <LogOut />
