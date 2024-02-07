@@ -1,4 +1,4 @@
-import { Edit } from '@/assets'
+import { Edit, LogOut } from '@/assets'
 import { Button, Card, Typography } from '@/components'
 
 type Props = {
@@ -29,7 +29,10 @@ export const PersonalInfo = ({ avatar, email, name, onAvatarChange }: Props) => 
           </button>
         </div>
         <Typography variant={'body2'}>example@mail.com {email}</Typography>
-        <Button>Logout</Button>
+        <Button>
+          <LogOut />
+          Logout
+        </Button>
       </Card>
     </>
   )
