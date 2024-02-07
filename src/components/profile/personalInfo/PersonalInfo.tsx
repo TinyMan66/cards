@@ -1,4 +1,8 @@
+import { useState } from 'react'
+
+import { Edit, LogOut } from '@/assets'
 import { Button, Card, Typography } from '@/components'
+import { PersonalInfoForm } from '@/components/profile/personalInfo/PersonalInfoForm'
 
 type Props = {
   avatar: string
@@ -7,8 +11,12 @@ type Props = {
   onAvatarChange: (newAvatar: string) => void
 }
 export const PersonalInfo = ({ avatar, email, name, onAvatarChange }: Props) => {
+  const [isFormVisible, setIsFormVisible] = useState<boolean>(false)
   const editAvatarHandler = () => {
     onAvatarChange('')
+  }
+  const editNameHandler = () => {
+    setIsFormVisible(!isFormVisible)
   }
 
   return (
@@ -17,14 +25,26 @@ export const PersonalInfo = ({ avatar, email, name, onAvatarChange }: Props) => 
         <Typography variant={'large'}>Personal information</Typography>
         <div>
           <img alt={'avatar'} src={avatar} />
-          <button onClick={editAvatarHandler}>edit</button>
+          <button onClick={editAvatarHandler}>
+            <Edit />
+          </button>
         </div>
-        <div>
-          <Typography variant={'h2'}>Name {name}</Typography>
-          <button>edit</button>
-        </div>
+        {isFormVisible ? (
+          <PersonalInfoForm />
+        ) : (
+          <div>
+            <Typography variant={'h2'}>{name}</Typography>
+            <button onClick={editNameHandler}>
+              <Edit />
+            </button>
+          </div>
+        )}
+
         <Typography variant={'body2'}>example@mail.com {email}</Typography>
-        <Button>Logout</Button>
+        <Button>
+          <LogOut />
+          Logout
+        </Button>
       </Card>
     </>
   )
