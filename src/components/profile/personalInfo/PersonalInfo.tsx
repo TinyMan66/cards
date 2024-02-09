@@ -28,10 +28,12 @@ export const PersonalInfo = ({ avatar, email, name, onAvatarChange }: Props) => 
           Personal information
         </Typography>
         <div className={s.imgContainer}>
-          <img alt={'avatar'} src={avatar} />
-          <button onClick={editAvatarHandler}>
-            <Edit />
-          </button>
+          <div className={s.imgWrapper}>
+            <img alt={'avatar'} src={avatar} />
+            <button className={s.editAvatarButton} onClick={editAvatarHandler}>
+              <Edit />
+            </button>
+          </div>
         </div>
         {isFormVisible ? (
           <PersonalInfoForm />
