@@ -40,7 +40,7 @@ export const PersonalInfo = ({ avatar, email, name, onAvatarChange }: Props) => 
         ) : (
           <div className={s.nameContainer}>
             <Typography variant={'h2'}>{name}</Typography>
-            <button onClick={editNameHandler}>
+            <button className={s.editNameButton} onClick={editNameHandler}>
               <Edit />
             </button>
           </div>
