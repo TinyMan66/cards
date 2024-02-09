@@ -1,4 +1,7 @@
+import { useForm } from 'react-hook-form'
+
 import { Button, ControlledTextField } from '@/components'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 const schema = z.object({
@@ -6,11 +9,22 @@ const schema = z.object({
 })
 
 type FormValues = z.infer<typeof schema>
-export const PersonalInfoForm = () => {
+
+type Props = {
+  userName: string
+}
+export const PersonalInfoForm = ({ userName }: Props) => {
+  const { control } = useForm<FormValues>({
+    defaultValues: {
+      name: userName,
+    },
+    resolver: zodResolver(schema),
+  })
+
   return (
     <div>
       <form>
-        <ControlledTextField label={'Nickname'} name={'name'} />
+        <ControlledTextField control={control} label={'Nickname'} name={'name'} />
         <Button fullWidth>Save Changes</Button>
       </form>
     </div>
