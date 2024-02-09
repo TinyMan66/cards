@@ -26,10 +26,12 @@ export const IconWrapper: FC<{ icon: ReactNode } & IconProps> = ({
       aria-hidden={'true'}
       role={'img'}
       style={{
+        alignItems: 'center',
         color: color,
         display: 'inline-flex',
         fontSize: 'inherit',
         height: size,
+        justifyContent: 'center',
         width: size,
       }}
       {...restProps}
