@@ -20,6 +20,13 @@ imgcontainer {
   justify-content: center;
   width: 100%;
   margin-bottom: 6px;
+
+  img {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
 }
 
 .nameContainer {
