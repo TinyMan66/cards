@@ -5,6 +5,7 @@ const schema = z.object({
   name: z.string().max(30, 'Name must be no longer than 30 characters'),
 })
 
+type FormValues = z.infer<typeof schema>
 export const PersonalInfoForm = () => {
   return (
     <div>
