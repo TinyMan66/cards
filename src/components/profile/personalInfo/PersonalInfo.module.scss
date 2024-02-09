@@ -46,6 +46,10 @@
       background-color: var(--color-dark-300);
       border-radius: 4px;
 
+      &:focus-visible {
+        outline: 2px solid var(--color-info-900);
+      }
+
       span {
         align-items: center;
         justify-content: center;
@@ -62,6 +66,10 @@
   .editNameButton {
     all: unset;
     cursor: pointer;
+
+    &:focus-visible {
+      outline: 2px solid var(--color-info-900);
+    }
 
     span {
       align-items: center;
