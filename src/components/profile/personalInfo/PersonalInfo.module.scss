@@ -5,6 +5,14 @@
 }
 
 .title {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 27px;
+
+  line-height: 1;
+  color: var(--color-light-100);
+  text-align: center;
 }
 
 .imgContainer {
