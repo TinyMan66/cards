@@ -58,6 +58,16 @@
   display: flex;
   gap: 6px;
   justify-content: center;
+
+  .editNameButton {
+    all: unset;
+    cursor: pointer;
+
+    span {
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
 
 .email {
