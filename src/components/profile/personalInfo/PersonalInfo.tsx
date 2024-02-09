@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { Edit, LogOut } from '@/assets'
 import { Button, Card, Typography } from '@/components'
-import { PersonalInfoForm } from '@/components/profile/personalInfo/PersonalInfoForm'
+import { PersonalInfoForm } from '@/components/profile/personalInfo/personalInfoForm'
 
 import s from './PersonalInfo.module.scss'
 
@@ -25,7 +25,7 @@ export const PersonalInfo = ({ avatar, email, name, onAvatarChange }: Props) => 
     <>
       <Card className={s.card}>
         <Typography className={s.title} variant={'large'}>
-          Personal information
+          Personal Information
         </Typography>
         <div className={s.imgContainer}>
           <div className={s.imgWrapper}>
