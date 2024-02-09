@@ -15,17 +15,24 @@
   text-align: center;
 }
 
-imgcontainer {
+.imgContainer {
   display: flex;
   justify-content: center;
   width: 100%;
   margin-bottom: 6px;
 
-  img {
+  .imgWrapper {
+    position: relative;
     width: 96px;
     height: 96px;
-    object-fit: cover;
-    border-radius: 50%;
+
+    img {
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .editAvatarButton {
+    }
   }
 }
 
