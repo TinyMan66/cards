@@ -49,7 +49,7 @@ export const PersonalInfo = ({ avatar, email, name, onAvatarChange }: Props) => 
         <Typography className={s.email} variant={'body2'}>
           {email}
         </Typography>
-        <Button className={s.logout}>
+        <Button className={s.logoutButton} variant={'secondary'}>
           <LogOut />
           Logout
         </Button>

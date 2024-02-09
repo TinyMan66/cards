@@ -1,15 +1,12 @@
 .card {
+  align-items: center;
   width: 420px;
   height: 348px;
   padding: 33px 33px 41px;
 }
 
 .title {
-  display: flex;
-  justify-content: center;
-
   margin-bottom: 27px;
-
   line-height: 1;
   color: var(--color-light-100);
   text-align: center;
@@ -49,11 +46,6 @@
       &:focus-visible {
         outline: 2px solid var(--color-info-900);
       }
-
-      span {
-        align-items: center;
-        justify-content: center;
-      }
     }
   }
 }
@@ -70,11 +62,6 @@
     &:focus-visible {
       outline: 2px solid var(--color-info-900);
     }
-
-    span {
-      align-items: center;
-      justify-content: center;
-    }
   }
 }
 
@@ -84,5 +71,7 @@
   text-align: center;
 }
 
-.logout {
+.logoutButton {
+  width: 122px;
+  height: 36px;
 }
