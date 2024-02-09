@@ -32,6 +32,24 @@
     }
 
     .editAvatarButton {
+      all: unset;
+
+      cursor: pointer;
+
+      position: absolute;
+      right: 0;
+      bottom: 0;
+
+      width: 24px;
+      height: 24px;
+
+      background-color: var(--color-dark-300);
+      border-radius: 4px;
+
+      span {
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 }
