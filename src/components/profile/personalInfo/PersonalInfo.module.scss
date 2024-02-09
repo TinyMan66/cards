@@ -15,7 +15,11 @@
   text-align: center;
 }
 
-.imgContainer {
+imgcontainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 6px;
 }
 
 .nameContainer {
