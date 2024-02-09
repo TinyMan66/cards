@@ -36,7 +36,7 @@ export const PersonalInfo = ({ avatar, email, name, onAvatarChange }: Props) => 
           </div>
         </div>
         {isFormVisible ? (
-          <PersonalInfoForm />
+          <PersonalInfoForm userName={name} />
         ) : (
           <div className={s.nameContainer}>
             <Typography variant={'h2'}>{name}</Typography>
