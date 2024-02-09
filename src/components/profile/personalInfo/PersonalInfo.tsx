@@ -4,6 +4,8 @@ import { Edit, LogOut } from '@/assets'
 import { Button, Card, Typography } from '@/components'
 import { PersonalInfoForm } from '@/components/profile/personalInfo/PersonalInfoForm'
 
+import s from './PersonalInfo.module.scss'
+
 type Props = {
   avatar: string
   email: string
@@ -21,9 +23,11 @@ export const PersonalInfo = ({ avatar, email, name, onAvatarChange }: Props) => 
 
   return (
     <>
-      <Card>
-        <Typography variant={'large'}>Personal information</Typography>
-        <div>
+      <Card className={s.card}>
+        <Typography className={s.title} variant={'large'}>
+          Personal information
+        </Typography>
+        <div className={s.imgContainer}>
           <img alt={'avatar'} src={avatar} />
           <button onClick={editAvatarHandler}>
             <Edit />
@@ -32,7 +36,7 @@ export const PersonalInfo = ({ avatar, email, name, onAvatarChange }: Props) => 
         {isFormVisible ? (
           <PersonalInfoForm />
         ) : (
-          <div>
+          <div className={s.nameContainer}>
             <Typography variant={'h2'}>{name}</Typography>
             <button onClick={editNameHandler}>
               <Edit />
@@ -40,8 +44,10 @@ export const PersonalInfo = ({ avatar, email, name, onAvatarChange }: Props) => 
           </div>
         )}
 
-        <Typography variant={'body2'}>example@mail.com {email}</Typography>
-        <Button>
+        <Typography className={s.email} variant={'body2'}>
+          {email}
+        </Typography>
+        <Button className={s.logout}>
           <LogOut />
           Logout
         </Button>
