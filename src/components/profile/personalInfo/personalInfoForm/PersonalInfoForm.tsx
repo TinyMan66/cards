@@ -1,4 +1,9 @@
 import { Button, ControlledTextField } from '@/components'
+import { z } from 'zod'
+
+const schema = z.object({
+  name: z.string().max(30, 'Name must be no longer than 30 characters'),
+})
 
 export const PersonalInfoForm = () => {
   return (
