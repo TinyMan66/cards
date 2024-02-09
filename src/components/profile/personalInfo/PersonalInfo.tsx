@@ -11,8 +11,9 @@ type Props = {
   email: string
   name: string
   onAvatarChange: (newAvatar: string) => void
+  onNameChange: (data: { name: string }) => void
 }
-export const PersonalInfo = ({ avatar, email, name, onAvatarChange }: Props) => {
+export const PersonalInfo = ({ avatar, email, name, onAvatarChange, onNameChange }: Props) => {
   const [isFormVisible, setIsFormVisible] = useState<boolean>(false)
   const editAvatarHandler = () => {
     onAvatarChange('')
@@ -36,7 +37,7 @@ export const PersonalInfo = ({ avatar, email, name, onAvatarChange }: Props) => 
           </div>
         </div>
         {isFormVisible ? (
-          <PersonalInfoForm userName={name} />
+          <PersonalInfoForm onSubmit={onNameChange} userName={name} />
         ) : (
           <div className={s.nameContainer}>
             <Typography variant={'h2'}>{name}</Typography>
