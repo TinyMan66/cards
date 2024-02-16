@@ -1,0 +1,33 @@
+.card {
+  width: 420px;
+  height: 420px;
+  padding: 33px 36px 29px;
+}
+
+.title {
+  margin-bottom: 27px;
+  line-height: 1;
+  color: var(--color-light-100);
+  text-align: center;
+}
+
+.imgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .imgWrapper {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 6px;
+
+    img {
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+}
+
+.textField {
+  margin-bottom: 30px;
+}

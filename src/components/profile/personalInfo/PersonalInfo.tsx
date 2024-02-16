@@ -1,8 +1,7 @@
 import { useState } from 'react'
 
 import { Edit, LogOut } from '@/assets'
-import { Button, Card, Typography } from '@/components'
-import { PersonalInfoForm } from '@/components/profile/personalInfo/personalInfoForm'
+import { Button, Card, PersonalInfoForm, Typography } from '@/components'
 
 import s from './PersonalInfo.module.scss'
 
@@ -24,37 +23,36 @@ export const PersonalInfo = ({ avatar, email, name, onAvatarChange, onNameChange
 
   return (
     <>
-      <Card className={s.card}>
-        <Typography className={s.title} variant={'large'}>
-          Personal Information
-        </Typography>
-        <div className={s.imgContainer}>
-          <div className={s.imgWrapper}>
-            <img alt={'avatar'} src={avatar} />
-            <button className={s.editAvatarButton} onClick={editAvatarHandler}>
-              <Edit />
-            </button>
+      {isFormVisible ? (
+        <PersonalInfoForm avatar={avatar} onSubmit={onNameChange} userName={name} />
+      ) : (
+        <Card className={s.card}>
+          <Typography className={s.title} variant={'large'}>
+            Personal Information
+          </Typography>
+          <div className={s.imgContainer}>
+            <div className={s.imgWrapper}>
+              <img alt={'avatar'} src={avatar} />
+              <button className={s.editAvatarButton} onClick={editAvatarHandler}>
+                <Edit />
+              </button>
+            </div>
           </div>
-        </div>
-        {isFormVisible ? (
-          <PersonalInfoForm onSubmit={onNameChange} userName={name} />
-        ) : (
           <div className={s.nameContainer}>
             <Typography variant={'h2'}>{name}</Typography>
             <button className={s.editNameButton} onClick={editNameHandler}>
               <Edit />
             </button>
           </div>
-        )}
-
-        <Typography className={s.email} variant={'body2'}>
-          {email}
-        </Typography>
-        <Button className={s.logoutButton} variant={'secondary'}>
-          <LogOut />
-          Logout
-        </Button>
-      </Card>
+          <Typography className={s.email} variant={'body2'}>
+            {email}
+          </Typography>
+          <Button className={s.logoutButton} variant={'secondary'}>
+            <LogOut />
+            Logout
+          </Button>
+        </Card>
+      )}
     </>
   )
 }
