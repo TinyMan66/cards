@@ -1,8 +1,10 @@
 import { useForm } from 'react-hook-form'
 
-import { Button, Card, ControlledTextField } from '@/components'
+import { Button, Card, ControlledTextField, Typography } from '@/components'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+
+import s from '@/components/profile/personalInfo/PersonalInfo.module.scss'
 
 const schema = z.object({
   name: z.string().max(30, 'Name must be no longer than 30 characters'),
@@ -26,6 +28,9 @@ export const PersonalInfoForm = ({ avatar, onSubmit, userName }: Props) => {
   return (
     <>
       <Card>
+        <Typography className={s.title} variant={'large'}>
+          Personal Information
+        </Typography>
         <div>
           <img alt={'avatar'} src={avatar} />
         </div>
