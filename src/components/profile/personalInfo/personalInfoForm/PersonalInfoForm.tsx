@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 
-import { Button, ControlledTextField } from '@/components'
+import { Button, Card, ControlledTextField } from '@/components'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -25,13 +25,15 @@ export const PersonalInfoForm = ({ avatar, onSubmit, userName }: Props) => {
 
   return (
     <>
-      <div>
-        <img alt={'avatar'} src={avatar} />
-      </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <ControlledTextField control={control} label={'Nickname'} name={'name'} />
-        <Button fullWidth>Save Changes</Button>
-      </form>
+      <Card>
+        <div>
+          <img alt={'avatar'} src={avatar} />
+        </div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <ControlledTextField control={control} label={'Nickname'} name={'name'} />
+          <Button fullWidth>Save Changes</Button>
+        </form>
+      </Card>
     </>
   )
 }
