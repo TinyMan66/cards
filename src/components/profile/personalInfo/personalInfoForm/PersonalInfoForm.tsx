@@ -32,7 +32,9 @@ export const PersonalInfoForm = ({ avatar, onSubmit, userName }: Props) => {
           Personal Information
         </Typography>
         <div className={s.imgContainer}>
-          <img alt={'avatar'} src={avatar} />
+          <div className={s.imgWrapper}>
+            <img alt={'avatar'} src={avatar} />
+          </div>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.textField}>
