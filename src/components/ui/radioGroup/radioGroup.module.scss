@@ -7,9 +7,16 @@ button {
   flex-direction: column;
   gap: 10px;
 }
+
 .label {
   cursor: pointer;
   display: flex;
   align-items: center;
   color: var(--color-light-100);
+}
+
+.radioGroupWrapper {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
 }
