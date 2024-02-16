@@ -11,10 +11,11 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>
 
 type Props = {
+  avatar: string
   onSubmit: (data: FormValues) => void
   userName: string
 }
-export const PersonalInfoForm = ({ onSubmit, userName }: Props) => {
+export const PersonalInfoForm = ({ avatar, onSubmit, userName }: Props) => {
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       name: userName,
@@ -23,11 +24,14 @@ export const PersonalInfoForm = ({ onSubmit, userName }: Props) => {
   })
 
   return (
-    <div>
+    <>
+      <div>
+        <img alt={'avatar'} src={avatar} />
+      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <ControlledTextField control={control} label={'Nickname'} name={'name'} />
         <Button fullWidth>Save Changes</Button>
       </form>
-    </div>
+    </>
   )
 }
