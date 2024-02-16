@@ -40,7 +40,7 @@ export const PersonalInfoForm = ({ avatar, onSubmit, userName }: Props) => {
           <div className={s.textField}>
             <ControlledTextField control={control} label={'Nickname'} name={'name'} />
           </div>
-          <Button className={s.button} fullWidth>
+          <Button className={s.button} fullWidth type={'submit'}>
             Save Changes
           </Button>
         </form>
