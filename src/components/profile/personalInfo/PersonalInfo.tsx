@@ -1,8 +1,7 @@
 import { useState } from 'react'
 
 import { Edit, LogOut } from '@/assets'
-import { Button, Card, Typography } from '@/components'
-import { PersonalInfoForm } from '@/components/profile/personalInfo/personalInfoForm'
+import { Button, Card, PersonalInfoForm, Typography } from '@/components'
 
 import s from './PersonalInfo.module.scss'
 
