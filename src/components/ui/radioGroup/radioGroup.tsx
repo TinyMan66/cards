@@ -11,19 +11,21 @@ type Option = {
 }
 
 export type RadioGroupProps = {
-  option: Option[]
+  options: Option[]
 }
-export const RadioGroup = ({ option }: RadioGroupProps) => {
-  return (
-    <RadioGroupRadix.Root className={s.root}>
-      <Typography as={'label'} className={s.label} variant={'body2'}>
-        <div className={s.radioGroupWrapper}>
-          <RadioGroupRadix.Item className={s.item} value={'default'}>
-            <RadioGroupRadix.Indicator className={s.indicator} />
-          </RadioGroupRadix.Item>
-        </div>
-        Radio Group
-      </Typography>
-    </RadioGroupRadix.Root>
-  )
-}
+export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, RadioGroupProps>(
+  ({ options }, ref) => {
+    return (
+      <RadioGroupRadix.Root className={s.root} ref={ref}>
+        <Typography as={'label'} className={s.label} variant={'body2'}>
+          <div className={s.radioGroupWrapper}>
+            <RadioGroupRadix.Item className={s.item} value={'default'}>
+              <RadioGroupRadix.Indicator className={s.indicator} />
+            </RadioGroupRadix.Item>
+          </div>
+          Radio Group
+        </Typography>
+      </RadioGroupRadix.Root>
+    )
+  }
+)
