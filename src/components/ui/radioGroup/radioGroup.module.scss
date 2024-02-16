@@ -20,3 +20,14 @@ button {
   align-items: center;
   padding-right: 10px;
 }
+
+.item {
+  cursor: pointer;
+
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid var(--color-accent-500);
+  border-radius: 100%;
+}
