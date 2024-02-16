@@ -7,7 +7,10 @@ import { z } from 'zod'
 import s from './PersonalInfoForm.module.scss'
 
 const schema = z.object({
-  name: z.string().max(30, 'Name must be no longer than 30 characters'),
+  name: z
+    .string()
+    .min(2, 'Name must be no shorter than 2 characters')
+    .max(30, 'Name must be no longer than 30 characters'),
 })
 
 type FormValues = z.infer<typeof schema>
