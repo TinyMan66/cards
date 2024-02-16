@@ -4,7 +4,7 @@ import { Button, Card, ControlledTextField, Typography } from '@/components'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from '@/components/profile/personalInfo/PersonalInfo.module.scss'
+import s from './PersonalInfoForm.module.scss'
 
 const schema = z.object({
   name: z.string().max(30, 'Name must be no longer than 30 characters'),
@@ -27,16 +27,20 @@ export const PersonalInfoForm = ({ avatar, onSubmit, userName }: Props) => {
 
   return (
     <>
-      <Card>
+      <Card className={s.card}>
         <Typography className={s.title} variant={'large'}>
           Personal Information
         </Typography>
-        <div>
+        <div className={s.imgContainer}>
           <img alt={'avatar'} src={avatar} />
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <ControlledTextField control={control} label={'Nickname'} name={'name'} />
-          <Button fullWidth>Save Changes</Button>
+          <div className={s.textField}>
+            <ControlledTextField control={control} label={'Nickname'} name={'name'} />
+          </div>
+          <Button className={s.button} fullWidth>
+            Save Changes
+          </Button>
         </form>
       </Card>
     </>
