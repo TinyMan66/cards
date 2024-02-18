@@ -85,4 +85,8 @@ button {
 
   background-color: var(--color-accent-500);
   border-radius: 50%;
+
+  &:disabled {
+    background-color: var(--color-accent-900);
+  }
 }
