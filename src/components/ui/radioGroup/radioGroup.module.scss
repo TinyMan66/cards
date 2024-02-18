@@ -31,6 +31,10 @@ button {
   &:hover {
     background-color: var(--color-dark-500);
   }
+
+  &:active {
+    background-color: var(--color-accent-900);
+  }
 }
 
 .item {
