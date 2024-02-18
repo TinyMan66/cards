@@ -40,6 +40,10 @@ button {
     background-color: var(--color-accent-900);
   }
 
+  &:focus {
+    background-color: var(--color-dark-700);
+  }
+
   &:disabled {
     background-color: transparent;
   }
