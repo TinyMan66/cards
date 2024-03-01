@@ -11,10 +11,11 @@ type Option = {
 }
 
 export type RadioGroupProps = {
+  disabled?: boolean
   options: Option[]
 }
 export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, RadioGroupProps>(
-  ({ options }, ref, ...props) => {
+  ({ disabled, options }, ref, ...props) => {
     return (
       <RadioGroupRadix.Root className={s.root} ref={ref} {...props}>
         {options.map(option => (
@@ -22,6 +23,7 @@ export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, Ra
             <div className={s.radioGroupWrapper}>
               <RadioGroupRadix.Item
                 className={s.item}
+                disabled={disabled}
                 id={option.value}
                 value={option.value}
                 {...props}
