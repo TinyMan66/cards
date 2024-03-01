@@ -14,13 +14,18 @@ export type RadioGroupProps = {
   options: Option[]
 }
 export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, RadioGroupProps>(
-  ({ options }, ref) => {
+  ({ options }, ref, ...props) => {
     return (
-      <RadioGroupRadix.Root className={s.root} ref={ref}>
+      <RadioGroupRadix.Root className={s.root} ref={ref} {...props}>
         {options.map(option => (
           <Typography as={'label'} className={s.label} key={option.value} variant={'body2'}>
             <div className={s.radioGroupWrapper}>
-              <RadioGroupRadix.Item className={s.item} id={option.value} value={option.value}>
+              <RadioGroupRadix.Item
+                className={s.item}
+                id={option.value}
+                value={option.value}
+                {...props}
+              >
                 <RadioGroupRadix.Indicator className={s.indicator} />
               </RadioGroupRadix.Item>
             </div>
