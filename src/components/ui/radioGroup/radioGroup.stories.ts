@@ -19,3 +19,12 @@ export const Default: Story = {
     ],
   },
 }
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    options: [
+      { label: 'Option one', value: 'option-one' },
+      { label: 'Option two', value: 'option-two' },
+    ],
+  },
+}
