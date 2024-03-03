@@ -18,7 +18,7 @@ export type RadioGroupProps = {
 export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, RadioGroupProps>(
   ({ disabled, options }, ref, ...props) => {
     const classNames = {
-      indicator: s.indicator,
+      indicator: clsx(s.indicator, disabled && s.disabled),
       item: clsx(s.item, disabled && s.disabled),
       label: clsx(s.label, disabled && s.disabled),
       radioGroupWrapper: clsx(s.radioGroupWrapper, disabled && s.disabled),
