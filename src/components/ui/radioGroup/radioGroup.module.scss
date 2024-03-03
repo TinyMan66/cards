@@ -88,3 +88,7 @@ button {
   background-color: var(--color-accent-500);
   border-radius: 50%;
 }
+
+.indicator.disabled::after {
+  background-color: var(--color-accent-900);
+}
