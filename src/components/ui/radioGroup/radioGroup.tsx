@@ -11,7 +11,7 @@ type Option = {
   value: string
 }
 
-export type RadioGroupProps = {
+export type RadioGroupProps = ComponentPropsWithoutRef<typeof RadioGroupRadix.Root> & {
   disabled?: boolean
   options: Option[]
 }
@@ -19,8 +19,15 @@ export type RadioGroupProps = {
 const RadioGroupRoot = forwardRef<
   ElementRef<typeof RadioGroupRadix.Root>,
   ComponentPropsWithoutRef<typeof RadioGroupRadix.Root>
->(({ className, ...props }, ref) => {
-  return <RadioGroupRadix.Root className={clsx(s.root, className)} ref={ref} {...props} />
+>(({ ...props }, ref) => {
+  return <RadioGroupRadix.Root ref={ref} {...props} />
+})
+
+const RadioGroupItem = forwardRef<
+  ElementRef<typeof RadioGroupRadix.Item>,
+  ComponentPropsWithoutRef<typeof RadioGroupRadix.Item>
+>(({ ...props }, ref) => {
+  return <RadioGroupRadix.Item ref={ref} {...props} />
 })
 
 export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, RadioGroupProps>(
@@ -43,14 +50,14 @@ export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, Ra
             variant={'body2'}
           >
             <div className={classNames.radioGroupWrapper}>
-              <RadioGroupRadix.Item
+              <RadioGroupItem
                 className={classNames.item}
                 disabled={disabled}
                 id={option.value}
                 value={option.value}
               >
                 <RadioGroupRadix.Indicator className={classNames.indicator} />
-              </RadioGroupRadix.Item>
+              </RadioGroupItem>
             </div>
             {option.label}
           </Typography>
