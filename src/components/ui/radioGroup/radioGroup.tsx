@@ -1,4 +1,4 @@
-import { ElementRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { Typography } from '@/components'
 import * as RadioGroupRadix from '@radix-ui/react-radio-group'
@@ -15,6 +15,14 @@ export type RadioGroupProps = {
   disabled?: boolean
   options: Option[]
 }
+
+const RadioGroupRoot = forwardRef<
+  ElementRef<typeof RadioGroupRadix.Root>,
+  ComponentPropsWithoutRef<typeof RadioGroupRadix.Root>
+>(({ className, ...props }, ref) => {
+  return <RadioGroupRadix.Root className={clsx(s.root, className)} ref={ref} {...props} />
+})
+
 export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, RadioGroupProps>(
   ({ disabled, options }, ref, ...props) => {
     const classNames = {
@@ -26,7 +34,7 @@ export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, Ra
     }
 
     return (
-      <RadioGroupRadix.Root className={classNames.root} ref={ref} {...props}>
+      <RadioGroupRoot ref={ref} {...props}>
         {options.map(option => (
           <Typography
             as={'label'}
@@ -47,7 +55,7 @@ export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, Ra
             {option.label}
           </Typography>
         ))}
-      </RadioGroupRadix.Root>
+      </RadioGroupRoot>
     )
   }
 )
