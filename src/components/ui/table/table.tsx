@@ -1,3 +1,5 @@
-export const Table = () => {
-  return <table></table>
-}
+import { ComponentPropsWithoutRef, forwardRef } from 'react'
+
+forwardRef<HTMLTableElement, ComponentPropsWithoutRef<'table'>>(({ ...props }, ref) => {
+  return <table {...props} ref={ref}></table>
+})
