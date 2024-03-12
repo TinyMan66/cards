@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import clsx from 'clsx'
 
@@ -10,6 +10,8 @@ export const Table = forwardRef<HTMLTableElement, ComponentPropsWithoutRef<'tabl
   }
 )
 
-export const TableHead = () => {
-  return <thead />
-}
+export const TableHead = forwardRef<ElementRef<'thead'>, ComponentPropsWithoutRef<'thead'>>(
+  ({ ...props }, ref) => {
+    return <thead {...props} ref={ref} />
+  }
+)
