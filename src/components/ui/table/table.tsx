@@ -1,5 +1,11 @@
 import { ComponentPropsWithoutRef, forwardRef } from 'react'
 
-forwardRef<HTMLTableElement, ComponentPropsWithoutRef<'table'>>(({ ...props }, ref) => {
-  return <table {...props} ref={ref}></table>
-})
+import clsx from 'clsx'
+
+import s from './table.module.scss'
+
+export const Table = forwardRef<HTMLTableElement, ComponentPropsWithoutRef<'table'>>(
+  ({ className, ...props }, ref) => {
+    return <table className={clsx(className, s.table)} {...props} ref={ref} />
+  }
+)
