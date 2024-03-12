@@ -1,4 +1,4 @@
-import { ElementRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { Typography } from '@/components'
 import * as RadioGroupRadix from '@radix-ui/react-radio-group'
@@ -11,10 +11,25 @@ type Option = {
   value: string
 }
 
-export type RadioGroupProps = {
+export type RadioGroupProps = ComponentPropsWithoutRef<typeof RadioGroupRadix.Root> & {
   disabled?: boolean
   options: Option[]
 }
+
+const RadioGroupRoot = forwardRef<
+  ElementRef<typeof RadioGroupRadix.Root>,
+  ComponentPropsWithoutRef<typeof RadioGroupRadix.Root>
+>(({ ...props }, ref) => {
+  return <RadioGroupRadix.Root ref={ref} {...props} />
+})
+
+const RadioGroupItem = forwardRef<
+  ElementRef<typeof RadioGroupRadix.Item>,
+  ComponentPropsWithoutRef<typeof RadioGroupRadix.Item>
+>(({ ...props }, ref) => {
+  return <RadioGroupRadix.Item ref={ref} {...props} />
+})
+
 export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, RadioGroupProps>(
   ({ disabled, options }, ref, ...props) => {
     const classNames = {
@@ -26,7 +41,7 @@ export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, Ra
     }
 
     return (
-      <RadioGroupRadix.Root className={classNames.root} ref={ref} {...props}>
+      <RadioGroupRoot ref={ref} {...props}>
         {options.map(option => (
           <Typography
             as={'label'}
@@ -35,19 +50,19 @@ export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, Ra
             variant={'body2'}
           >
             <div className={classNames.radioGroupWrapper}>
-              <RadioGroupRadix.Item
+              <RadioGroupItem
                 className={classNames.item}
                 disabled={disabled}
                 id={option.value}
                 value={option.value}
               >
                 <RadioGroupRadix.Indicator className={classNames.indicator} />
-              </RadioGroupRadix.Item>
+              </RadioGroupItem>
             </div>
             {option.label}
           </Typography>
         ))}
-      </RadioGroupRadix.Root>
+      </RadioGroupRoot>
     )
   }
 )
