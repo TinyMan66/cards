@@ -26,3 +26,9 @@ export const TableRow = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'t
     return <tr {...props} ref={ref} />
   }
 )
+
+export const TableCell = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
+  ({ children, ...props }, ref) => {
+    return <th {...props} ref={ref} />
+  }
+)
