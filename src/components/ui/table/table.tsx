@@ -27,8 +27,17 @@ export const TableRow = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'t
   }
 )
 
-export const TableCell = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
+export const TableHeadCell = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
   ({ children, className, ...props }, ref) => {
+    return (
+      <th className={clsx(className, s.headCell)} {...props} ref={ref}>
+        <span>{children}</span>
+      </th>
+    )
+  }
+)
+export const TableCell = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
+  ({ className, ...props }, ref) => {
     return <td className={clsx(className, s.tableCell)} {...props} ref={ref} />
   }
 )
