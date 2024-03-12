@@ -9,3 +9,7 @@ export const Table = forwardRef<HTMLTableElement, ComponentPropsWithoutRef<'tabl
     return <table className={clsx(className, s.table)} {...props} ref={ref} />
   }
 )
+
+export const TableHead = () => {
+  return <thead />
+}
