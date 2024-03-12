@@ -15,3 +15,7 @@ export const TableHead = forwardRef<ElementRef<'thead'>, ComponentPropsWithoutRe
     return <thead {...props} ref={ref} />
   }
 )
+
+export const TableBody = () => {
+  return <tbody />
+}
