@@ -13,4 +13,11 @@
   line-height: var(--line-height-m);
 
   background-color: var(--color-dark-500);
+
+  > span {
+    user-select: none;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
 }
