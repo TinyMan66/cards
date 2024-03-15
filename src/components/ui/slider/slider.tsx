@@ -11,7 +11,7 @@ export const Slider = forwardRef<
 >(({ className, max, onValueChange, value, ...props }, ref) => {
   return (
     <div className={s.container}>
-      <span>{value}</span>
+      <span className={s.value}>{value}</span>
       <SliderRadix.Root
         className={clsx(className, s.root)}
         max={max}
@@ -27,7 +27,7 @@ export const Slider = forwardRef<
         <SliderRadix.Thumb className={s.thumb} />
         <SliderRadix.Thumb className={s.thumb} />
       </SliderRadix.Root>
-      <span>{value}</span>
+      <span className={s.value}>{value}</span>
     </div>
   )
 })
