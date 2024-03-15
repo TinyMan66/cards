@@ -22,7 +22,7 @@ export const Slider = forwardRef<
         <SliderRadix.Track className={s.track}>
           <SliderRadix.Range className={s.range} />
         </SliderRadix.Track>
-        <SliderRadix.Thumb aria-label={'Volume'} />
+        <SliderRadix.Thumb className={s.thumb} />
       </SliderRadix.Root>
     </div>
   )
