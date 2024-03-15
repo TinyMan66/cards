@@ -9,7 +9,7 @@ export const Slider = forwardRef<
   ComponentPropsWithoutRef<typeof SliderRadix.Root>
 >(({ className, max, onValueChange, value, ...props }, ref) => {
   return (
-    <div>
+    <div className={s.container}>
       <SliderRadix.Root
         className={clsx(className, s.root)}
         max={max}
