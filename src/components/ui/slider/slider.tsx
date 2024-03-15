@@ -7,16 +7,18 @@ import s from './slider.module.scss'
 
 export const Slider = forwardRef<
   ElementRef<typeof SliderRadix.Root>,
-  ComponentPropsWithoutRef<typeof SliderRadix.Root>
+  Omit<ComponentPropsWithoutRef<typeof SliderRadix.Root>, 'value'> & {
+    value: (null | number)[]
+  }
 >(({ className, max, onValueChange, value, ...props }, ref) => {
   return (
     <div className={s.container}>
-      <span className={s.value}>{value}</span>
+      <span className={s.value}>{value?.[0]}</span>
       <SliderRadix.Root
         className={clsx(className, s.root)}
         max={max}
         step={1}
-        value={value}
+        value={[value?.[0] ?? 0, value?.[1] ?? max ?? 0]}
         {...props}
         onValueChange={onValueChange}
         ref={ref}
@@ -27,7 +29,7 @@ export const Slider = forwardRef<
         <SliderRadix.Thumb className={s.thumb} />
         <SliderRadix.Thumb className={s.thumb} />
       </SliderRadix.Root>
-      <span className={s.value}>{value}</span>
+      <span className={s.value}>{value?.[1]}</span>
     </div>
   )
 })
