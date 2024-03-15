@@ -9,6 +9,15 @@
 }
 
 .root {
+  touch-action: none;
+  user-select: none;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
 }
 
 .track {
