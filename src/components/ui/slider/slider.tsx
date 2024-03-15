@@ -20,7 +20,7 @@ export const Slider = forwardRef<
         ref={ref}
       >
         <SliderRadix.Track className={s.track}>
-          <SliderRadix.Range />
+          <SliderRadix.Range className={s.range} />
         </SliderRadix.Track>
         <SliderRadix.Thumb aria-label={'Volume'} />
       </SliderRadix.Root>
