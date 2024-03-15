@@ -19,7 +19,7 @@ export const Slider = forwardRef<
         onValueChange={onValueChange}
         ref={ref}
       >
-        <SliderRadix.Track>
+        <SliderRadix.Track className={s.track}>
           <SliderRadix.Range />
         </SliderRadix.Track>
         <SliderRadix.Thumb aria-label={'Volume'} />
