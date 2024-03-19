@@ -1,4 +1,5 @@
 export { default as ArrowDown } from './components/ArrowDown'
+export { default as ArrowUp } from './components/ArrowUp'
 export { default as Check } from './components/Check'
 export { default as Close } from './components/Close'
 export { default as Edit } from './components/Edit'
