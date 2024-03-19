@@ -1,9 +1,11 @@
 import { ArrowDown } from '@/assets'
+import { Typography } from '@/components'
 import * as SelectRadix from '@radix-ui/react-select'
 
 export const Select = () => {
   return (
     <>
+      <Typography variant={'body2'}>Select-box</Typography>
       <SelectRadix.Root>
         <SelectRadix.Trigger>
           <SelectRadix.Value placeholder={'Select'} />
