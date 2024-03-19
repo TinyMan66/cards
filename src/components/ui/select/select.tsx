@@ -1,3 +1,4 @@
+import { ArrowDown } from '@/assets'
 import * as SelectRadix from '@radix-ui/react-select'
 
 export const Select = () => {
@@ -6,7 +7,7 @@ export const Select = () => {
       <SelectRadix.Root>
         <SelectRadix.Trigger>
           <SelectRadix.Value placeholder={'Select'} />
-          <SelectRadix.Icon />
+          <ArrowDown />
         </SelectRadix.Trigger>
 
         <SelectRadix.Portal>
