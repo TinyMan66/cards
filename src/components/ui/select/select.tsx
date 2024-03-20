@@ -2,6 +2,18 @@ import { ArrowDown } from '@/assets'
 import { Typography } from '@/components'
 import * as SelectRadix from '@radix-ui/react-select'
 
+type Option = {
+  label: string
+  value: string
+}
+
+type SelectProps = {
+  onSelect?: (value: string) => void
+  options: Option[]
+  placeholder?: string
+  value?: string
+}
+
 export const Select = () => {
   return (
     <>
