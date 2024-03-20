@@ -27,30 +27,32 @@ const SelectItem = forwardRef<
   )
 })
 
-export const Select = ({ onSelect, options, placeholder, value }: SelectProps) => {
-  return (
-    <>
-      <Typography variant={'body2'}>Select-box</Typography>
-      <SelectRadix.Root>
-        <SelectRadix.Trigger>
-          <SelectRadix.Value placeholder={placeholder} />
-          <ArrowDown />
-        </SelectRadix.Trigger>
+export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProps>(
+  ({ onSelect, options, placeholder, value, ...props }, ref) => {
+    return (
+      <>
+        <Typography variant={'body2'}>Select-box</Typography>
+        <SelectRadix.Root {...props}>
+          <SelectRadix.Trigger ref={ref}>
+            <SelectRadix.Value placeholder={placeholder} />
+            <ArrowDown />
+          </SelectRadix.Trigger>
 
-        <SelectRadix.Portal>
-          <SelectRadix.Content>
-            <SelectRadix.Viewport>
-              <SelectRadix.Group>
-                {options.map(option => (
-                  <SelectItem key={option.value} value={option.value}>
-                    {option.label}
-                  </SelectItem>
-                ))}
-              </SelectRadix.Group>
-            </SelectRadix.Viewport>
-          </SelectRadix.Content>
-        </SelectRadix.Portal>
-      </SelectRadix.Root>
-    </>
-  )
-}
+          <SelectRadix.Portal>
+            <SelectRadix.Content>
+              <SelectRadix.Viewport>
+                <SelectRadix.Group>
+                  {options.map(option => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectRadix.Group>
+              </SelectRadix.Viewport>
+            </SelectRadix.Content>
+          </SelectRadix.Portal>
+        </SelectRadix.Root>
+      </>
+    )
+  }
+)
