@@ -8,19 +8,19 @@ type Option = {
 }
 
 type SelectProps = {
-  onSelect?: (value: string) => void
+  onSelect: (value: string) => void
   options: Option[]
   placeholder?: string
   value?: string
 }
 
-export const Select = () => {
+export const Select = ({ onSelect, options, placeholder, value }: SelectProps) => {
   return (
     <>
       <Typography variant={'body2'}>Select-box</Typography>
       <SelectRadix.Root>
         <SelectRadix.Trigger>
-          <SelectRadix.Value placeholder={'Select'} />
+          <SelectRadix.Value placeholder={placeholder} />
           <ArrowDown />
         </SelectRadix.Trigger>
 
@@ -28,9 +28,11 @@ export const Select = () => {
           <SelectRadix.Content>
             <SelectRadix.Viewport>
               <SelectRadix.Group>
-                <SelectRadix.Item value={'1'}>Item 1</SelectRadix.Item>
-                <SelectRadix.Item value={'2'}>Item 2</SelectRadix.Item>
-                <SelectRadix.Item value={'3'}>Item 3</SelectRadix.Item>
+                {options.map(option => (
+                  <SelectRadix.Item key={option.value} value={option.value}>
+                    {option.label}
+                  </SelectRadix.Item>
+                ))}
               </SelectRadix.Group>
             </SelectRadix.Viewport>
           </SelectRadix.Content>
