@@ -1,3 +1,5 @@
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+
 import { ArrowDown } from '@/assets'
 import { Typography } from '@/components'
 import * as SelectRadix from '@radix-ui/react-select'
@@ -14,6 +16,17 @@ type SelectProps = {
   value?: string
 }
 
+const SelectItem = forwardRef<
+  ElementRef<typeof SelectRadix.Item>,
+  ComponentPropsWithoutRef<typeof SelectRadix.Item>
+>(({ children, ...props }, ref) => {
+  return (
+    <SelectRadix.Item {...props} ref={ref}>
+      {children}
+    </SelectRadix.Item>
+  )
+})
+
 export const Select = ({ onSelect, options, placeholder, value }: SelectProps) => {
   return (
     <>
@@ -29,9 +42,9 @@ export const Select = ({ onSelect, options, placeholder, value }: SelectProps) =
             <SelectRadix.Viewport>
               <SelectRadix.Group>
                 {options.map(option => (
-                  <SelectRadix.Item key={option.value} value={option.value}>
+                  <SelectItem key={option.value} value={option.value}>
                     {option.label}
-                  </SelectRadix.Item>
+                  </SelectItem>
                 ))}
               </SelectRadix.Group>
             </SelectRadix.Viewport>
