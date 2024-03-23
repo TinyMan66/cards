@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'react'
 
-import { ArrowDown } from '@/assets'
+import { ArrowDown, ArrowUp } from '@/assets'
 import { Typography } from '@/components'
 import * as SelectRadix from '@radix-ui/react-select'
 
@@ -29,15 +29,19 @@ const SelectItem = forwardRef<
 
 export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProps>(
   ({ onSelect, options, placeholder, value, ...props }, ref) => {
+    const [open, setOpen] = useState<boolean>(false)
+
+    const toggleOpenHandler = () => {
+      setOpen(prevOpen => !prevOpen)
+    }
+
     return (
       <>
         <Typography variant={'body2'}>Select-box</Typography>
-        <SelectRadix.Root {...props}>
+        <SelectRadix.Root onOpenChange={toggleOpenHandler} open={open} {...props}>
           <SelectRadix.Trigger ref={ref}>
             <SelectRadix.Value placeholder={placeholder} />
-            <SelectRadix.Icon>
-              <ArrowDown />
-            </SelectRadix.Icon>
+            <SelectRadix.Icon>{open ? <ArrowUp /> : <ArrowDown />}</SelectRadix.Icon>
           </SelectRadix.Trigger>
 
           <SelectRadix.Portal>
