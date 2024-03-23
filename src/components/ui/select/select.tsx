@@ -22,7 +22,7 @@ const SelectItem = forwardRef<
 >(({ children, ...props }, ref) => {
   return (
     <SelectRadix.Item {...props} ref={ref}>
-      {children}
+      <SelectRadix.ItemText>{children}</SelectRadix.ItemText>
     </SelectRadix.Item>
   )
 })
