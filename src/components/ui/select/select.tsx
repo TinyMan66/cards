@@ -4,6 +4,8 @@ import { ArrowDown, ArrowUp } from '@/assets'
 import { Typography } from '@/components'
 import * as SelectRadix from '@radix-ui/react-select'
 
+import s from './select.module.scss'
+
 type Option = {
   label: string
   value: string
@@ -51,7 +53,7 @@ export const Select = forwardRef<
         value={value}
         {...props}
       >
-        <SelectRadix.Trigger ref={ref}>
+        <SelectRadix.Trigger className={s.trigger} ref={ref}>
           <SelectRadix.Value placeholder={placeholder} />
           <SelectRadix.Icon>{open ? <ArrowUp /> : <ArrowDown />}</SelectRadix.Icon>
         </SelectRadix.Trigger>
