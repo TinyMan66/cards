@@ -35,7 +35,9 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
         <SelectRadix.Root {...props}>
           <SelectRadix.Trigger ref={ref}>
             <SelectRadix.Value placeholder={placeholder} />
-            <ArrowDown />
+            <SelectRadix.Icon>
+              <ArrowDown />
+            </SelectRadix.Icon>
           </SelectRadix.Trigger>
 
           <SelectRadix.Portal>
