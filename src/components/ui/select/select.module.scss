@@ -27,15 +27,20 @@ button {
   border: 1px solid var(--color-dark-300);
   border-radius: 2px;
 
+  &[data-disabled] {
+    cursor: initial;
+    color: var(--color-dark-300);
+  }
+
   &:focus {
     border: 1px solid var(--color-info-700);
   }
 
-  &:hover {
+  &:not([data-disabled]):hover {
     background-color: var(--color-dark-500);
   }
 
-  &:active {
+  &:not([data-disabled]):active {
     border: 1px solid var(--color-dark-100);
   }
 }
