@@ -45,7 +45,9 @@ export const Select = forwardRef<
 
   return (
     <>
-      <Typography variant={'body2'}>Select-box</Typography>
+      <Typography as={'label'} className={s.label} variant={'body2'}>
+        Select-box
+      </Typography>
       <SelectRadix.Root
         onOpenChange={toggleOpenHandler}
         onValueChange={onValueChangeHandler}
