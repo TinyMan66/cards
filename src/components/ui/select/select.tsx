@@ -12,6 +12,7 @@ type Option = {
 }
 
 type SelectProps = {
+  labelName?: string
   onChange: (value: string) => void
   options: Option[]
   placeholder?: string
@@ -32,7 +33,7 @@ const SelectItem = forwardRef<
 export const Select = forwardRef<
   ElementRef<typeof SelectRadix.Root>,
   Omit<ComponentPropsWithoutRef<typeof SelectRadix.Root>, 'value'> & SelectProps
->(({ onChange, options, placeholder, value, ...props }, ref) => {
+>(({ labelName, onChange, options, placeholder, value, ...props }, ref) => {
   const [open, setOpen] = useState<boolean>(false)
 
   const toggleOpenHandler = () => {
@@ -45,9 +46,11 @@ export const Select = forwardRef<
 
   return (
     <>
-      <Typography as={'label'} className={s.label} variant={'body2'}>
-        Select-box
-      </Typography>
+      {labelName && (
+        <Typography as={'label'} className={s.label} variant={'body2'}>
+          {labelName}
+        </Typography>
+      )}
       <SelectRadix.Root
         onOpenChange={toggleOpenHandler}
         onValueChange={onValueChangeHandler}
