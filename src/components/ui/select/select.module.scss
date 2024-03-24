@@ -4,6 +4,10 @@ button {
 
 .label {
   color: var(--color-dark-100);
+
+  &.disabled {
+    color: var(--color-dark-300);
+  }
 }
 
 .trigger {

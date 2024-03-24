@@ -3,6 +3,7 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'reac
 import { ArrowDown, ArrowUp } from '@/assets'
 import { Typography } from '@/components'
 import * as SelectRadix from '@radix-ui/react-select'
+import clsx from 'clsx'
 
 import s from './select.module.scss'
 
@@ -47,7 +48,11 @@ export const Select = forwardRef<
   return (
     <>
       {labelName && (
-        <Typography as={'label'} className={s.label} variant={'body2'}>
+        <Typography
+          as={'label'}
+          className={clsx(s.label, props.disabled && s.disabled)}
+          variant={'body2'}
+        >
           {labelName}
         </Typography>
       )}
