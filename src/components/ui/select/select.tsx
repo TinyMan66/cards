@@ -70,7 +70,7 @@ export const Select = forwardRef<
         </SelectRadix.Trigger>
 
         <SelectRadix.Portal>
-          <SelectRadix.Content position={'popper'}>
+          <SelectRadix.Content className={s.content} position={'popper'}>
             <SelectRadix.Viewport>
               <SelectRadix.Group>
                 {options.map(option => (
