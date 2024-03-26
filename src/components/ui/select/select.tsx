@@ -15,7 +15,6 @@ type Option = {
 type SelectProps = {
   className?: string
   labelName?: string
-  onChange: (value: string) => void
   options: Option[]
   placeholder?: string
   value?: string
@@ -35,12 +34,7 @@ const SelectItem = forwardRef<
 export const Select = forwardRef<
   ElementRef<typeof SelectRadix.Root>,
   Omit<ComponentPropsWithoutRef<typeof SelectRadix.Root>, 'value'> & SelectProps
->(({ className, labelName, onChange, options, placeholder, value, ...props }, ref) => {
-  const onValueChangeHandler = (newValue: string) => {
-    value && onChange(value)
-    onChange(newValue)
-  }
-
+>(({ className, labelName, options, placeholder, value, ...props }, ref) => {
   return (
     <div className={clsx(s.container, className)}>
       {labelName && (
@@ -52,7 +46,7 @@ export const Select = forwardRef<
           {labelName}
         </Typography>
       )}
-      <SelectRadix.Root onValueChange={onValueChangeHandler} value={value} {...props}>
+      <SelectRadix.Root value={value} {...props}>
         <SelectRadix.Trigger className={s.trigger} ref={ref}>
           <SelectRadix.Value placeholder={placeholder} />
           <SelectRadix.Icon className={s.icon}>{<ArrowDown />}</SelectRadix.Icon>
