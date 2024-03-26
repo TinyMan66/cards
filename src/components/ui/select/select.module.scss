@@ -59,6 +59,12 @@ button {
   }
 }
 
+.icon {
+  .trigger[data-state='open'] & {
+    transform: rotate(180deg);
+  }
+}
+
 .content {
   transform: var(--radix-select-content-transform-origin);
 

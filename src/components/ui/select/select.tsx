@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { ArrowDown, ArrowUp } from '@/assets'
+import { ArrowDown } from '@/assets'
 import { Typography } from '@/components'
 import * as SelectRadix from '@radix-ui/react-select'
 import clsx from 'clsx'
@@ -36,11 +36,6 @@ export const Select = forwardRef<
   ElementRef<typeof SelectRadix.Root>,
   Omit<ComponentPropsWithoutRef<typeof SelectRadix.Root>, 'value'> & SelectProps
 >(({ className, labelName, onChange, options, placeholder, value, ...props }, ref) => {
-  const [open, setOpen] = useState<boolean>(false)
-
-  const toggleOpenHandler = () => {
-    setOpen(prevOpen => !prevOpen)
-  }
   const onValueChangeHandler = (newValue: string) => {
     value && onChange(value)
     onChange(newValue)
@@ -57,16 +52,10 @@ export const Select = forwardRef<
           {labelName}
         </Typography>
       )}
-      <SelectRadix.Root
-        onOpenChange={toggleOpenHandler}
-        onValueChange={onValueChangeHandler}
-        open={open}
-        value={value}
-        {...props}
-      >
+      <SelectRadix.Root onValueChange={onValueChangeHandler} value={value} {...props}>
         <SelectRadix.Trigger className={s.trigger} ref={ref}>
           <SelectRadix.Value placeholder={placeholder} />
-          <SelectRadix.Icon>{open ? <ArrowUp /> : <ArrowDown />}</SelectRadix.Icon>
+          <SelectRadix.Icon className={s.icon}>{<ArrowDown />}</SelectRadix.Icon>
         </SelectRadix.Trigger>
 
         <SelectRadix.Portal>
