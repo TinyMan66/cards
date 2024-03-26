@@ -3,7 +3,8 @@ button {
 }
 
 .container {
-  //width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .label {
@@ -45,8 +46,16 @@ button {
     background-color: var(--color-dark-500);
   }
 
-  &:not([data-disabled]):active {
-    border: 1px solid var(--color-dark-100);
+  //&:not([data-disabled]):active {
+  //  border: 1px solid var(--color-dark-100);
+  //}
+  //
+  //&[data-open] {
+  //  border: 1px solid var(--color-dark-100);
+  //}
+
+  &:not([data-disabled], :focus)[data-placeholder] {
+    border: 1px solid var(--color-dark-300);
   }
 }
 
@@ -59,4 +68,16 @@ button {
   border: 1px solid var(--color-dark-100);
   border-top: 0;
   border-radius: 0 0 2px 2px;
+}
+
+.item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+
+  &[data-highlighted] {
+    background-color: var(--color-accent-900);
+    outline: none;
+  }
 }
