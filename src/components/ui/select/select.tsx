@@ -24,9 +24,9 @@ type SelectProps = {
 const SelectItem = forwardRef<
   ElementRef<typeof SelectRadix.Item>,
   ComponentPropsWithoutRef<typeof SelectRadix.Item>
->(({ children, ...props }, ref) => {
+>(({ children, className, ...props }, ref) => {
   return (
-    <SelectRadix.Item {...props} ref={ref}>
+    <SelectRadix.Item className={className} {...props} ref={ref}>
       <SelectRadix.ItemText>{children}</SelectRadix.ItemText>
     </SelectRadix.Item>
   )
@@ -74,7 +74,7 @@ export const Select = forwardRef<
             <SelectRadix.Viewport>
               <SelectRadix.Group>
                 {options.map(option => (
-                  <SelectItem key={option.value} value={option.value}>
+                  <SelectItem className={s.item} key={option.value} value={option.value}>
                     {option.label}
                   </SelectItem>
                 ))}
