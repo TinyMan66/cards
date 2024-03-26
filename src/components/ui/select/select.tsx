@@ -17,7 +17,6 @@ type SelectProps = {
   labelName?: string
   options: Option[]
   placeholder?: string
-  value?: string
 }
 
 const SelectItem = forwardRef<
@@ -33,8 +32,8 @@ const SelectItem = forwardRef<
 
 export const Select = forwardRef<
   ElementRef<typeof SelectRadix.Root>,
-  Omit<ComponentPropsWithoutRef<typeof SelectRadix.Root>, 'value'> & SelectProps
->(({ className, labelName, options, placeholder, value, ...props }, ref) => {
+  ComponentPropsWithoutRef<typeof SelectRadix.Root> & SelectProps
+>(({ className, labelName, options, placeholder, ...props }, ref) => {
   return (
     <div className={clsx(s.container, className)}>
       {labelName && (
@@ -46,7 +45,7 @@ export const Select = forwardRef<
           {labelName}
         </Typography>
       )}
-      <SelectRadix.Root value={value} {...props}>
+      <SelectRadix.Root {...props}>
         <SelectRadix.Trigger className={s.trigger} ref={ref}>
           <SelectRadix.Value placeholder={placeholder} />
           <SelectRadix.Icon className={s.icon}>{<ArrowDown />}</SelectRadix.Icon>
