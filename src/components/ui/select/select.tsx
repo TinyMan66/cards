@@ -43,28 +43,28 @@ export const Select = forwardRef<
           variant={'body2'}
         >
           {labelName}
+          <SelectRadix.Root {...props}>
+            <SelectRadix.Trigger className={s.trigger} ref={ref}>
+              <SelectRadix.Value placeholder={placeholder} />
+              <SelectRadix.Icon className={s.icon}>{<ArrowDown />}</SelectRadix.Icon>
+            </SelectRadix.Trigger>
+
+            <SelectRadix.Portal>
+              <SelectRadix.Content className={s.content} collisionPadding={0} position={'popper'}>
+                <SelectRadix.Viewport>
+                  <SelectRadix.Group>
+                    {options.map(option => (
+                      <SelectItem className={s.item} key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectRadix.Group>
+                </SelectRadix.Viewport>
+              </SelectRadix.Content>
+            </SelectRadix.Portal>
+          </SelectRadix.Root>
         </Typography>
       )}
-      <SelectRadix.Root {...props}>
-        <SelectRadix.Trigger className={s.trigger} ref={ref}>
-          <SelectRadix.Value placeholder={placeholder} />
-          <SelectRadix.Icon className={s.icon}>{<ArrowDown />}</SelectRadix.Icon>
-        </SelectRadix.Trigger>
-
-        <SelectRadix.Portal>
-          <SelectRadix.Content className={s.content} collisionPadding={0} position={'popper'}>
-            <SelectRadix.Viewport>
-              <SelectRadix.Group>
-                {options.map(option => (
-                  <SelectItem className={s.item} key={option.value} value={option.value}>
-                    {option.label}
-                  </SelectItem>
-                ))}
-              </SelectRadix.Group>
-            </SelectRadix.Viewport>
-          </SelectRadix.Content>
-        </SelectRadix.Portal>
-      </SelectRadix.Root>
     </div>
   )
 })
