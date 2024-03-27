@@ -36,35 +36,33 @@ export const Select = forwardRef<
 >(({ className, labelName, options, placeholder, ...props }, ref) => {
   return (
     <div className={clsx(s.container, className)}>
-      {labelName && (
-        <Typography
-          as={'label'}
-          className={clsx(s.label, props.disabled && s.disabled)}
-          variant={'body2'}
-        >
-          {labelName}
-          <SelectRadix.Root {...props}>
-            <SelectRadix.Trigger className={s.trigger} ref={ref}>
-              <SelectRadix.Value placeholder={placeholder} />
-              <SelectRadix.Icon className={s.icon}>{<ArrowDown />}</SelectRadix.Icon>
-            </SelectRadix.Trigger>
+      <Typography
+        as={'label'}
+        className={clsx(s.label, props.disabled && s.disabled)}
+        variant={'body2'}
+      >
+        {labelName}
+        <SelectRadix.Root {...props}>
+          <SelectRadix.Trigger className={s.trigger} ref={ref}>
+            <SelectRadix.Value placeholder={placeholder} />
+            <SelectRadix.Icon className={s.icon}>{<ArrowDown />}</SelectRadix.Icon>
+          </SelectRadix.Trigger>
 
-            <SelectRadix.Portal>
-              <SelectRadix.Content className={s.content} collisionPadding={0} position={'popper'}>
-                <SelectRadix.Viewport>
-                  <SelectRadix.Group>
-                    {options.map(option => (
-                      <SelectItem className={s.item} key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectRadix.Group>
-                </SelectRadix.Viewport>
-              </SelectRadix.Content>
-            </SelectRadix.Portal>
-          </SelectRadix.Root>
-        </Typography>
-      )}
+          <SelectRadix.Portal>
+            <SelectRadix.Content className={s.content} collisionPadding={0} position={'popper'}>
+              <SelectRadix.Viewport>
+                <SelectRadix.Group>
+                  {options.map(option => (
+                    <SelectItem className={s.item} key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectRadix.Group>
+              </SelectRadix.Viewport>
+            </SelectRadix.Content>
+          </SelectRadix.Portal>
+        </SelectRadix.Root>
+      </Typography>
     </div>
   )
 })
