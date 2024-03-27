@@ -24,7 +24,7 @@ const SelectItem = forwardRef<
   ComponentPropsWithoutRef<typeof SelectRadix.Item>
 >(({ children, className, ...props }, ref) => {
   return (
-    <SelectRadix.Item className={className} {...props} ref={ref}>
+    <SelectRadix.Item className={clsx(s.item, className)} {...props} ref={ref}>
       <SelectRadix.ItemText>{children}</SelectRadix.ItemText>
     </SelectRadix.Item>
   )

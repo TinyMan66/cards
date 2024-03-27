@@ -8,6 +8,8 @@ button {
 }
 
 .label {
+  display: block;
+  align-items: center;
   color: var(--color-dark-100);
 
   &.disabled {
@@ -46,16 +48,12 @@ button {
     background-color: var(--color-dark-500);
   }
 
-  //&:not([data-disabled]):active {
-  //  border: 1px solid var(--color-dark-100);
-  //}
-  //
-  //&[data-open] {
-  //  border: 1px solid var(--color-dark-100);
-  //}
-
   &:not([data-disabled], :focus)[data-placeholder] {
     border: 1px solid var(--color-dark-300);
+  }
+
+  &:not([data-disabled]):active {
+    border: 1px solid var(--color-dark-100);
   }
 }
 
