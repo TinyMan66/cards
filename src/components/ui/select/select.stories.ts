@@ -23,3 +23,17 @@ export const Default: Story = {
     placeholder: 'Select-box',
   },
 }
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    labelName: 'Select-box',
+    options: [
+      { label: 'Option one', value: 'option-one' },
+      { label: 'Option two', value: 'option-two' },
+      { label: 'Option three', value: 'option-three' },
+      { label: 'Option four', value: 'option-four' },
+    ],
+    placeholder: 'Select-box',
+  },
+}
