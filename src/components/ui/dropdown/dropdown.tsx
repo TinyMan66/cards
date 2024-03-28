@@ -2,6 +2,7 @@ import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'rea
 
 import { Menu } from '@/assets'
 import * as DropdownRadix from '@radix-ui/react-dropdown-menu'
+
 type Option = {
   icon: ReactNode
   value: string
@@ -9,35 +10,37 @@ type Option = {
 type DropdownProps = {
   avatar?: ReactNode
   options: Option[]
-}
-export const Dropdown = ({ avatar }: DropdownProps) => {
-  const DropDownItem = forwardRef<
-    ElementRef<typeof DropdownRadix.Item>,
-    ComponentPropsWithoutRef<typeof DropdownRadix.Item>
-  >(({ children, className, ...props }, ref) => {
-    return (
-      <DropdownRadix.Item className={className} {...props} ref={ref}>
-        {children}
-      </DropdownRadix.Item>
-    )
-  })
+} & DropdownRadix.DropdownMenuProps
 
+const DropDownItem = forwardRef<
+  ElementRef<typeof DropdownRadix.Item>,
+  ComponentPropsWithoutRef<typeof DropdownRadix.Item>
+>(({ children, className, ...props }, ref) => {
   return (
-    <>
-      <DropdownRadix.Root>
-        <DropdownRadix.Trigger>
-          <button>{avatar ? <div>{avatar}</div> : <Menu />}</button>
-        </DropdownRadix.Trigger>
-        <DropdownRadix.Portal>
-          <DropdownRadix.Content>
-            <DropDownItem>..</DropDownItem>
-            <DropdownRadix.Separator />
-            <DropDownItem>..</DropDownItem>
-            <DropdownRadix.Separator />
-            <DropDownItem>..</DropDownItem>
-          </DropdownRadix.Content>
-        </DropdownRadix.Portal>
-      </DropdownRadix.Root>
-    </>
+    <DropdownRadix.Item className={className} {...props} ref={ref}>
+      {children}
+    </DropdownRadix.Item>
   )
-}
+})
+
+export const Dropdown = forwardRef<
+  ElementRef<typeof DropdownRadix.Root>,
+  ComponentPropsWithoutRef<typeof DropdownRadix.Root> & DropdownProps
+>(({ avatar }, ref) => {
+  return (
+    <DropdownRadix.Root>
+      <DropdownRadix.Trigger ref={ref}>
+        <button>{avatar ? <div>{avatar}</div> : <Menu />}</button>
+      </DropdownRadix.Trigger>
+      <DropdownRadix.Portal>
+        <DropdownRadix.Content>
+          <DropDownItem>..</DropDownItem>
+          <DropdownRadix.Separator />
+          <DropDownItem>..</DropDownItem>
+          <DropdownRadix.Separator />
+          <DropDownItem>..</DropDownItem>
+        </DropdownRadix.Content>
+      </DropdownRadix.Portal>
+    </DropdownRadix.Root>
+  )
+})
