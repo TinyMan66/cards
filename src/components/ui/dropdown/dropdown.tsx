@@ -34,13 +34,13 @@ export const Dropdown = forwardRef<
       </DropdownRadix.Trigger>
       <DropdownRadix.Portal>
         <DropdownRadix.Content>
-          {options.map(option => (
+          {options.map((option, index) => (
             <>
               <DropDownItem key={option.value}>
                 {option.icon}
                 {option.value}
               </DropDownItem>
-              <DropdownRadix.Separator />
+              {index !== options.length - 1 && <DropdownRadix.Separator key={option.value} />}
             </>
           ))}
         </DropdownRadix.Content>
