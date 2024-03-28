@@ -1,21 +1,36 @@
+import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
+
 import { Menu } from '@/assets'
 import * as DropdownRadix from '@radix-ui/react-dropdown-menu'
-export const Dropdown = () => {
+
+type DropdownProps = {
+  avatar?: ReactNode
+}
+export const Dropdown = ({ avatar }: DropdownProps) => {
+  const DropDownItem = forwardRef<
+    ElementRef<typeof DropdownRadix.Item>,
+    ComponentPropsWithoutRef<typeof DropdownRadix.Item>
+  >(({ children, className, ...props }, ref) => {
+    return (
+      <DropdownRadix.Item className={className} {...props} ref={ref}>
+        {children}
+      </DropdownRadix.Item>
+    )
+  })
+
   return (
     <>
       <DropdownRadix.Root>
         <DropdownRadix.Trigger>
-          <button>
-            <Menu />
-          </button>
+          <button>{avatar ? <div>{avatar}</div> : <Menu />}</button>
         </DropdownRadix.Trigger>
         <DropdownRadix.Portal>
           <DropdownRadix.Content>
-            <DropdownRadix.Item>..</DropdownRadix.Item>
+            <DropDownItem>..</DropDownItem>
             <DropdownRadix.Separator />
-            <DropdownRadix.Item>..</DropdownRadix.Item>
+            <DropDownItem>..</DropDownItem>
             <DropdownRadix.Separator />
-            <DropdownRadix.Item>..</DropdownRadix.Item>
+            <DropDownItem>..</DropDownItem>
           </DropdownRadix.Content>
         </DropdownRadix.Portal>
       </DropdownRadix.Root>
