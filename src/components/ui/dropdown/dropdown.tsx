@@ -26,7 +26,7 @@ const DropDownItem = forwardRef<
 export const Dropdown = forwardRef<
   ElementRef<typeof DropdownRadix.Root>,
   ComponentPropsWithoutRef<typeof DropdownRadix.Root> & DropdownProps
->(({ avatar }, ref) => {
+>(({ avatar, options }, ref) => {
   return (
     <DropdownRadix.Root>
       <DropdownRadix.Trigger ref={ref}>
@@ -34,11 +34,15 @@ export const Dropdown = forwardRef<
       </DropdownRadix.Trigger>
       <DropdownRadix.Portal>
         <DropdownRadix.Content>
-          <DropDownItem>..</DropDownItem>
-          <DropdownRadix.Separator />
-          <DropDownItem>..</DropDownItem>
-          <DropdownRadix.Separator />
-          <DropDownItem>..</DropDownItem>
+          {options.map(option => (
+            <>
+              <DropDownItem key={option.value}>
+                {option.icon}
+                {option.value}
+              </DropDownItem>
+              <DropdownRadix.Separator />
+            </>
+          ))}
         </DropdownRadix.Content>
       </DropdownRadix.Portal>
     </DropdownRadix.Root>
