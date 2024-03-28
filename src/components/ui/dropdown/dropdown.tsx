@@ -2,9 +2,13 @@ import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'rea
 
 import { Menu } from '@/assets'
 import * as DropdownRadix from '@radix-ui/react-dropdown-menu'
-
+type Option = {
+  icon: ReactNode
+  value: string
+}
 type DropdownProps = {
   avatar?: ReactNode
+  options: Option[]
 }
 export const Dropdown = ({ avatar }: DropdownProps) => {
   const DropDownItem = forwardRef<
