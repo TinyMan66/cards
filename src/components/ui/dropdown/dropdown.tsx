@@ -36,7 +36,7 @@ export const Dropdown = forwardRef<
         <button className={s.iconButton}>{avatar ? <div>{avatar}</div> : <Menu />}</button>
       </DropdownRadix.Trigger>
       <DropdownRadix.Portal>
-        <DropdownRadix.Content>
+        <DropdownRadix.Content align={'end'} className={s.content} sideOffset={8}>
           {options.map((option, index) => (
             <>
               <DropDownItem key={option.value}>
