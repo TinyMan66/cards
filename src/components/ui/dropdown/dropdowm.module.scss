@@ -44,7 +44,7 @@ button {
   .arrow {
     position: absolute;
     top: -3.75px;
-    transform: rotate(45deg);
+    transform: translateX(-50%) rotate(45deg);
 
     width: 9px;
     height: 9px;
@@ -55,6 +55,5 @@ button {
     border-left: none;
 
     fill: var(--color-dark-700);
-    stroke-width: 2px;
   }
 }
