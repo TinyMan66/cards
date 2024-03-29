@@ -2,6 +2,9 @@ import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'rea
 
 import { Menu } from '@/assets'
 import * as DropdownRadix from '@radix-ui/react-dropdown-menu'
+import clsx from 'clsx'
+
+import s from './dropdowm.module.scss'
 
 type Option = {
   icon: ReactNode
@@ -17,7 +20,7 @@ const DropDownItem = forwardRef<
   ComponentPropsWithoutRef<typeof DropdownRadix.Item>
 >(({ children, className, ...props }, ref) => {
   return (
-    <DropdownRadix.Item className={className} {...props} ref={ref}>
+    <DropdownRadix.Item className={clsx(s.item, className)} {...props} ref={ref}>
       {children}
     </DropdownRadix.Item>
   )
@@ -29,8 +32,8 @@ export const Dropdown = forwardRef<
 >(({ avatar, options, ...props }, ref) => {
   return (
     <DropdownRadix.Root>
-      <DropdownRadix.Trigger {...props} ref={ref}>
-        <button>{avatar ? <div>{avatar}</div> : <Menu />}</button>
+      <DropdownRadix.Trigger asChild {...props} ref={ref}>
+        <button className={s.iconButton}>{avatar ? <div>{avatar}</div> : <Menu />}</button>
       </DropdownRadix.Trigger>
       <DropdownRadix.Portal>
         <DropdownRadix.Content>
