@@ -13,7 +13,7 @@ type Option = {
 }
 type DropdownProps = {
   avatar?: ReactNode
-  disabled: boolean
+  disabled?: boolean
   options: Option[]
 } & DropdownRadix.DropdownMenuProps
 
