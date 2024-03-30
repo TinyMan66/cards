@@ -43,7 +43,9 @@ export const Dropdown = forwardRef<
                 {option.icon}
                 {option.value}
               </DropDownItem>
-              {index !== options.length - 1 && <DropdownRadix.Separator key={option.value} />}
+              {index !== options.length - 1 && (
+                <DropdownRadix.Separator className={s.separator} key={option.value} />
+              )}
             </>
           ))}
           <DropdownRadix.Arrow className={s.arrow} />

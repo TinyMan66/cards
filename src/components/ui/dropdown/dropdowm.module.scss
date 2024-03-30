@@ -41,6 +41,12 @@ button {
     padding: 6px 8px;
   }
 
+  .separator {
+    height: 1px;
+    margin: 6px;
+    background-color: var(--color-dark-500);
+  }
+
   .arrow {
     position: absolute;
     top: -3.75px;
