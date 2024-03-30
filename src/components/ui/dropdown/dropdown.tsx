@@ -41,7 +41,7 @@ export const Dropdown = forwardRef<
         <DropdownRadix.Content align={'end'} className={s.content} loop sideOffset={8}>
           {options.map((option, index) => (
             <>
-              <DropDownItem key={option.value}>
+              <DropDownItem disabled={disabled} key={option.value}>
                 {option.icon}
                 <Typography as={'caption'} variant={'caption'}>
                   {option.value}

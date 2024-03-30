@@ -21,3 +21,13 @@ export const Default: Story = {
     ],
   },
 }
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    options: [
+      { icon: <Play />, value: 'Learn' },
+      { icon: <Edit />, value: 'Edit' },
+      { icon: <TrashCan />, value: 'Delete' },
+    ],
+  },
+}
