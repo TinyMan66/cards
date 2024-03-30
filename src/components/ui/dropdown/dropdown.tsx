@@ -13,6 +13,7 @@ type Option = {
 }
 type DropdownProps = {
   avatar?: ReactNode
+  disabled: boolean
   options: Option[]
 } & DropdownRadix.DropdownMenuProps
 
@@ -30,10 +31,10 @@ const DropDownItem = forwardRef<
 export const Dropdown = forwardRef<
   ElementRef<typeof DropdownRadix.Root>,
   ComponentPropsWithoutRef<typeof DropdownRadix.Root> & DropdownProps
->(({ avatar, options, ...props }, ref) => {
+>(({ avatar, disabled, options, ...props }, ref) => {
   return (
     <DropdownRadix.Root>
-      <DropdownRadix.Trigger asChild {...props} ref={ref}>
+      <DropdownRadix.Trigger asChild disabled={disabled} {...props} ref={ref}>
         <button className={s.iconButton}>{avatar ? <div>{avatar}</div> : <Menu />}</button>
       </DropdownRadix.Trigger>
       <DropdownRadix.Portal>
