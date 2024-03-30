@@ -39,6 +39,18 @@ button {
     align-items: center;
 
     padding: 6px 8px;
+
+    img {
+      width: 36px;
+      height: 36px;
+      vertical-align: middle;
+      border-radius: 100%;
+    }
+
+    svg {
+      width: 16p;
+      height: 16px;
+    }
   }
 
   .separator {
