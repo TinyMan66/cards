@@ -13,6 +13,7 @@ button {
 
   &[data-disabled] {
     pointer-events: none;
+    color: var(--color-dark-300);
   }
 
   img {
@@ -44,9 +45,14 @@ button {
 
     padding: 6px 8px;
 
-    &:focus-visible {
+    &:focus {
       background-color: var(--color-dark-100);
+      border-radius: 2px;
       outline: none;
+    }
+
+    &:not([data-disabled]):hover {
+      background-color: var(--color-dark-300);
     }
 
     &[data-disabled] {
