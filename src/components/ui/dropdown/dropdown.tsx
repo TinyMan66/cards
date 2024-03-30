@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
 
 import { Menu } from '@/assets'
+import { Typography } from '@/components'
 import * as DropdownRadix from '@radix-ui/react-dropdown-menu'
 import clsx from 'clsx'
 
@@ -41,7 +42,9 @@ export const Dropdown = forwardRef<
             <>
               <DropDownItem key={option.value}>
                 {option.icon}
-                {option.value}
+                <Typography as={'caption'} variant={'caption'}>
+                  {option.value}
+                </Typography>
               </DropDownItem>
               {index !== options.length - 1 && (
                 <DropdownRadix.Separator className={s.separator} key={option.value} />
