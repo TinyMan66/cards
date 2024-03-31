@@ -8,6 +8,7 @@ import clsx from 'clsx'
 import s from './dropdowm.module.scss'
 
 type Option = {
+  action: () => void
   icon: ReactNode
   value: string
 }
@@ -41,7 +42,7 @@ export const Dropdown = forwardRef<
         <DropdownRadix.Content align={'end'} className={s.content} loop sideOffset={8}>
           {options.map((option, index) => (
             <>
-              <DropDownItem disabled={disabled} key={option.value}>
+              <DropDownItem disabled={disabled} key={option.value} onSelect={option.action}>
                 {option.icon}
                 <Typography as={'caption'} variant={'caption'}>
                   {option.value}
