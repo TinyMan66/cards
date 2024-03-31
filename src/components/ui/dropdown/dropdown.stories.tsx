@@ -15,9 +15,9 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     options: [
-      { icon: <Play />, value: 'Learn' },
-      { icon: <Edit />, value: 'Edit' },
-      { icon: <TrashCan />, value: 'Delete' },
+      { action: () => console.log('Learn'), icon: <Play />, value: 'Learn' },
+      { action: () => console.log('Edit'), icon: <Edit />, value: 'Edit' },
+      { action: () => console.log('Delete'), icon: <TrashCan />, value: 'Delete' },
     ],
   },
 }
@@ -25,9 +25,9 @@ export const Disabled: Story = {
   args: {
     disabled: true,
     options: [
-      { icon: <Play />, value: 'Learn' },
-      { icon: <Edit />, value: 'Edit' },
-      { icon: <TrashCan />, value: 'Delete' },
+      { action: () => console.log('Learn'), icon: <Play />, value: 'Learn' },
+      { action: () => console.log('Edit'), icon: <Edit />, value: 'Edit' },
+      { action: () => console.log('Delete'), icon: <TrashCan />, value: 'Delete' },
     ],
   },
 }
@@ -40,11 +40,12 @@ export const ProfileDropdown: Story = {
     avatar: <img alt={'avatar'} src={avatarImage} />,
     options: [
       {
+        action: () => console.log('Profile info'),
         icon: <img alt={'avatar'} src={avatarImage} />,
         value: 'Ivan',
       },
-      { icon: <Person />, value: 'My Profile' },
-      { icon: <LogOut />, value: 'Sign Out' },
+      { action: () => console.log('Profile'), icon: <Person />, value: 'My Profile' },
+      { action: () => console.log('Sign Out'), icon: <LogOut />, value: 'Sign Out' },
     ],
   },
 }
