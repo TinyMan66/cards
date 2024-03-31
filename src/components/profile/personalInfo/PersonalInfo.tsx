@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { Edit, LogOut } from '@/assets'
 import { Button, Card, PersonalInfoForm, Typography } from '@/components'
+import { Avatar } from '@/components/ui/avatar'
 
 import s from './PersonalInfo.module.scss'
 
@@ -30,9 +31,9 @@ export const PersonalInfo = ({ avatar, email, name, onAvatarChange, onNameChange
           <Typography className={s.title} variant={'large'}>
             Personal Information
           </Typography>
-          <div className={s.imgContainer}>
-            <div className={s.imgWrapper}>
-              <img alt={'avatar'} src={avatar} />
+          <div className={s.avatarContainer}>
+            <div className={s.avatarWrapper}>
+              <Avatar alt={'avatar'} size={'96px'} src={avatar} />
               <button className={s.editAvatarButton} onClick={editAvatarHandler}>
                 <Edit />
               </button>
