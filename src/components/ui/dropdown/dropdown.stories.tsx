@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { Edit, LogOut, Person, Play, TrashCan } from '@/assets'
 import { Dropdown } from '@/components'
+import { Avatar } from '@/components/ui/avatar'
 
 const meta = {
   component: Dropdown,
@@ -37,7 +38,7 @@ const avatarImage =
 
 export const ProfileDropdown: Story = {
   args: {
-    avatar: <img alt={'avatar'} src={avatarImage} />,
+    avatar: <Avatar src={avatarImage} />,
     options: [
       {
         action: () => console.log('Profile info'),
