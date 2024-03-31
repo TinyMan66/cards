@@ -16,6 +16,7 @@ const avatarImage =
 
 export const Default: Story = {
   args: {
+    size: '200px',
     src: avatarImage,
   },
 }
