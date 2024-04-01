@@ -7,8 +7,8 @@ import s from './profileCard.module.scss'
 
 type ProfileCardProps = ComponentPropsWithoutRef<'div'> & {
   avatar: string
-  email: string
-  name: string
+  email?: string
+  name?: string
 }
 export const ProfileCard = ({ avatar, className, email, name, ...props }: ProfileCardProps) => {
   return (
