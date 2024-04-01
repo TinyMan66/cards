@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
+import React, { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
 
 import { Menu } from '@/assets'
 import { Avatar, Typography } from '@/components'
@@ -36,6 +36,12 @@ export const Dropdown = forwardRef<
   ElementRef<typeof DropdownRadix.Root>,
   ComponentPropsWithoutRef<typeof DropdownRadix.Root> & DropdownProps
 >(({ avatar, disabled, email, name, options, ...props }, ref) => {
+  const avatarProfile = avatar && (
+    <DropDownItem className={s.profileCard} key={avatar}>
+      <ProfileCard avatar={avatar} email={email} name={name} />
+    </DropDownItem>
+  )
+
   return (
     <div className={s.container}>
       <DropdownRadix.Root>
@@ -44,26 +50,20 @@ export const Dropdown = forwardRef<
         </DropdownRadix.Trigger>
         <DropdownRadix.Portal>
           <DropdownRadix.Content align={'end'} className={s.content} loop sideOffset={8}>
-            {avatar && (
-              <>
-                <DropDownItem className={s.profileCard} key={avatar}>
-                  <ProfileCard avatar={avatar} email={email} name={name} />
-                </DropDownItem>
-                <DropdownRadix.Separator className={s.separator} key={avatar} />
-              </>
-            )}
+            <React.Fragment key={avatar}>
+              {avatarProfile}
+              <DropdownRadix.Separator className={s.separator} />
+            </React.Fragment>
             {options.map((option, index) => (
-              <>
-                <DropDownItem disabled={disabled} key={option.value} onSelect={option.action}>
+              <React.Fragment key={option.value}>
+                <DropDownItem disabled={disabled} onSelect={option.action}>
                   {option.icon}
-                  <Typography as={'caption'} variant={'caption'}>
-                    {option.value}
-                  </Typography>
+                  <Typography variant={'caption'}>{option.value}</Typography>
                 </DropDownItem>
                 {index !== options.length - 1 && (
-                  <DropdownRadix.Separator className={s.separator} key={option.value} />
+                  <DropdownRadix.Separator className={s.separator} />
                 )}
-              </>
+              </React.Fragment>
             ))}
             <DropdownRadix.Arrow className={s.arrow} />
           </DropdownRadix.Content>
