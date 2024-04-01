@@ -1,12 +1,17 @@
 import { Avatar, Typography } from '@/components'
 
-export const ProfileCard = () => {
+type ProfileCardProps = {
+  avatar: string
+  email: string
+  name: string
+}
+export const ProfileCard = ({ avatar, email, name }: ProfileCardProps) => {
   return (
     <div>
-      <Avatar />
+      <Avatar src={avatar} />
       <div>
-        <Typography>Name</Typography>
-        <Typography>e-mail</Typography>
+        <Typography>{name}</Typography>
+        <Typography>{email}</Typography>
       </div>
     </div>
   )
