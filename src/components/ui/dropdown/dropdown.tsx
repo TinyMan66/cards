@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
 
 import { Menu } from '@/assets'
-import { Typography } from '@/components'
+import { Avatar, Typography } from '@/components'
 import * as DropdownRadix from '@radix-ui/react-dropdown-menu'
 import clsx from 'clsx'
 
@@ -13,7 +13,7 @@ type Option = {
   value: string
 }
 type DropdownProps = {
-  avatar?: ReactNode
+  avatar?: string
   disabled?: boolean
   options: Option[]
 } & DropdownRadix.DropdownMenuProps
@@ -37,7 +37,7 @@ export const Dropdown = forwardRef<
     <div className={s.container}>
       <DropdownRadix.Root>
         <DropdownRadix.Trigger asChild disabled={disabled} {...props} ref={ref}>
-          <button className={s.iconButton}>{avatar ? avatar : <Menu />}</button>
+          <button className={s.iconButton}>{avatar ? <Avatar src={avatar} /> : <Menu />}</button>
         </DropdownRadix.Trigger>
         <DropdownRadix.Portal>
           <DropdownRadix.Content align={'end'} className={s.content} loop sideOffset={8}>
