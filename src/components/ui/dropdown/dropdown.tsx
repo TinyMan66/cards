@@ -1,8 +1,7 @@
 import React, { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
 
 import { Menu } from '@/assets'
-import { Avatar, Typography } from '@/components'
-import { ProfileCard } from '@/components/profile/profileCard/profileCard'
+import { Avatar, ProfileCard, Typography } from '@/components'
 import * as DropdownRadix from '@radix-ui/react-dropdown-menu'
 import clsx from 'clsx'
 
