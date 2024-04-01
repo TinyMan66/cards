@@ -34,28 +34,30 @@ export const Dropdown = forwardRef<
   ComponentPropsWithoutRef<typeof DropdownRadix.Root> & DropdownProps
 >(({ avatar, disabled, options, ...props }, ref) => {
   return (
-    <DropdownRadix.Root>
-      <DropdownRadix.Trigger asChild disabled={disabled} {...props} ref={ref}>
-        <button className={s.iconButton}>{avatar ? <div>{avatar}</div> : <Menu />}</button>
-      </DropdownRadix.Trigger>
-      <DropdownRadix.Portal>
-        <DropdownRadix.Content align={'end'} className={s.content} loop sideOffset={8}>
-          {options.map((option, index) => (
-            <>
-              <DropDownItem disabled={disabled} key={option.value} onSelect={option.action}>
-                {option.icon}
-                <Typography as={'caption'} variant={'caption'}>
-                  {option.value}
-                </Typography>
-              </DropDownItem>
-              {index !== options.length - 1 && (
-                <DropdownRadix.Separator className={s.separator} key={option.value} />
-              )}
-            </>
-          ))}
-          <DropdownRadix.Arrow className={s.arrow} />
-        </DropdownRadix.Content>
-      </DropdownRadix.Portal>
-    </DropdownRadix.Root>
+    <div className={s.container}>
+      <DropdownRadix.Root>
+        <DropdownRadix.Trigger asChild disabled={disabled} {...props} ref={ref}>
+          <button className={s.iconButton}>{avatar ? avatar : <Menu />}</button>
+        </DropdownRadix.Trigger>
+        <DropdownRadix.Portal>
+          <DropdownRadix.Content align={'end'} className={s.content} loop sideOffset={8}>
+            {options.map((option, index) => (
+              <>
+                <DropDownItem disabled={disabled} key={option.value} onSelect={option.action}>
+                  {option.icon}
+                  <Typography as={'caption'} variant={'caption'}>
+                    {option.value}
+                  </Typography>
+                </DropDownItem>
+                {index !== options.length - 1 && (
+                  <DropdownRadix.Separator className={s.separator} key={option.value} />
+                )}
+              </>
+            ))}
+            <DropdownRadix.Arrow className={s.arrow} />
+          </DropdownRadix.Content>
+        </DropdownRadix.Portal>
+      </DropdownRadix.Root>
+    </div>
   )
 })
