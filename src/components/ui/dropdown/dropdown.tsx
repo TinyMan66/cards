@@ -36,9 +36,12 @@ export const Dropdown = forwardRef<
   ComponentPropsWithoutRef<typeof DropdownRadix.Root> & DropdownProps
 >(({ avatar, disabled, email, name, options, ...props }, ref) => {
   const avatarProfile = avatar && (
-    <DropDownItem className={s.profileCard} key={avatar}>
-      <ProfileCard avatar={avatar} email={email} name={name} />
-    </DropDownItem>
+    <React.Fragment key={avatar}>
+      <DropDownItem className={s.profileCard} key={avatar}>
+        <ProfileCard avatar={avatar} email={email} name={name} />
+      </DropDownItem>
+      <DropdownRadix.Separator className={s.separator} />
+    </React.Fragment>
   )
 
   return (
@@ -49,10 +52,7 @@ export const Dropdown = forwardRef<
         </DropdownRadix.Trigger>
         <DropdownRadix.Portal>
           <DropdownRadix.Content align={'end'} className={s.content} loop sideOffset={8}>
-            <React.Fragment key={avatar}>
-              {avatarProfile}
-              <DropdownRadix.Separator className={s.separator} />
-            </React.Fragment>
+            {avatarProfile}
             {options.map((option, index) => (
               <React.Fragment key={option.value}>
                 <DropDownItem disabled={disabled} onSelect={option.action}>
