@@ -1,17 +1,19 @@
+import { ComponentPropsWithoutRef } from 'react'
+
 import { Avatar, Typography } from '@/components'
 
-type ProfileCardProps = {
+type ProfileCardProps = ComponentPropsWithoutRef<'div'> & {
   avatar: string
   email: string
   name: string
 }
-export const ProfileCard = ({ avatar, email, name }: ProfileCardProps) => {
+export const ProfileCard = ({ avatar, email, name, ...props }: ProfileCardProps) => {
   return (
-    <div>
+    <div {...props}>
       <Avatar src={avatar} />
       <div>
-        <Typography>{name}</Typography>
-        <Typography>{email}</Typography>
+        <Typography variant={'subtitle2'}>{name}</Typography>
+        <Typography variant={'caption'}>{email}</Typography>
       </div>
     </div>
   )
