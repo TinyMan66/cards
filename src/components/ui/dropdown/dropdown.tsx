@@ -2,6 +2,7 @@ import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'rea
 
 import { Menu } from '@/assets'
 import { Avatar, Typography } from '@/components'
+import { ProfileCard } from '@/components/profile/profileCard/profileCard'
 import * as DropdownRadix from '@radix-ui/react-dropdown-menu'
 import clsx from 'clsx'
 
@@ -15,6 +16,8 @@ type Option = {
 type DropdownProps = {
   avatar?: string
   disabled?: boolean
+  email?: string
+  name?: string
   options: Option[]
 } & DropdownRadix.DropdownMenuProps
 
@@ -32,7 +35,7 @@ const DropDownItem = forwardRef<
 export const Dropdown = forwardRef<
   ElementRef<typeof DropdownRadix.Root>,
   ComponentPropsWithoutRef<typeof DropdownRadix.Root> & DropdownProps
->(({ avatar, disabled, options, ...props }, ref) => {
+>(({ avatar, disabled, email, name, options, ...props }, ref) => {
   return (
     <div className={s.container}>
       <DropdownRadix.Root>
@@ -41,6 +44,14 @@ export const Dropdown = forwardRef<
         </DropdownRadix.Trigger>
         <DropdownRadix.Portal>
           <DropdownRadix.Content align={'end'} className={s.content} loop sideOffset={8}>
+            {avatar && (
+              <>
+                <DropDownItem className={s.profileCard} key={avatar}>
+                  <ProfileCard avatar={avatar} email={email} name={name} />
+                </DropDownItem>
+                <DropdownRadix.Separator className={s.separator} key={avatar} />
+              </>
+            )}
             {options.map((option, index) => (
               <>
                 <DropDownItem disabled={disabled} key={option.value} onSelect={option.action}>
