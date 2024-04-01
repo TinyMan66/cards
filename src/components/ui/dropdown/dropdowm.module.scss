@@ -79,6 +79,10 @@ button {
     }
   }
 
+  .profileCard {
+    pointer-events: none;
+  }
+
   .separator {
     height: 1px;
     margin: 6px;
