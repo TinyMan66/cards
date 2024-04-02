@@ -11,9 +11,6 @@
 .trigger {
   cursor: pointer;
 
-  top: 20px;
-  left: 20px;
-
   gap: 10px;
 
   max-width: 110px;
@@ -22,21 +19,29 @@
 
   border: 1px solid var(--color-dark-300);
 
-  &:not([data-disabled], [data-state='active']):hover {
-    color: var(--color-light-900);
-    background-color: var(--color-dark-300);
-    border-color: var(--color-dark-100);
-  }
-
   &[data-state='active'] {
     background-color: var(--color-accent-500);
     border-color: var(--color-accent-500);
   }
 
+  &:not([data-disabled], [data-state='active']) {
+    &:hover {
+      background-color: var(--color-dark-300);
+      border-color: var(--color-dark-100);
+
+      .name {
+        color: var(--color-light-900);
+      }
+    }
+  }
+
   &[data-disabled] {
     pointer-events: none;
-    color: var(--color-dark-300);
     background-color: var(--color-dark-700);
     border-color: var(--color-dark-300);
+
+    .name {
+      color: var(--color-dark-300);
+    }
   }
 }

@@ -57,7 +57,9 @@ export const Tabs = forwardRef<
       <TabsList>
         {items.map(item => (
           <TabsTrigger disabled={disabled} key={item.value} value={item.value}>
-            <Typography variant={'body1'}>{item.name}</Typography>
+            <Typography className={s.name} variant={'body1'}>
+              {item.name}
+            </Typography>
           </TabsTrigger>
         ))}
       </TabsList>
