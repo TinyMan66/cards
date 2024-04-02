@@ -9,6 +9,17 @@ type TabsItems = {
 }
 type TabsProps = { items: TabsItems[] } & TabsRadix.TabsProps
 
+const TabsList = forwardRef<
+  ElementRef<typeof TabsRadix.List>,
+  ComponentPropsWithoutRef<typeof TabsRadix.List>
+>(({ children, className, ...props }, ref) => {
+  return (
+    <TabsRadix.List className={className} {...props} ref={ref}>
+      {children}
+    </TabsRadix.List>
+  )
+})
+
 const TabsTrigger = forwardRef<
   ElementRef<typeof TabsRadix.Trigger>,
   ComponentPropsWithoutRef<typeof TabsRadix.Trigger>
@@ -33,9 +44,9 @@ const TabsContent = forwardRef<
 export const Tabs = ({ items, ...props }: TabsProps) => {
   return (
     <TabsRadix.Root {...props}>
-      <TabsRadix.List>
+      <TabsList>
         <TabsTrigger />
-      </TabsRadix.List>
+      </TabsList>
       <TabsContent />
     </TabsRadix.Root>
   )
