@@ -1,5 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
 
+import { Typography } from '@/components'
 import * as TabsRadix from '@radix-ui/react-tabs'
 import clsx from 'clsx'
 
@@ -56,7 +57,7 @@ export const Tabs = forwardRef<
       <TabsList>
         {items.map(item => (
           <TabsTrigger disabled={disabled} key={item.value} value={item.value}>
-            {item.name}
+            <Typography variant={'body1'}>{item.name}</Typography>
           </TabsTrigger>
         ))}
       </TabsList>
