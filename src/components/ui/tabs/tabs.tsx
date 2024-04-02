@@ -2,15 +2,15 @@ import { ReactNode } from 'react'
 
 import * as TabsRadix from '@radix-ui/react-tabs'
 
-type TabItems = {
+type TabsItems = {
   content: ReactNode
   name: string
   value: string
 }
-type TabsProps = { items: TabItems[] } & TabsRadix.TabsProps
-export const Tabs = () => {
+type TabsProps = { items: TabsItems[] } & TabsRadix.TabsProps
+export const Tabs = ({ items, ...props }: TabsProps) => {
   return (
-    <TabsRadix.Root>
+    <TabsRadix.Root {...props}>
       <TabsRadix.List>
         <TabsRadix.Trigger />
       </TabsRadix.List>
