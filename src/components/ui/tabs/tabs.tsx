@@ -54,7 +54,14 @@ export const Tabs = forwardRef<
           </TabsTrigger>
         ))}
       </TabsList>
-      <TabsContent />
+      {items.map(
+        item =>
+          item.content && (
+            <TabsContent key={item.value} value={item.value}>
+              {item.content}
+            </TabsContent>
+          )
+      )}
     </TabsRadix.Root>
   )
 })
