@@ -7,7 +7,10 @@ type TabsItems = {
   name: string
   value: string
 }
-type TabsProps = { items: TabsItems[] } & TabsRadix.TabsProps
+type TabsProps = {
+  disabled?: boolean
+  items: TabsItems[]
+} & TabsRadix.TabsProps
 
 const TabsList = forwardRef<
   ElementRef<typeof TabsRadix.List>,
@@ -44,12 +47,12 @@ const TabsContent = forwardRef<
 export const Tabs = forwardRef<
   ElementRef<typeof TabsRadix.Root>,
   ComponentPropsWithoutRef<typeof TabsRadix.Root> & TabsProps
->(({ className, items, ...props }, ref) => {
+>(({ className, disabled, items, ...props }, ref) => {
   return (
     <TabsRadix.Root className={className} {...props} ref={ref}>
       <TabsList>
         {items.map(item => (
-          <TabsTrigger key={item.value} value={item.value}>
+          <TabsTrigger disabled={disabled} key={item.value} value={item.value}>
             {item.name}
           </TabsTrigger>
         ))}
