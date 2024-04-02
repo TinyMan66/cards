@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'rea
 import * as TabsRadix from '@radix-ui/react-tabs'
 
 type TabsItems = {
-  content: ReactNode
+  content?: ReactNode
   name: string
   value: string
 }
@@ -48,7 +48,11 @@ export const Tabs = forwardRef<
   return (
     <TabsRadix.Root className={className} {...props} ref={ref}>
       <TabsList>
-        <TabsTrigger />
+        {items.map(item => (
+          <TabsTrigger key={item.value} value={item.value}>
+            {item.name}
+          </TabsTrigger>
+        ))}
       </TabsList>
       <TabsContent />
     </TabsRadix.Root>
