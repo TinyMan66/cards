@@ -1,6 +1,9 @@
 import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
 
 import * as TabsRadix from '@radix-ui/react-tabs'
+import clsx from 'clsx'
+
+import s from './tabs.module.scss'
 
 type TabsItems = {
   content?: ReactNode
@@ -17,7 +20,7 @@ const TabsList = forwardRef<
   ComponentPropsWithoutRef<typeof TabsRadix.List>
 >(({ children, className, ...props }, ref) => {
   return (
-    <TabsRadix.List className={className} {...props} ref={ref}>
+    <TabsRadix.List className={clsx(s.list, className)} {...props} ref={ref}>
       {children}
     </TabsRadix.List>
   )
@@ -28,7 +31,7 @@ const TabsTrigger = forwardRef<
   ComponentPropsWithoutRef<typeof TabsRadix.Trigger>
 >(({ children, className, ...props }, ref) => {
   return (
-    <TabsRadix.Trigger className={className} {...props} ref={ref}>
+    <TabsRadix.Trigger className={clsx(s.trigger, className)} {...props} ref={ref}>
       {children}
     </TabsRadix.Trigger>
   )
