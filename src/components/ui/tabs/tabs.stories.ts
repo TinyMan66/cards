@@ -20,3 +20,13 @@ export const Default: Story = {
     ],
   },
 }
+export const Disabled: Story = {
+  args: {
+    defaultValue: '1',
+    disabled: true,
+    items: [
+      { action: () => console.log('item 1'), name: 'My cards', value: '1' },
+      { action: () => console.log('item 2'), name: 'All cards', value: '2' },
+    ],
+  },
+}
