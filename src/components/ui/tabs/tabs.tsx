@@ -7,6 +7,7 @@ import clsx from 'clsx'
 import s from './tabs.module.scss'
 
 type TabsItems = {
+  action: () => void
   content?: ReactNode
   name: string
   value: string
@@ -56,7 +57,12 @@ export const Tabs = forwardRef<
     <TabsRadix.Root className={clsx(s.root, className)} {...props} ref={ref}>
       <TabsList>
         {items.map(item => (
-          <TabsTrigger disabled={disabled} key={item.value} value={item.value}>
+          <TabsTrigger
+            disabled={disabled}
+            key={item.value}
+            onSelect={item.action}
+            value={item.value}
+          >
             <Typography className={s.name} variant={'body1'}>
               {item.name}
             </Typography>
