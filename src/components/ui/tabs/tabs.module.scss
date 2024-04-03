@@ -6,46 +6,59 @@
   > :last-child {
     border-radius: 0 2px 2px 0;
   }
-}
 
-.trigger {
-  cursor: pointer;
+  .trigger {
+    cursor: pointer;
 
-  display: inline-flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex: 1;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 
-  box-sizing: border-box;
-  min-width: 110px;
-  min-height: 36px;
-  padding: 6px 24px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 36px;
+    padding: 6px 24px;
 
-  border: 1px solid var(--color-dark-300);
+    border: 1px solid var(--color-dark-300);
 
-  &[data-state='active'] {
-    background-color: var(--color-accent-500);
-    border-color: var(--color-accent-500);
-  }
-
-  &[data-disabled] {
-    pointer-events: none;
-    background-color: var(--color-dark-700);
-    border-color: var(--color-dark-300);
-
-    .name {
-      color: var(--color-dark-300);
+    &[data-state='active'] {
+      background-color: var(--color-accent-500);
+      border-color: var(--color-accent-500);
     }
-  }
 
-  &:not([data-disabled], [data-state='active']) {
-    &:hover {
-      background-color: var(--color-dark-300);
-      border-color: var(--color-dark-100);
+    &[data-disabled] {
+      pointer-events: none;
+      background-color: var(--color-dark-700);
+      border-color: var(--color-dark-300);
 
       .name {
-        color: var(--color-light-900);
+        color: var(--color-dark-300);
+      }
+    }
+
+    &:not([data-disabled], [data-state='active']) {
+      &:hover {
+        background-color: var(--color-dark-300);
+        border-color: var(--color-dark-100);
+
+        .name {
+          color: var(--color-light-900);
+        }
       }
     }
   }
+}
+
+.content {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+
+  width: 100%;
+  padding: 20px;
+
+  border-radius: 0 0 2px 2px;
+  outline: none;
 }

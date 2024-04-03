@@ -42,7 +42,7 @@ const TabsContent = forwardRef<
   ComponentPropsWithoutRef<typeof TabsRadix.Content>
 >(({ children, className, ...props }, ref) => {
   return (
-    <TabsRadix.Content className={className} {...props} ref={ref}>
+    <TabsRadix.Content className={clsx(s.content, className)} {...props} ref={ref}>
       {children}
     </TabsRadix.Content>
   )
