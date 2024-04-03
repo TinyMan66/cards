@@ -53,7 +53,7 @@ export const Tabs = forwardRef<
   ComponentPropsWithoutRef<typeof TabsRadix.Root> & TabsProps
 >(({ className, disabled, items, ...props }, ref) => {
   return (
-    <TabsRadix.Root className={className} {...props} ref={ref}>
+    <TabsRadix.Root className={clsx(s.root, className)} {...props} ref={ref}>
       <TabsList>
         {items.map(item => (
           <TabsTrigger disabled={disabled} key={item.value} value={item.value}>
