@@ -10,21 +10,22 @@ type ModalProps = {
   open: boolean
   title: string
 } & Omit<ComponentPropsWithoutRef<typeof DialogRadix.Dialog>, 'onOpenChange' | 'open'>
-export const Modal = () => (
-  <DialogRadix.Root>
+export const Modal = ({ children, title, ...props }: ModalProps) => (
+  <DialogRadix.Root {...props}>
     <DialogRadix.Portal>
       <DialogRadix.Overlay />
       <DialogRadix.Content>
         <div>
           <DialogRadix.Title asChild>
             <Typography as={'h3'} variant={'h3'}>
-              Dialog
+              {title}
             </Typography>
           </DialogRadix.Title>
           <DialogRadix.Close>
             <Close />
           </DialogRadix.Close>
         </div>
+        {children}
       </DialogRadix.Content>
     </DialogRadix.Portal>
   </DialogRadix.Root>
