@@ -4,16 +4,18 @@ import { Close } from '@/assets'
 import { Typography } from '@/components'
 import * as DialogRadix from '@radix-ui/react-dialog'
 
+import s from './modal.module.scss'
+
 type ModalProps = {
   children: ReactNode
   onOpenChange: (open: boolean) => void
   open: boolean
-  title: string
+  title?: string
 } & Omit<ComponentPropsWithoutRef<typeof DialogRadix.Dialog>, 'onOpenChange' | 'open'>
 export const Modal = ({ children, title, ...props }: ModalProps) => (
   <DialogRadix.Root {...props}>
     <DialogRadix.Portal>
-      <DialogRadix.Overlay />
+      <DialogRadix.Overlay className={s.overlay} />
       <DialogRadix.Content>
         <div>
           <DialogRadix.Title asChild>
