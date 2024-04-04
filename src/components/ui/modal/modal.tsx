@@ -7,14 +7,16 @@ export const Modal = () => (
     <DialogRadix.Portal>
       <DialogRadix.Overlay />
       <DialogRadix.Content>
-        <DialogRadix.Title>
-          <Typography as={'h3'} variant={'h3'}>
-            Dialog
-          </Typography>
-        </DialogRadix.Title>
-        <DialogRadix.Close>
-          <Close />
-        </DialogRadix.Close>
+        <div>
+          <DialogRadix.Title asChild>
+            <Typography as={'h3'} variant={'h3'}>
+              Dialog
+            </Typography>
+          </DialogRadix.Title>
+          <DialogRadix.Close>
+            <Close />
+          </DialogRadix.Close>
+        </div>
       </DialogRadix.Content>
     </DialogRadix.Portal>
   </DialogRadix.Root>
