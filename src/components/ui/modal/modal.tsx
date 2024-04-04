@@ -17,7 +17,7 @@ export const Modal = ({ children, title, ...props }: ModalProps) => (
     <DialogRadix.Portal>
       <DialogRadix.Overlay className={s.overlay} />
       <DialogRadix.Content className={s.content}>
-        <div>
+        <div className={s.header}>
           <DialogRadix.Title asChild>
             <Typography as={'h3'} variant={'h3'}>
               {title}
