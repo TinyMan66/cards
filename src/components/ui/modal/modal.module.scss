@@ -4,3 +4,17 @@
   background-color: rgb(0 0 0 / 70%);
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 90vw;
+  max-width: 542px;
+  max-height: 85vh;
+
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500, #333);
+}
