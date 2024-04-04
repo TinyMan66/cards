@@ -1,3 +1,4 @@
+import { Close } from '@/assets'
 import { Typography } from '@/components'
 import * as DialogRadix from '@radix-ui/react-dialog'
 
@@ -11,7 +12,9 @@ export const Modal = () => (
             Dialog
           </Typography>
         </DialogRadix.Title>
-        <DialogRadix.Close />
+        <DialogRadix.Close>
+          <Close />
+        </DialogRadix.Close>
       </DialogRadix.Content>
     </DialogRadix.Portal>
   </DialogRadix.Root>
