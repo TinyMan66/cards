@@ -23,7 +23,7 @@ export const Modal = ({ children, title, ...props }: ModalProps) => (
               {title}
             </Typography>
           </DialogRadix.Title>
-          <DialogRadix.Close>
+          <DialogRadix.Close className={s.closeButton}>
             <Close />
           </DialogRadix.Close>
         </div>
