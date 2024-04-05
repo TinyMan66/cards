@@ -15,9 +15,21 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     options: [
-      { action: () => console.log('Learn'), icon: <Play />, value: 'Learn' },
-      { action: () => console.log('Edit'), icon: <Edit />, value: 'Edit' },
-      { action: () => console.log('Delete'), icon: <TrashCan />, value: 'Delete' },
+      {
+        action: () => {},
+        icon: <Play />,
+        value: 'Learn',
+      },
+      {
+        action: () => {},
+        icon: <Edit />,
+        value: 'Edit',
+      },
+      {
+        action: () => {},
+        icon: <TrashCan />,
+        value: 'Delete',
+      },
     ],
   },
 }
@@ -25,9 +37,21 @@ export const Disabled: Story = {
   args: {
     disabled: true,
     options: [
-      { action: () => console.log('Learn'), icon: <Play />, value: 'Learn' },
-      { action: () => console.log('Edit'), icon: <Edit />, value: 'Edit' },
-      { action: () => console.log('Delete'), icon: <TrashCan />, value: 'Delete' },
+      {
+        action: () => {},
+        icon: <Play />,
+        value: 'Learn',
+      },
+      {
+        action: () => {},
+        icon: <Edit />,
+        value: 'Edit',
+      },
+      {
+        action: () => {},
+        icon: <TrashCan />,
+        value: 'Delete',
+      },
     ],
   },
 }
@@ -38,14 +62,19 @@ const avatarImage =
 export const ProfileDropdown: Story = {
   args: {
     avatar: avatarImage,
+    email: 'exampale@mail.com',
+    name: 'Ivan',
     options: [
       {
-        action: () => console.log('Profile info'),
-        icon: <img alt={'avatar'} src={avatarImage} />,
-        value: 'Ivan',
+        action: () => {},
+        icon: <Person />,
+        value: 'My Profile',
       },
-      { action: () => console.log('Profile'), icon: <Person />, value: 'My Profile' },
-      { action: () => console.log('Sign Out'), icon: <LogOut />, value: 'Sign Out' },
+      {
+        action: () => {},
+        icon: <LogOut />,
+        value: 'Sign Out',
+      },
     ],
   },
 }
