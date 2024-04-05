@@ -15,8 +15,8 @@ export const Default: Story = {
   args: {
     defaultValue: '1',
     items: [
-      { action: () => console.log('item 1'), name: 'My cards', value: '1' },
-      { action: () => console.log('item 2'), name: 'All cards', value: '2' },
+      { action: () => {}, name: 'My cards', value: '1' },
+      { action: () => {}, name: 'All cards', value: '2' },
     ],
   },
 }
@@ -25,8 +25,8 @@ export const Disabled: Story = {
     defaultValue: '1',
     disabled: true,
     items: [
-      { action: () => console.log('item 1'), name: 'My cards', value: '1' },
-      { action: () => console.log('item 2'), name: 'All cards', value: '2' },
+      { action: () => {}, name: 'My cards', value: '1' },
+      { action: () => {}, name: 'All cards', value: '2' },
     ],
   },
 }
@@ -38,12 +38,12 @@ export const WithContent: Story = {
     defaultValue: '1',
     items: [
       {
-        action: () => console.log('item 1'),
+        action: () => {},
         content: <Avatar size={'100px'} src={avatarImage} />,
         name: 'My cards',
         value: '1',
       },
-      { action: () => console.log('item 2'), name: 'All cards', value: '2' },
+      { action: () => {}, name: 'All cards', value: '2' },
     ],
   },
 }
