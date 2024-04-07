@@ -3,10 +3,13 @@ button {
 }
 
 .container {
+  display: block;
   width: 100%;
 }
 
 .label {
+  display: block;
+  align-items: center;
   color: var(--color-dark-100);
 
   &.disabled {
@@ -30,7 +33,7 @@ button {
   color: var(--color-light-100);
 
   border: 1px solid var(--color-dark-300);
-  border-radius: 2px;
+  border-radius: 2px 2px 0 0;
 
   &[data-disabled] {
     cursor: initial;
@@ -45,8 +48,18 @@ button {
     background-color: var(--color-dark-500);
   }
 
+  &:not([data-disabled], :focus)[data-placeholder] {
+    border: 1px solid var(--color-dark-300);
+  }
+
   &:not([data-disabled]):active {
     border: 1px solid var(--color-dark-100);
+  }
+}
+
+.icon {
+  .trigger[data-state='open'] & {
+    transform: rotate(180deg);
   }
 }
 
@@ -57,5 +70,18 @@ button {
   max-height: var(--radix-select-content-available-height);
 
   border: 1px solid var(--color-dark-100);
-  border-radius: 2px;
+  border-top: 0;
+  border-radius: 0 0 2px 2px;
+}
+
+.item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+
+  &[data-highlighted] {
+    background-color: var(--color-accent-900);
+    outline: none;
+  }
 }
