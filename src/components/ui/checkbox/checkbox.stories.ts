@@ -16,3 +16,9 @@ export const Default: Story = {
     label: 'checkbox',
   },
 }
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    label: 'checkbox',
+  },
+}

@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { ArrowDown, ArrowUp } from '@/assets'
+import { ArrowDown } from '@/assets'
 import { Typography } from '@/components'
 import * as SelectRadix from '@radix-ui/react-select'
 import clsx from 'clsx'
@@ -15,18 +15,16 @@ type Option = {
 type SelectProps = {
   className?: string
   labelName?: string
-  onChange: (value: string) => void
   options: Option[]
   placeholder?: string
-  value?: string
 }
 
 const SelectItem = forwardRef<
   ElementRef<typeof SelectRadix.Item>,
   ComponentPropsWithoutRef<typeof SelectRadix.Item>
->(({ children, ...props }, ref) => {
+>(({ children, className, ...props }, ref) => {
   return (
-    <SelectRadix.Item {...props} ref={ref}>
+    <SelectRadix.Item className={clsx(s.item, className)} {...props} ref={ref}>
       <SelectRadix.ItemText>{children}</SelectRadix.ItemText>
     </SelectRadix.Item>
   )
@@ -34,55 +32,37 @@ const SelectItem = forwardRef<
 
 export const Select = forwardRef<
   ElementRef<typeof SelectRadix.Root>,
-  Omit<ComponentPropsWithoutRef<typeof SelectRadix.Root>, 'value'> & SelectProps
->(({ className, labelName, onChange, options, placeholder, value, ...props }, ref) => {
-  const [open, setOpen] = useState<boolean>(false)
-
-  const toggleOpenHandler = () => {
-    setOpen(prevOpen => !prevOpen)
-  }
-  const onValueChangeHandler = (newValue: string) => {
-    value && onChange(value)
-    onChange(newValue)
-  }
-
+  ComponentPropsWithoutRef<typeof SelectRadix.Root> & SelectProps
+>(({ className, labelName, options, placeholder, ...props }, ref) => {
   return (
     <div className={clsx(s.container, className)}>
-      {labelName && (
-        <Typography
-          as={'label'}
-          className={clsx(s.label, props.disabled && s.disabled)}
-          variant={'body2'}
-        >
-          {labelName}
-        </Typography>
-      )}
-      <SelectRadix.Root
-        onOpenChange={toggleOpenHandler}
-        onValueChange={onValueChangeHandler}
-        open={open}
-        value={value}
-        {...props}
+      <Typography
+        as={'label'}
+        className={clsx(s.label, props.disabled && s.disabled)}
+        variant={'body2'}
       >
-        <SelectRadix.Trigger className={s.trigger} ref={ref}>
-          <SelectRadix.Value placeholder={placeholder} />
-          <SelectRadix.Icon>{open ? <ArrowUp /> : <ArrowDown />}</SelectRadix.Icon>
-        </SelectRadix.Trigger>
+        {labelName}
+        <SelectRadix.Root {...props}>
+          <SelectRadix.Trigger className={s.trigger} ref={ref}>
+            <SelectRadix.Value placeholder={placeholder} />
+            <SelectRadix.Icon className={s.icon}>{<ArrowDown />}</SelectRadix.Icon>
+          </SelectRadix.Trigger>
 
-        <SelectRadix.Portal>
-          <SelectRadix.Content className={s.content} position={'popper'}>
-            <SelectRadix.Viewport>
-              <SelectRadix.Group>
-                {options.map(option => (
-                  <SelectItem key={option.value} value={option.value}>
-                    {option.label}
-                  </SelectItem>
-                ))}
-              </SelectRadix.Group>
-            </SelectRadix.Viewport>
-          </SelectRadix.Content>
-        </SelectRadix.Portal>
-      </SelectRadix.Root>
+          <SelectRadix.Portal>
+            <SelectRadix.Content className={s.content} collisionPadding={0} position={'popper'}>
+              <SelectRadix.Viewport>
+                <SelectRadix.Group>
+                  {options.map(option => (
+                    <SelectItem className={s.item} key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectRadix.Group>
+              </SelectRadix.Viewport>
+            </SelectRadix.Content>
+          </SelectRadix.Portal>
+        </SelectRadix.Root>
+      </Typography>
     </div>
   )
 })

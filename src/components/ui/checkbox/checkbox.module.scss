@@ -20,8 +20,6 @@ button {
 }
 
 .checkboxWrapper {
-  cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,8 +60,8 @@ button {
     border-color: var(--color-light-100);
   }
 
-  &:disabled {
-    cursor: initial;
+  &[data-disabled] {
+    cursor: default;
     border-color: var(--color-dark-100);
   }
 

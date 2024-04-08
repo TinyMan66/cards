@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 
 import { Button, Card, ControlledTextField, Typography } from '@/components'
+import { Avatar } from '@/components/ui/avatar'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -34,10 +35,8 @@ export const PersonalInfoForm = ({ avatar, onSubmit, userName }: Props) => {
         <Typography className={s.title} variant={'large'}>
           Personal Information
         </Typography>
-        <div className={s.imgContainer}>
-          <div className={s.imgWrapper}>
-            <img alt={'avatar'} src={avatar} />
-          </div>
+        <div className={s.avatarContainer}>
+          <Avatar alt={'avatar'} className={s.avatar} size={'96px'} src={avatar} />
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.textField}>

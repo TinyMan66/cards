@@ -12,21 +12,16 @@
   text-align: center;
 }
 
-.imgContainer {
+.avatarContainer {
   display: flex;
   justify-content: center;
   width: 100%;
   margin-bottom: 6px;
 
-  .imgWrapper {
+  .avatarWrapper {
     position: relative;
     width: 96px;
     height: 96px;
-
-    img {
-      object-fit: cover;
-      border-radius: 50%;
-    }
 
     .editAvatarButton {
       all: unset;
@@ -54,6 +49,7 @@
   display: flex;
   gap: 6px;
   justify-content: center;
+  margin-top: 6px;
 
   .editNameButton {
     all: unset;
