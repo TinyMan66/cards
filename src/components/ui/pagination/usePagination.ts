@@ -10,6 +10,7 @@ const range = (start: number, end: number) => {
   */
   return Array.from({ length }, (_, idx) => idx + start)
 }
+type PaginationRange = ('...' | number)[]
 
 type UsePaginationParamType = {
   count: number
