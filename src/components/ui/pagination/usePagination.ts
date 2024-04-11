@@ -1,5 +1,5 @@
 // original code: https://www.freecodecamp.org/news/build-a-custom-pagination-component-in-react/
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo } from 'react'
 
 const range = (start: number, end: number) => {
   const length = end - start + 1
@@ -22,13 +22,13 @@ type UsePaginationParamType = {
 }
 export const usePagination = ({ count, onChange, page, siblings = 1 }: UsePaginationParamType) => {
   const paginationRange = useMemo(() => {
-    // Pages count is determined as siblingCount + firstPage + lastPage + currentPage + 2*DOTS
+    // Pages count is determined as siblings + firstPage + lastPage + page + 2*DOTS
     const totalPageNumbers = siblings + 5
 
     /*
       Case 1:
       If the number of pages is less than the page numbers we want to show in our
-      paginationComponent, we return the range [1..totalPageCount]
+      paginationComponent, we return the range [1...count]
     */
     if (totalPageNumbers >= count) {
       return range(1, count)
@@ -41,7 +41,7 @@ export const usePagination = ({ count, onChange, page, siblings = 1 }: UsePagina
     const rightSiblingIndex = Math.min(page + siblings, count)
 
     /*
-      We do not show dots just when there is just one page number to be inserted between the extremes of sibling and the page limits i.e 1 and totalPageCount. Hence we are using leftSiblingIndex > 2 and rightSiblingIndex < totalPageCount - 2
+      We do not show dots just when there is just one page number to be inserted between the extremes of sibling and the page limits i.e 1 and count. Hence, we are using leftSiblingIndex > 2 and rightSiblingIndex < count - 2
     */
     const shouldShowLeftDots = leftSiblingIndex > 2
     const shouldShowRightDots = rightSiblingIndex < count - 2
