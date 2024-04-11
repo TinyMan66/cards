@@ -1,5 +1,5 @@
 // original code: https://www.freecodecamp.org/news/build-a-custom-pagination-component-in-react/
-import { useMemo } from 'react'
+import { useCallback, useMemo } from "react";
 
 const range = (start: number, end: number) => {
   const length = end - start + 1
@@ -79,5 +79,29 @@ export const usePagination = ({ count, onChange, page, siblings = 1 }: UsePagina
     }
   }, [siblings, page, count]) as PaginationRange
 
-  return { paginationRange }
+  const lastPage = paginationRange.at(-1)
+
+  const isFirstPage = page === 1
+  const isLastPage = page === lastPage
+
+  const handleNextPageClicked = useCallback(() => {
+    onChange(page + 1)
+  }, [page, onChange])
+
+  const handlePreviousPageClicked = useCallback(() => {
+    onChange(page - 1)
+  }, [page, onChange])
+
+  function handleMainPageClicked(pageNumber: number) {
+    return () => onChange(pageNumber)
+  }
+
+  return {
+    handleMainPageClicked,
+    handleNextPageClicked,
+    handlePreviousPageClicked,
+    isFirstPage,
+    isLastPage,
+    paginationRange,
+  }
 }
