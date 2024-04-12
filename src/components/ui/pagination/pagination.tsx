@@ -1,5 +1,17 @@
 import { ComponentPropsWithoutRef } from 'react'
 
+type PaginationConditionals =
+  | {
+      onPerPageChange: (itemPerPage: number) => void
+      perPage: number
+      perPageOptions: number[]
+    }
+  | {
+      onPerPageChange?: never
+      perPage?: null
+      perPageOptions?: never
+    }
+
 export type PaginationProps = {
   count: number
   onChange: (page: number) => void
@@ -8,7 +20,8 @@ export type PaginationProps = {
   perPage?: number
   perPageOptions?: number[]
   siblings?: number
-} & Omit<ComponentPropsWithoutRef<'div'>, 'onChange'>
+} & PaginationConditionals &
+  Omit<ComponentPropsWithoutRef<'div'>, 'onChange'>
 export const Pagination = ({
   className,
   count,
