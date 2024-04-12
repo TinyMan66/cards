@@ -2,6 +2,8 @@ import { ComponentPropsWithoutRef } from 'react'
 
 import { ArrowLeft, ArrowRight } from '@/assets'
 
+import { usePagination } from './usePagination'
+
 type PaginationConditionals =
   | {
       onPerPageChange: (itemPerPage: number) => void
@@ -19,7 +21,7 @@ export type PaginationProps = {
   onChange: (page: number) => void
   onPerPageChange?: (itemPerPage: number) => void
   page: number
-  perPage?: number
+  perPage?: null | number
   perPageOptions?: number[]
   siblings?: number
 } & PaginationConditionals &
@@ -100,5 +102,33 @@ export const Pagination = ({
   siblings,
   ...props
 }: PaginationProps) => {
-  return <div></div>
+  const {
+    handleMainPageClicked,
+    handleNextPageClicked,
+    handlePreviousPageClicked,
+    isFirstPage,
+    isLastPage,
+    paginationRange,
+  } = usePagination({
+    count,
+    onChange,
+    page,
+    siblings,
+  })
+
+  return (
+    <div {...props}>
+      <div>
+        <PrevButton disabled={isFirstPage} onClick={handlePreviousPageClicked} />
+
+        <MainPaginationButtons
+          currentPage={page}
+          onClick={handleMainPageClicked}
+          paginationRange={paginationRange}
+        />
+
+        <NextButton disabled={isLastPage} onClick={handleNextPageClicked} />
+      </div>
+    </div>
+  )
 }
