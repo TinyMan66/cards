@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react'
 
-import { ArrowLeft, ArrowRight } from "@/assets";
+import { ArrowLeft, ArrowRight } from '@/assets'
 
 type PaginationConditionals =
   | {
@@ -30,6 +30,11 @@ type NavigationButtonProps = {
   onClick: () => void
 }
 
+type PageButtonProps = NavigationButtonProps & {
+  page: number
+  selected: boolean
+}
+
 const PrevButton = ({ disabled, onClick }: NavigationButtonProps) => {
   return (
     <button disabled={disabled} onClick={onClick}>
@@ -42,6 +47,14 @@ const NextButton = ({ disabled, onClick }: NavigationButtonProps) => {
   return (
     <button disabled={disabled} onClick={onClick}>
       <ArrowRight />
+    </button>
+  )
+}
+
+const PageButton = ({ disabled, onClick, page, selected }: PageButtonProps) => {
+  return (
+    <button disabled={selected || disabled} onClick={onClick}>
+      {page}
     </button>
   )
 }
@@ -60,6 +73,7 @@ export const Pagination = ({
   return (
     <div>
       <PrevButton />
+      <PageButton />
       <NextButton />
     </div>
   )
