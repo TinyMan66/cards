@@ -22,6 +22,20 @@ export type PaginationProps = {
   siblings?: number
 } & PaginationConditionals &
   Omit<ComponentPropsWithoutRef<'div'>, 'onChange'>
+
+type NavigationButtonProps = {
+  disabled?: boolean
+  onClick: () => void
+}
+
+const PrevButton = ({ disabled, onClick }: NavigationButtonProps) => {
+  return (
+    <button disabled={disabled} onClick={onClick}>
+      {'<'}
+    </button>
+  )
+}
+
 export const Pagination = ({
   className,
   count,
@@ -33,5 +47,9 @@ export const Pagination = ({
   siblings,
   ...props
 }: PaginationProps) => {
-  return <div></div>
+  return (
+    <div>
+      <PrevButton />
+    </div>
+  )
 }
