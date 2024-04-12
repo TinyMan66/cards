@@ -1,5 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react'
 
+import { ArrowLeft } from '@/assets'
+
 type PaginationConditionals =
   | {
       onPerPageChange: (itemPerPage: number) => void
@@ -31,7 +33,7 @@ type NavigationButtonProps = {
 const PrevButton = ({ disabled, onClick }: NavigationButtonProps) => {
   return (
     <button disabled={disabled} onClick={onClick}>
-      {'<'}
+      <ArrowLeft />
     </button>
   )
 }
