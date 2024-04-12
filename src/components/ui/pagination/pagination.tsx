@@ -59,6 +59,10 @@ const PageButton = ({ disabled, onClick, page, selected }: PageButtonProps) => {
   )
 }
 
+const Dots = () => {
+  return <span>&#8230;</span>
+}
+
 export const Pagination = ({
   className,
   count,
