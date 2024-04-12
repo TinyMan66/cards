@@ -63,6 +63,32 @@ const Dots = () => {
   return <span>&#8230;</span>
 }
 
+type MainPaginationButtonsProps = {
+  currentPage: number
+  onClick: (pageNumber: number) => () => void
+  paginationRange: (number | string)[]
+}
+
+const MainPaginationButtons = ({
+  currentPage,
+  onClick,
+  paginationRange,
+}: MainPaginationButtonsProps) => {
+  return (
+    <>
+      {paginationRange.map((page: number | string, index) => {
+        const isSelected = page === currentPage
+
+        if (typeof page !== 'number') {
+          return <Dots key={index} />
+        }
+
+        return <PageButton key={index} onClick={onClick(page)} page={page} selected={isSelected} />
+      })}
+    </>
+  )
+}
+
 export const Pagination = ({
   className,
   count,
@@ -74,11 +100,5 @@ export const Pagination = ({
   siblings,
   ...props
 }: PaginationProps) => {
-  return (
-    <div>
-      <PrevButton />
-      <PageButton />
-      <NextButton />
-    </div>
-  )
+  return <div></div>
 }
