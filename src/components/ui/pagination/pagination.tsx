@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react'
 
 import { ArrowLeft, ArrowRight } from '@/assets'
+import { Select } from '@/components'
 
 import { usePagination } from './usePagination'
 
@@ -88,6 +89,27 @@ const MainPaginationButtons = ({
         return <PageButton key={index} onClick={onClick(page)} page={page} selected={isSelected} />
       })}
     </>
+  )
+}
+
+export type PerPageSelectProps = {
+  onPerPageChange: (itemPerPage: string) => void
+  perPage: number
+  perPageOptions: number[]
+}
+
+export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions }: PerPageSelectProps) => {
+  const selectOptions = perPageOptions.map(value => ({
+    label: value.toString(),
+    value: value.toString(),
+  }))
+
+  return (
+    <div>
+      Показать
+      <Select onValueChange={onPerPageChange} options={selectOptions} value={perPage.toString()} />
+      на странице
+    </div>
   )
 }
 
