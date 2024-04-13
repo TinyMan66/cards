@@ -7,9 +7,9 @@ import { usePagination } from './usePagination'
 
 type PaginationConditionals =
   | {
-      onPerPageChange: (itemPerPage: number) => void
-      perPage: number
-      perPageOptions: number[]
+      onPerPageChange: (itemPerPage: string) => void
+      perPage: string
+      perPageOptions: string[]
     }
   | {
       onPerPageChange?: never
@@ -20,10 +20,10 @@ type PaginationConditionals =
 export type PaginationProps = {
   count: number
   onChange: (page: number) => void
-  onPerPageChange?: (itemPerPage: number) => void
+  onPerPageChange?: (itemPerPage: string) => void
   page: number
-  perPage?: null | number
-  perPageOptions?: number[]
+  perPage?: null | string
+  perPageOptions?: string[]
   siblings?: number
 } & PaginationConditionals &
   Omit<ComponentPropsWithoutRef<'div'>, 'onChange'>
@@ -94,20 +94,20 @@ const MainPaginationButtons = ({
 
 export type PerPageSelectProps = {
   onPerPageChange: (itemPerPage: string) => void
-  perPage: number
-  perPageOptions: number[]
+  perPage: string
+  perPageOptions: string[]
 }
 
 export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions }: PerPageSelectProps) => {
   const selectOptions = perPageOptions.map(value => ({
-    label: value.toString(),
-    value: value.toString(),
+    label: value,
+    value,
   }))
 
   return (
     <div>
       Показать
-      <Select onValueChange={onPerPageChange} options={selectOptions} value={perPage.toString()} />
+      <Select onValueChange={onPerPageChange} options={selectOptions} value={perPage} />
       на странице
     </div>
   )
@@ -138,6 +138,8 @@ export const Pagination = ({
     siblings,
   })
 
+  const showPerPageSelect = !!perPage && !!perPageOptions && !!onPerPageChange
+
   return (
     <div {...props}>
       <div>
@@ -151,6 +153,15 @@ export const Pagination = ({
 
         <NextButton disabled={isLastPage} onClick={handleNextPageClicked} />
       </div>
+      {showPerPageSelect && (
+        <PerPageSelect
+          {...{
+            onPerPageChange,
+            perPage,
+            perPageOptions,
+          }}
+        />
+      )}
     </div>
   )
 }
