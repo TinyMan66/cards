@@ -117,6 +117,7 @@ export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions }: PerP
 }
 
 const classNames = {
+  container: s.container,
   root(className?: string) {
     return clsx(s.root, className)
   },
@@ -151,7 +152,7 @@ export const Pagination = ({
 
   return (
     <div className={classNames.root(className)} {...props}>
-      <div>
+      <div className={classNames.container}>
         <PrevButton disabled={isFirstPage} onClick={handlePreviousPageClicked} />
 
         <MainPaginationButtons
