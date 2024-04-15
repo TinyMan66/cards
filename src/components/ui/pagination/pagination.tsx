@@ -2,6 +2,9 @@ import { ComponentPropsWithoutRef } from 'react'
 
 import { ArrowLeft, ArrowRight } from '@/assets'
 import { Select } from '@/components'
+import clsx from 'clsx'
+
+import s from './pagination.module.scss'
 
 import { usePagination } from './usePagination'
 
@@ -138,10 +141,13 @@ export const Pagination = ({
     siblings,
   })
 
+  const classNames = {
+    root: clsx(s.root, className),
+  }
   const showPerPageSelect = !!perPage && !!perPageOptions && !!onPerPageChange
 
   return (
-    <div {...props}>
+    <div className={classNames.root} {...props}>
       <div>
         <PrevButton disabled={isFirstPage} onClick={handlePreviousPageClicked} />
 
