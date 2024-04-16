@@ -58,3 +58,12 @@
     color: var(--color-dark-500) !important;
   }
 }
+
+.selectWrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  color: var(--color-light-100);
+  white-space: nowrap;
+}

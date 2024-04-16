@@ -112,7 +112,7 @@ export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions }: PerP
   }))
 
   return (
-    <div>
+    <div className={classNames.selectWrapper}>
       Показать
       <Select onValueChange={onPerPageChange} options={selectOptions} value={perPage} />
       на странице
@@ -131,6 +131,7 @@ const classNames = {
   root(className?: string) {
     return clsx(s.root, className)
   },
+  selectWrapper: s.selectWrapper,
 }
 
 export const Pagination = ({
