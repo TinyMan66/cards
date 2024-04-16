@@ -10,7 +10,7 @@
   list-style-type: none;
 }
 
-.item {
+@mixin item {
   all: unset;
 
   display: flex;
@@ -23,6 +23,11 @@
   color: var(--color-light-100);
 
   border-radius: 2px;
+}
+
+.item {
+  @include item;
+
   cursor: pointer;
 
   &:focus-visible {
