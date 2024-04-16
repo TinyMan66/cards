@@ -44,7 +44,7 @@ type PageButtonProps = NavigationButtonProps & {
 const PrevButton = ({ disabled, onClick }: NavigationButtonProps) => {
   return (
     <button className={classNames.item} disabled={disabled} onClick={onClick}>
-      <ArrowLeft />
+      <ArrowLeft className={classNames.icon} />
     </button>
   )
 }
@@ -52,7 +52,7 @@ const PrevButton = ({ disabled, onClick }: NavigationButtonProps) => {
 const NextButton = ({ disabled, onClick }: NavigationButtonProps) => {
   return (
     <button className={classNames.item} disabled={disabled} onClick={onClick}>
-      <ArrowRight />
+      <ArrowRight className={classNames.icon} />
     </button>
   )
 }
@@ -123,6 +123,7 @@ export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions }: PerP
 const classNames = {
   container: s.container,
   dots: s.dots,
+  icon: s.icon,
   item: s.item,
   pageButton(selected?: boolean) {
     return clsx(this.item, selected && s.selected)

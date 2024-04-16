@@ -52,4 +52,9 @@
 .dots {
   @include item;
 }
-
+.icon {
+  .item:disabled & {
+    // important because icons have style prop
+    color: var(--color-dark-500) !important;
+  }
+}
