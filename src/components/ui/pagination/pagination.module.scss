@@ -9,3 +9,37 @@
   gap: 12px;
   list-style-type: none;
 }
+
+item {
+  all: unset;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  color: var(--color-light-100);
+
+  border-radius: 2px;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: var(--outline-focus);
+  }
+
+  &:disabled {
+    cursor: initial;
+    opacity: 1;
+  }
+
+  &:hover:not(&:disabled) {
+    background-color: var(--color-dark-500);
+  }
+
+  &.selected {
+    color: var(--color-dark-900);
+    background-color: var(--color-light-100);
+  }
+}
