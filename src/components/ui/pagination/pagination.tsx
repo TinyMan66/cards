@@ -70,7 +70,7 @@ const PageButton = ({ disabled, onClick, page, selected }: PageButtonProps) => {
 }
 
 const Dots = () => {
-  return <span>&#8230;</span>
+  return <span className={classNames.dots}>&#8230;</span>
 }
 
 type MainPaginationButtonsProps = {
@@ -122,6 +122,7 @@ export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions }: PerP
 
 const classNames = {
   container: s.container,
+  dots: s.dots,
   item: s.item,
   pageButton(selected?: boolean) {
     return clsx(this.item, selected && s.selected)
