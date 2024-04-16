@@ -59,7 +59,11 @@ const NextButton = ({ disabled, onClick }: NavigationButtonProps) => {
 
 const PageButton = ({ disabled, onClick, page, selected }: PageButtonProps) => {
   return (
-    <button disabled={selected || disabled} onClick={onClick}>
+    <button
+      className={classNames.pageButton(selected)}
+      disabled={selected || disabled}
+      onClick={onClick}
+    >
       {page}
     </button>
   )
@@ -119,6 +123,9 @@ export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions }: PerP
 const classNames = {
   container: s.container,
   item: s.item,
+  pageButton(selected?: boolean) {
+    return clsx(this.item, selected && s.selected)
+  },
   root(className?: string) {
     return clsx(s.root, className)
   },
