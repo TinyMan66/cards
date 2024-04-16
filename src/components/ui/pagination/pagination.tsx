@@ -41,6 +41,21 @@ type PageButtonProps = NavigationButtonProps & {
   selected: boolean
 }
 
+const classNames = {
+  container: s.container,
+  dots: s.dots,
+  icon: s.icon,
+  item: s.item,
+  pageButton(selected?: boolean) {
+    return clsx(this.item, selected && s.selected)
+  },
+  root(className?: string) {
+    return clsx(s.root, className)
+  },
+  select: s.select,
+  selectWrapper: s.selectWrapper,
+}
+
 const PrevButton = ({ disabled, onClick }: NavigationButtonProps) => {
   return (
     <button className={classNames.item} disabled={disabled} onClick={onClick}>
@@ -114,24 +129,15 @@ export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions }: PerP
   return (
     <div className={classNames.selectWrapper}>
       Показать
-      <Select onValueChange={onPerPageChange} options={selectOptions} value={perPage} />
+      <Select
+        className={classNames.select}
+        onValueChange={onPerPageChange}
+        options={selectOptions}
+        value={perPage}
+      />
       на странице
     </div>
   )
-}
-
-const classNames = {
-  container: s.container,
-  dots: s.dots,
-  icon: s.icon,
-  item: s.item,
-  pageButton(selected?: boolean) {
-    return clsx(this.item, selected && s.selected)
-  },
-  root(className?: string) {
-    return clsx(s.root, className)
-  },
-  selectWrapper: s.selectWrapper,
 }
 
 export const Pagination = ({
