@@ -1,9 +1,11 @@
 import { useGetDecksQuery } from '@/services/baseApi'
 
 export const DecksPage = () => {
-  const result = useGetDecksQuery()
+  const { data, error, isLoading } = useGetDecksQuery()
 
-  console.log(result)
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
 
   return <div>Decks page</div>
 }
