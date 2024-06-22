@@ -8,6 +8,7 @@ import {
   TableHeadCell,
   TableRow,
 } from '@/components/ui/table/table'
+import { useState } from "react";
 
 const meta = {
   component: Table,
@@ -107,6 +108,13 @@ const data = [
 
 export const WithSort = {
   render: () => {
+    type Sort = {
+      direction: 'asc' | 'desc'
+      key: string
+    } | null
+
+    const [sort, setSort] = useState<Sort>(null)
+
     return (
       <table>
         <TableHead>
