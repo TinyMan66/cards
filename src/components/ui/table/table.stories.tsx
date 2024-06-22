@@ -129,23 +129,37 @@ export const WithSort = {
         })
       }
     }
+    const columns = [
+      {
+        key: 'name',
+        title: 'Name',
+      },
+      {
+        key: 'cardsCount',
+        title: 'Cards',
+      },
+      {
+        key: 'updated',
+        title: 'Last Updated',
+      },
+      {
+        key: 'createdBy',
+        title: 'Created by',
+      },
+    ]
 
     return (
       <table>
         <TableHead>
           <TableRow>
-            <TableHeadCell onClick={() => handleSort('name')}>
-              Name
-              {sort && sort.key === 'name' && <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>}
-            </TableHeadCell>
-            <TableHeadCell onClick={() => handleSort('cardsCount')}>
-              Cards
-              {sort && sort.key === 'cardsCount' && (
-                <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>
-              )}
-            </TableHeadCell>
-            <TableHeadCell onClick={() => handleSort('updated')}>Last Updated</TableHeadCell>
-            <TableHeadCell onClick={() => handleSort('createdBy')}>Created by</TableHeadCell>
+            {columns.map(column => (
+              <TableHeadCell key={column.key} onClick={() => handleSort(column.key)}>
+                {column.title}
+                {sort && sort.key === column.key && (
+                  <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>
+                )}
+              </TableHeadCell>
+            ))}
           </TableRow>
         </TableHead>
         <TableBody>
