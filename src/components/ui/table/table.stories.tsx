@@ -114,6 +114,10 @@ export const WithSort = {
       key: string
     } | null
 
+    type Column = {
+      key: string
+      title: string
+    }
     const [sort, setSort] = useState<Sort>(null)
 
     const handleSort = (key: string) => {
@@ -129,7 +133,7 @@ export const WithSort = {
         })
       }
     }
-    const columns = [
+    const columns: Array<Column> = [
       {
         key: 'name',
         title: 'Name',
