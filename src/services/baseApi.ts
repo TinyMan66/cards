@@ -12,7 +12,10 @@ export const baseApi = createApi({
   endpoints: builder => {
     return {
       getDecks: builder.query<DecksListResponse, GetDecksArgs | void>({
-        query: () => `v1/decks`,
+        query: args => ({
+          params: args ?? undefined,
+          url: `v2/decks`,
+        }),
       }),
     }
   },
