@@ -1,9 +1,13 @@
-import { Typography } from '@/components'
-import { DecksTable } from '@/components/decks'
+import { useState } from 'react'
+
+import { DecksTable, TextField, Typography } from '@/components'
 import { useGetDecksQuery } from '@/services/baseApi'
 
 export const DecksPage = () => {
-  const { data, error, isLoading } = useGetDecksQuery()
+  const [search, setSearch] = useState('')
+  const { data, error, isLoading } = useGetDecksQuery({
+    name: search,
+  })
 
   if (isLoading) {
     return <h1>Loading...</h1>
@@ -15,6 +19,7 @@ export const DecksPage = () => {
 
   return (
     <div>
+      <TextField onChange={e => setSearch(e.currentTarget.value)} value={search} />
       <DecksTable decks={data?.items} />
     </div>
   )
