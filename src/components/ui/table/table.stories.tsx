@@ -71,3 +71,65 @@ export const Default: Story = {
     ),
   },
 }
+
+const data = [
+  {
+    cardsCount: 10,
+    createdBy: 'John Doe',
+    title: 'Project A',
+    updated: '2023-07-07',
+  },
+  {
+    cardsCount: 5,
+    createdBy: 'Jane Smith',
+    title: 'Project B',
+    updated: '2023-07-06',
+  },
+  {
+    cardsCount: 8,
+    createdBy: 'Alice Johnson',
+    title: 'Project C',
+    updated: '2023-07-05',
+  },
+  {
+    cardsCount: 3,
+    createdBy: 'Bob Anderson',
+    title: 'Project D',
+    updated: '2023-07-07',
+  },
+  {
+    cardsCount: 12,
+    createdBy: 'Emma Davis',
+    title: 'Project E',
+    updated: '2023-07-04',
+  },
+]
+
+export const WithSort = {
+  render: () => {
+    return (
+      <table>
+        <TableHead>
+          <TableRow>
+            <TableHeadCell>Name</TableHeadCell>
+            <TableHeadCell>Cards</TableHeadCell>
+            <TableHeadCell>Last Updated</TableHeadCell>
+            <TableHeadCell>Created by</TableHeadCell>
+            <TableHeadCell></TableHeadCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data.map(item => (
+            <TableRow key={item.title}>
+              <TableCell>{item.title}</TableCell>
+              <TableCell>{item.cardsCount}</TableCell>
+              <TableCell>{item.updated}</TableCell>
+              <TableCell>{item.createdBy}</TableCell>
+              <TableCell>icons...</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </table>
+    )
+  },
+}
