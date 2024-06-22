@@ -115,6 +115,20 @@ export const WithSort = {
 
     const [sort, setSort] = useState<Sort>(null)
 
+    const handleSort = (key: string) => {
+      if (sort && sort.key === key) {
+        setSort({
+          direction: sort.direction === 'asc' ? 'desc' : 'asc',
+          key,
+        })
+      } else {
+        setSort({
+          direction: 'asc',
+          key,
+        })
+      }
+    }
+
     return (
       <table>
         <TableHead>
