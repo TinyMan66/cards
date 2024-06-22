@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { useState } from 'react'
+
 import { Table, Typography } from '@/components'
 import {
   TableBody,
@@ -8,7 +10,6 @@ import {
   TableHeadCell,
   TableRow,
 } from '@/components/ui/table/table'
-import { useState } from "react";
 
 const meta = {
   component: Table,
@@ -133,11 +134,18 @@ export const WithSort = {
       <table>
         <TableHead>
           <TableRow>
-            <TableHeadCell>Name</TableHeadCell>
-            <TableHeadCell>Cards</TableHeadCell>
-            <TableHeadCell>Last Updated</TableHeadCell>
-            <TableHeadCell>Created by</TableHeadCell>
-            <TableHeadCell></TableHeadCell>
+            <TableHeadCell onClick={() => handleSort('name')}>
+              Name
+              {sort && sort.key === 'name' && <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>}
+            </TableHeadCell>
+            <TableHeadCell onClick={() => handleSort('cardsCount')}>
+              Cards
+              {sort && sort.key === 'cardsCount' && (
+                <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>
+              )}
+            </TableHeadCell>
+            <TableHeadCell onClick={() => handleSort('updated')}>Last Updated</TableHeadCell>
+            <TableHeadCell onClick={() => handleSort('createdBy')}>Created by</TableHeadCell>
           </TableRow>
         </TableHead>
         <TableBody>
