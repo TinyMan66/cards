@@ -27,3 +27,13 @@ export interface Author {
   id: string
   name: string
 }
+
+export interface GetDecksArgs {
+  authorId?: string
+  currentPage?: number
+  itemsPerPage?: number
+  maxCardsCount?: number
+  minCardsCount?: number
+  name?: string
+  orderBy?: string
+}
