@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-import { Table, Typography } from '@/components'
+import { Column, Sort, Table, TableHeader, Typography } from '@/components'
 import {
   TableBody,
   TableCell,
@@ -109,31 +109,9 @@ const data = [
 
 export const WithSort = {
   render: () => {
-    type Sort = {
-      direction: 'asc' | 'desc'
-      key: string
-    } | null
-
-    type Column = {
-      key: string
-      title: string
-    }
     const [sort, setSort] = useState<Sort>(null)
 
-    const handleSort = (key: string) => {
-      if (sort && sort.key === key) {
-        setSort({
-          direction: sort.direction === 'asc' ? 'desc' : 'asc',
-          key,
-        })
-      } else {
-        setSort({
-          direction: 'asc',
-          key,
-        })
-      }
-    }
-    const columns: Array<Column> = [
+    const columns: Column[] = [
       {
         key: 'name',
         title: 'Name',
@@ -154,18 +132,7 @@ export const WithSort = {
 
     return (
       <table>
-        <TableHead>
-          <TableRow>
-            {columns.map(column => (
-              <TableHeadCell key={column.key} onClick={() => handleSort(column.key)}>
-                {column.title}
-                {sort && sort.key === column.key && (
-                  <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>
-                )}
-              </TableHeadCell>
-            ))}
-          </TableRow>
-        </TableHead>
+        <TableHeader columns={columns} onSort={setSort} sort={sort} />
         <TableBody>
           {data.map(item => (
             <TableRow key={item.title}>
